@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="hometext_unselest">#8B8B8B</color>
     <color name="hometext_selest">#005CE0</color>
+    <color name="hometext_teamvs">#2a2a2a</color>
 </resources>
