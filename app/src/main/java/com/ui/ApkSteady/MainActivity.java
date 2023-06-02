@@ -10,10 +10,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.ui.ApkSteady.ui.dashboard.MatchFragment;
-import com.ui.ApkSteady.ui.home.HomeFragment;
-import com.ui.ApkSteady.ui.my.MyFragment;
-import com.ui.ApkSteady.ui.notifications.AttentionFragment;
+import com.ui.ApkSteady.ui.fragment.AttentionFragment;
+import com.ui.ApkSteady.ui.fragment.HomeFragment;
+import com.ui.ApkSteady.ui.fragment.MatchFragment;
+import com.ui.ApkSteady.ui.fragment.MyFragment;
 
 import java.util.ArrayList;
 import java.util.List;

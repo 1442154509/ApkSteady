@@ -1,4 +1,4 @@
-package com.ui.ApkSteady.ui.notifications;
+package com.ui.ApkSteady.ui.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
