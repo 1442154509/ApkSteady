@@ -60,6 +60,6 @@ string title_attention
 string title_home
 string title_match
 string title_my
-style Theme.UIApplication
+style Theme.ApkSteady
 xml backup_rules
 xml data_extraction_rules

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.ui.uiapplication.app-mergeDebugResources-39:/values-v23/values-v23.xml",
+            "outputFile": "com.ui.ApkSteady.app-mergeDebugResources-39:/values-v23/values-v23.xml",
             "map": [
                 {
                     "source": "C:\\Users\\EDZ\\.gradle\\caches\\transforms-3\\64a2d392994452577a480e11197fabd6\\transformed\\cardview-1.0.0\\res\\values-v23\\values-v23.xml",

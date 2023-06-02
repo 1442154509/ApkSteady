@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.ui.uiapplication'
+    namespace 'com.ui.ApkSteady'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.ui.uiapplication"
+        applicationId 'com.ui.ApkSteady'
         minSdk 24
         targetSdk 33
         versionCode 1

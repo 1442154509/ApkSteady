@@ -1,22 +1,22 @@
 [
     {
-        "merged": "com.ui.uiapplication.app-mergeDebugResources-40:/layout/fragment_match.xml",
-        "source": "com.ui.uiapplication.app-main-43:/layout/fragment_match.xml"
+        "merged": "com.ui.ApkSteady.app-mergeDebugResources-40:/layout/activity_main.xml",
+        "source": "com.ui.ApkSteady.app-main-43:/layout/activity_main.xml"
     },
     {
-        "merged": "com.ui.uiapplication.app-mergeDebugResources-40:/layout/fragment_attention.xml",
-        "source": "com.ui.uiapplication.app-main-43:/layout/fragment_attention.xml"
+        "merged": "com.ui.ApkSteady.app-mergeDebugResources-40:/layout/fragment_match.xml",
+        "source": "com.ui.ApkSteady.app-main-43:/layout/fragment_match.xml"
     },
     {
-        "merged": "com.ui.uiapplication.app-mergeDebugResources-40:/layout/fragment_home.xml",
-        "source": "com.ui.uiapplication.app-main-43:/layout/fragment_home.xml"
+        "merged": "com.ui.ApkSteady.app-mergeDebugResources-40:/layout/fragment_attention.xml",
+        "source": "com.ui.ApkSteady.app-main-43:/layout/fragment_attention.xml"
     },
     {
-        "merged": "com.ui.uiapplication.app-mergeDebugResources-40:/layout/fragment_my.xml",
-        "source": "com.ui.uiapplication.app-main-43:/layout/fragment_my.xml"
+        "merged": "com.ui.ApkSteady.app-mergeDebugResources-40:/layout/fragment_my.xml",
+        "source": "com.ui.ApkSteady.app-main-43:/layout/fragment_my.xml"
     },
     {
-        "merged": "com.ui.uiapplication.app-mergeDebugResources-40:/layout/activity_main.xml",
-        "source": "com.ui.uiapplication.app-main-43:/layout/activity_main.xml"
+        "merged": "com.ui.ApkSteady.app-mergeDebugResources-40:/layout/fragment_home.xml",
+        "source": "com.ui.ApkSteady.app-main-43:/layout/fragment_home.xml"
     }
 ]

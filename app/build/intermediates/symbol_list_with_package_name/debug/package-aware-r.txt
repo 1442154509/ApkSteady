@@ -1,4 +1,4 @@
-com.ui.uiapplication
+com.ui.ApkSteady
 anim abc_fade_in
 anim abc_fade_out
 anim abc_grow_fade_in_from_bottom
@@ -3862,6 +3862,7 @@ style TextAppearance_MaterialComponents_Tooltip
 style TextAppearance_Widget_AppCompat_ExpandedMenu_Item
 style TextAppearance_Widget_AppCompat_Toolbar_Subtitle
 style TextAppearance_Widget_AppCompat_Toolbar_Title
+style Theme_ApkSteady
 style Theme_AppCompat
 style Theme_AppCompat_CompactMenu
 style Theme_AppCompat_DayNight
@@ -3963,7 +3964,6 @@ style Theme_MaterialComponents_Light_NoActionBar
 style Theme_MaterialComponents_Light_NoActionBar_Bridge
 style Theme_MaterialComponents_NoActionBar
 style Theme_MaterialComponents_NoActionBar_Bridge
-style Theme_UIApplication
 style ThemeOverlay_AppCompat
 style ThemeOverlay_AppCompat_ActionBar
 style ThemeOverlay_AppCompat_Dark

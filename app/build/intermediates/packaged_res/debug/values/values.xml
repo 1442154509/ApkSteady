@@ -11,12 +11,12 @@
     <color name="white">#FFFFFFFF</color>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <string name="app_name">UIApplication</string>
+    <string name="app_name">ApkSteady</string>
     <string name="title_attention">关注</string>
     <string name="title_home">首页</string>
     <string name="title_match">赛程</string>
     <string name="title_my">我的</string>
-    <style name="Theme.UIApplication" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.ApkSteady" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
