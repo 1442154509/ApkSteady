@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">UIApplication</string>
+    <string name="title_home">首页</string>
+    <string name="title_match">赛程</string>
+    <string name="title_attention">关注</string>
+    <string name="title_my">我的</string>
+</resources>
