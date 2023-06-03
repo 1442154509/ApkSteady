@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/corner_matchwhite"
+    android:elevation="1dp"
+    android:padding="5dp"
+    android:translationZ="1dp">
 
-    <com.ui.ApkSteady.ui.view.AutoSizeImageView
+    <com.ui.ApkSteady.ui.view.ResizableImageView
         android:id="@+id/iv_homematch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:background="@drawable/matching"
-        android:scaleType="center" />
+        android:adjustViewBounds="true" />
 
     <TextView
         android:id="@+id/tv_team_name"
@@ -19,21 +21,37 @@
         android:layout_alignTop="@id/iv_homematch"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="9dp"
-        android:gravity="center_horizontal"
         android:text="队伍名称"
         android:textColor="@color/white" />
 
-    <TextView
-        android:id="@+id/tv_playstate"
+    <LinearLayout
+        android:id="@+id/ll_match_state_bg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/iv_homematch"
         android:layout_alignRight="@id/iv_homematch"
-        android:layout_marginTop="9dp"
-        android:layout_marginRight="15dp"
-        android:gravity="center_horizontal"
-        android:text="直播中"
-        android:textColor="@color/white" />
+        android:gravity="center|center_vertical"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <com.ui.ApkSteady.ui.view.ResizableImageView
+            android:layout_marginRight="3dp"
+            android:id="@+id/iv_matchstate"
+            android:layout_width="14dp"
+            android:layout_height="13dp"
+            android:adjustViewBounds="true" />
+
+        <TextView
+            android:id="@+id/tv_playstate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/iv_matchstate"
+            android:layout_alignBottom="@id/iv_matchstate"
+            android:layout_toRightOf="@id/iv_matchstate"
+            android:text="直播中"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
 
     <TextView
         android:id="@+id/tv_expositor"
@@ -43,40 +61,44 @@
         android:layout_alignBottom="@id/iv_homematch"
         android:layout_marginLeft="15dp"
         android:layout_marginBottom="9dp"
-        android:gravity="center_horizontal"
         android:text="解说员"
         android:textColor="@color/white" />
 
-    <TextView
-        android:id="@+id/tv_viewNum"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignRight="@id/iv_homematch"
         android:layout_alignBottom="@id/iv_homematch"
         android:layout_marginRight="15dp"
         android:layout_marginBottom="9dp"
-        android:gravity="center_horizontal"
-        android:text="3456"
-        android:textColor="@color/white" />
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-    <com.ui.ApkSteady.ui.view.AutoSizeImageView
-        android:id="@+id/iv_eye"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/tv_viewNum"
-        android:layout_alignBottom="@id/tv_viewNum"
-        android:layout_marginRight="5dp"
-        android:layout_toLeftOf="@id/tv_viewNum"
-        android:adjustViewBounds="true"
-        android:background="@drawable/match_view_eye"
-        android:scaleType="center" />
+        <com.ui.ApkSteady.ui.view.ResizableImageView
+            android:id="@+id/iv_eye"
+            android:layout_width="14dp"
+            android:layout_height="13dp"
+            android:adjustViewBounds="true" />
+
+        <TextView
+            android:id="@+id/tv_viewNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginLeft="5dp"
+            android:text="3456"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
 
     <TextView
         android:id="@+id/tv_home_matchvs_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/iv_homematch"
-        android:gravity="center_horizontal"
+        android:layout_marginLeft="15dp"
+        android:gravity="left"
         android:text="这是一场比赛"
-        android:textColor="@color/hometext_teamvs" />
+        android:textColor="@color/hometext_teamvs"
+        android:textSize="15sp" />
 </RelativeLayout>

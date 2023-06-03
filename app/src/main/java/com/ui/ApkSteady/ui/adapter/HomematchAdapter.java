@@ -1,18 +1,25 @@
 package com.ui.ApkSteady.ui.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.recyclerview.widget.RecyclerView;
-
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.ui.ApkSteady.R;
 import com.ui.ApkSteady.ui.data.HomeMatchBean;
-import com.ui.ApkSteady.ui.view.AutoSizeImageView;
+import com.ui.ApkSteady.ui.view.ResizableImageView;
 
 import java.util.List;
 
@@ -58,7 +65,14 @@ public class HomematchAdapter extends BaseAdapter {
 
             viewHolder.tvViewNum = (TextView) convertView.findViewById(R.id.tv_viewNum);
 
-            viewHolder.ivMatch = (AutoSizeImageView) convertView.findViewById(R.id.iv_homematch);
+            viewHolder.ivMatch = (ResizableImageView) convertView.findViewById(R.id.iv_homematch);
+
+            viewHolder.iveye = (ResizableImageView) convertView.findViewById(R.id.iv_eye);
+
+            viewHolder.ivmatchstate = (ResizableImageView) convertView.findViewById(R.id.iv_matchstate);
+
+            viewHolder.ivMatchStateBg = (LinearLayout) convertView.findViewById(R.id.ll_match_state_bg);
+
 
             convertView.setTag(viewHolder);
         } else {
@@ -69,7 +83,28 @@ public class HomematchAdapter extends BaseAdapter {
         viewHolder.tvPlaystate.setText(matchBeanList.get(position).getPlayState());
         viewHolder.tvExpositor.setText(matchBeanList.get(position).getExpositor());
         viewHolder.tvViewNum.setText(matchBeanList.get(position).getViewNum());
-        viewHolder.ivMatch.setBackgroundResource(matchBeanList.get(position).getImages());
+        Glide.with(mContext).load(matchBeanList.get(position).getImages()).apply(RequestOptions.bitmapTransform(new RoundedCorners(25))).into(viewHolder.ivMatch);
+//        Glide.with(mContext).load(matchBeanList.get(position).getImages()).into(viewHolder.ivMatch);
+
+        Glide.with(mContext).load(R.mipmap.match_view_eye).into(viewHolder.iveye);
+
+//        Glide.with(mContext).load(R.drawable.corner_matching).into(viewHolder.ivMatchStateBg);
+//        viewHolder.ivMatchStateBg.setBackgroundResource(R.drawable.corner_matching);
+        if ((position + 1) % 4 == 0) {
+            viewHolder.ivMatchStateBg.setBackgroundResource(R.drawable.corner_matchunstart);
+            viewHolder.ivmatchstate.setVisibility(View.GONE);
+        } else if ((position + 1) % 3 == 0) {
+            viewHolder.ivMatchStateBg.setBackgroundResource(R.drawable.corner_matchfinish);
+            Glide.with(mContext).load(R.mipmap.match_finish).into(viewHolder.ivmatchstate);
+            viewHolder.ivmatchstate.setVisibility(View.VISIBLE);
+        } else if ((position + 1) % 2 == 0) {
+            viewHolder.ivMatchStateBg.setBackgroundResource(R.drawable.corner_matching);
+            viewHolder.ivmatchstate.setVisibility(View.GONE);
+        } else {
+            viewHolder.ivMatchStateBg.setBackgroundResource(R.drawable.corner_matchlive);
+            Glide.with(mContext).load(R.mipmap.match_live).into(viewHolder.ivmatchstate);
+            viewHolder.ivmatchstate.setVisibility(View.VISIBLE);
+        }
         return convertView;
     }
 
@@ -78,10 +113,11 @@ public class HomematchAdapter extends BaseAdapter {
         TextView tvMatchVs;
         TextView tvTeamName;
         TextView tvPlaystate;
-
         TextView tvExpositor;
-
         TextView tvViewNum;
-        AutoSizeImageView ivMatch;
+        ResizableImageView ivMatch;
+        ResizableImageView iveye;
+        ResizableImageView ivmatchstate;
+        LinearLayout ivMatchStateBg;
     }
 }

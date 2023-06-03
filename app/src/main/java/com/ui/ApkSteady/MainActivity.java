@@ -1,6 +1,9 @@
 package com.ui.ApkSteady;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -10,6 +13,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.gyf.immersionbar.ImmersionBar;
+import com.ui.ApkSteady.ui.BaseActivity;
 import com.ui.ApkSteady.ui.fragment.AttentionFragment;
 import com.ui.ApkSteady.ui.fragment.HomeFragment;
 import com.ui.ApkSteady.ui.fragment.MatchFragment;
@@ -18,7 +23,7 @@ import com.ui.ApkSteady.ui.fragment.MyFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     //    private ActivityMainBinding binding;
     private ViewPager viewPager;
@@ -30,11 +35,22 @@ public class MainActivity extends AppCompatActivity {
     private RadioButton rMatch;
     private RadioButton rAttention;
     private RadioButton rMy;
+    public boolean darkStatusBar = true;//当是沉浸式状态栏时，状态栏字体是否黑色字体，false时表示白色字体，true表示黑色字体
+    boolean immersionModel = true;//是否是沉浸式状态栏，true时表示是沉浸式
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        if (!immersionModel) {
+//            ImmersionBar.with(this).statusBarColor(R.color.white).statusBarDarkFont(true).fitsSystemWindows(true).init();
+//        } else {
+//            if (darkStatusBar) {
+//                ImmersionBar.with(this).statusBarDarkFont(true).init();
+//            } else {
+//                ImmersionBar.with(this).init();
+//            }
+//        }
         viewPager = findViewById(R.id.home_view);
         radioGroup = findViewById(R.id.rg_vertical);
         pagelist = new ArrayList<>();
