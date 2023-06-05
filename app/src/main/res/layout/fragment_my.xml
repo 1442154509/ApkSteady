@@ -73,7 +73,6 @@
                     android:text="关于我们"
                     android:textColor="@color/c2a2a2a"
                     android:textSize="16sp" />
-
             </RelativeLayout>
             <View
 
@@ -113,6 +112,15 @@
                     android:textColor="@color/c2a2a2a"
                     android:textSize="16sp" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="40dp"
+                    android:text="v1.0.8(20210808)"
+                    android:textColor="@color/c8b8b8b"
+                    android:textSize="14sp" />
             </RelativeLayout>
 
 
