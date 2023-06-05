@@ -24,14 +24,14 @@
                 android:adjustViewBounds="true"
                 android:contentDescription="background"
                 android:scaleType="fitXY"
-                app:srcCompat="@drawable/rectangle_731" />
+                app:srcCompat="@drawable/app_my_bg" />
 
             <ImageView
                 android:id="@+id/h_logo"
                 android:layout_width="105dp"
                 android:layout_height="41dp"
                 android:layout_centerInParent="true"
-                app:srcCompat="@drawable/group_1106" />
+                app:srcCompat="@drawable/app_my_logo" />
 
         </RelativeLayout>
 
@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="20dp"
-                    android:src="@drawable/group_1103" />
+                    android:src="@drawable/app_my_icon_aboutus" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -63,7 +63,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="20dp"
-                    android:src="@drawable/vector" />
+                    android:src="@drawable/app_my_right_arrow" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -93,7 +93,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="20dp"
-                    android:src="@drawable/group_1104" />
+                    android:src="@drawable/app_my_icon_version" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -101,7 +101,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="20dp"
-                    android:src="@drawable/vector" />
+                    android:src="@drawable/app_my_right_arrow" />
 
                 <TextView
                     android:layout_width="wrap_content"
