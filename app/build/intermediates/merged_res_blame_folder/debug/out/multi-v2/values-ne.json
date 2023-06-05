@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.ui.ApkSteady.app-mergeDebugResources-39:/values-ne/values-ne.xml",
+            "outputFile": "com.ui.ApkSteady.app-mergeDebugResources-41:/values-ne/values-ne.xml",
             "map": [
                 {
                     "source": "C:\\Users\\EDZ\\.gradle\\caches\\transforms-3\\3de27a0357f00a7a67f9fb6c459b75c1\\transformed\\navigation-ui-2.5.2\\res\\values-ne\\values-ne.xml",

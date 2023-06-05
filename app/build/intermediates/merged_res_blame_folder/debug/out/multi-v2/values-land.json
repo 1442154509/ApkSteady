@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.ui.ApkSteady.app-mergeDebugResources-39:/values-land/values-land.xml",
+            "outputFile": "com.ui.ApkSteady.app-mergeDebugResources-41:/values-land/values-land.xml",
             "map": [
                 {
                     "source": "C:\\Users\\EDZ\\.gradle\\caches\\transforms-3\\a965dbd46dad388efad08cc8f6d01086\\transformed\\material-1.5.0\\res\\values-land\\values-land.xml",
