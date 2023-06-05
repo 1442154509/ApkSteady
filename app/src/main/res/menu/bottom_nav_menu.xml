@@ -4,20 +4,20 @@
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home" />
+        android:title="@string/bottom_navigation_home" />
 
     <item
         android:id="@+id/navigation_match"
         android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_match" />
+        android:title="@string/bottom_navigation_match" />
 
     <item
         android:id="@+id/navigation_attention"
         android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_attention" />
+        android:title="@string/bottom_navigation_attention" />
     <item
         android:id="@+id/navigation_my"
         android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_my" />
+        android:title="@string/bottom_navigation_my" />
 
 </menu>

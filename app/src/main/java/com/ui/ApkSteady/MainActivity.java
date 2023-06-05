@@ -1,20 +1,15 @@
 package com.ui.ApkSteady;
 
-import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
-import android.view.Window;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.gyf.immersionbar.ImmersionBar;
-import com.ui.ApkSteady.ui.BaseActivity;
+import com.ui.ApkSteady.ui.BaseCommonActivity;
 import com.ui.ApkSteady.ui.fragment.AttentionFragment;
 import com.ui.ApkSteady.ui.fragment.HomeFragment;
 import com.ui.ApkSteady.ui.fragment.MatchFragment;
@@ -23,7 +18,7 @@ import com.ui.ApkSteady.ui.fragment.MyFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseCommonActivity {
 
     //    private ActivityMainBinding binding;
     private ViewPager viewPager;
@@ -41,7 +36,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_home_activity);
 //        if (!immersionModel) {
 //            ImmersionBar.with(this).statusBarColor(R.color.white).statusBarDarkFont(true).fitsSystemWindows(true).init();
 //        } else {
@@ -51,8 +46,8 @@ public class MainActivity extends BaseActivity {
 //                ImmersionBar.with(this).init();
 //            }
 //        }
-        viewPager = findViewById(R.id.home_view);
-        radioGroup = findViewById(R.id.rg_vertical);
+        viewPager = findViewById(R.id.viewpage_main);
+        radioGroup = findViewById(R.id.radiogroup_main_bottom);
         pagelist = new ArrayList<>();
         //为viewpager设置适配器
         pagelist = new ArrayList<>();
@@ -62,10 +57,10 @@ public class MainActivity extends BaseActivity {
         pagelist.add(new MyFragment());
 
         radioGroup.setClickable(true);
-        rHome = (RadioButton) findViewById(R.id.rb_title_home);
-        rMatch = (RadioButton) findViewById(R.id.rb_title_home);
-        rAttention = (RadioButton) findViewById(R.id.rb_title_home);
-        rMy = (RadioButton) findViewById(R.id.rb_title_home);
+        rHome = (RadioButton) findViewById(R.id.radiobutton_main_home_bottom);
+        rMatch = (RadioButton) findViewById(R.id.radiobutton_main_home_bottom);
+        rAttention = (RadioButton) findViewById(R.id.radiobutton_main_home_bottom);
+        rMy = (RadioButton) findViewById(R.id.radiobutton_main_home_bottom);
         //设置选中
         rHome.setChecked(true);
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {

@@ -3,7 +3,7 @@ package com.ui.ApkSteady.ui.view;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-
+//自适应宽度充满，高度适合的图片
 public class ResizableImageView extends androidx.appcompat.widget.AppCompatImageView {
 
     public ResizableImageView(Context context, AttributeSet attrs) {

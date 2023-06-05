@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--首页table栏-->
-    <style name="wallet_third_tab_layout">
+    <style name="home_top_tab_layout">
         <item name="android:textSize">17dp</item>
         <item name="android:textStyle">bold</item>
     </style>
@@ -11,8 +11,8 @@
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/white</item>
     </style>
-
-    <style name="radioButtonStyle">
+    <!--底部栏-->
+    <style name="bottom_navigation_radioButtonStyle">
         <item name="android:background">@android:color/transparent</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
@@ -21,7 +21,7 @@
         <item name="android:gravity">center</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:drawablePadding">5dp</item>
-        <item name="android:textColor">@drawable/home_textselector</item>
+        <item name="android:textColor">@drawable/selector_bottom_main_text</item>
         <item name="android:textSize">18sp</item>
 
     </style>

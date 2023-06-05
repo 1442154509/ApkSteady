@@ -7,24 +7,24 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.ui.ApkSteady.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:name="com.ui.ApkSteady.ui.fragment.HomeFragment"
+        android:label="@string/bottom_navigation_home"
+        tools:layout="@layout/home_fragment" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.ui.ApkSteady.ui.dashboard.MatchFragment"
-        android:label="@string/title_match"
-        tools:layout="@layout/fragment_match" />
+        android:name="com.ui.ApkSteady.ui.fragment.MatchFragment"
+        android:label="@string/bottom_navigation_match"
+        tools:layout="@layout/match_fragment" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.ui.ApkSteady.ui.notifications.AttentionFragment"
-        android:label="@string/title_attention"
-        tools:layout="@layout/fragment_attention" />
+        android:name="com.ui.ApkSteady.ui.fragment.AttentionFragment"
+        android:label="@string/bottom_navigation_attention"
+        tools:layout="@layout/attention_fragment" />
     <fragment
         android:id="@+id/navigation_my"
-        android:name="com.ui.ApkSteady.ui.my.MyFragment"
-        android:label="@string/title_my"
-        tools:layout="@layout/fragment_attention" />
+        android:name="com.ui.ApkSteady.ui.fragment.MyFragment"
+        android:label="@string/bottom_navigation_my"
+        tools:layout="@layout/attention_fragment" />
 </navigation>

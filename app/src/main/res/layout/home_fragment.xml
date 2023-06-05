@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.fragment.HomeFragment">
+
+    <LinearLayout
+        android:id="@+id/linearlayout_match_title"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:background="@drawable/main_bottom_match_title_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <com.ui.ApkSteady.ui.view.ResizableImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/home_top_logo_sport196" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tablayout_match_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            app:tabIndicator="@drawable/home_toptable_bottom_line"
+            app:tabIndicatorColor="@color/home_top_table_select"
+            app:tabSelectedTextColor="@color/home_top_table_select"
+            app:tabTextAppearance="@style/home_top_tab_layout"
+            app:tabTextColor="@color/home_item_text_teamvs" />
+    </LinearLayout>
+
+
+    <GridView
+        android:id="@+id/gridview_card"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/linearlayout_match_title"
+        android:layout_margin="10dp"
+        android:columnWidth="80dp"
+        android:horizontalSpacing="10dp"
+        android:numColumns="2"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="10dp" />
+</RelativeLayout>
