@@ -6,17 +6,115 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragment.MatchFragment">
 
-    <TextView
-        android:id="@+id/text_dashboard"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/h_back"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:contentDescription="background"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/rectangle_731" />
+
+            <ImageView
+                android:id="@+id/h_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                app:srcCompat="@drawable/group_1106" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="0dp"
+            android:orientation="vertical"
+            tools:ignore="MissingConstraints">
+
+            <RelativeLayout
+                android:id="@+id/aboutus_btn"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:clickable="true">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/group_1103" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/vector" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="52dp"
+                    android:text="关于我们"
+                    android:textColor="@color/c2a2a2a"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+            <View
+
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="0dp"
+                android:background="@color/e6e6e6" />
+
+            <RelativeLayout
+                android:id="@+id/version_btn"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:clickable="true">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/group_1104" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/vector" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="52dp"
+                    android:text="版本号"
+                    android:textColor="@color/c2a2a2a"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

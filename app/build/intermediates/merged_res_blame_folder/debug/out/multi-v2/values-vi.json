@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.ui.ApkSteady.app-mergeDebugResources-39:/values-vi/values-vi.xml",
+            "outputFile": "com.ui.ApkSteady.app-mergeDebugResources-41:/values-vi/values-vi.xml",
             "map": [
                 {
                     "source": "C:\\Users\\EDZ\\.gradle\\caches\\transforms-3\\07087a925c2fa9cf908b06c8fc21f437\\transformed\\appcompat-1.4.1\\res\\values-vi\\values-vi.xml",

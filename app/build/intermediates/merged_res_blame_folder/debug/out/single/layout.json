@@ -1,22 +1,38 @@
 [
     {
-        "merged": "com.ui.ApkSteady.app-mergeDebugResources-40:/layout/activity_main.xml",
-        "source": "com.ui.ApkSteady.app-main-43:/layout/activity_main.xml"
+        "merged": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-mergeDebugResources-42:\\layout\\fragment_home.xml",
+        "source": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-main-45:\\layout\\fragment_home.xml"
     },
     {
-        "merged": "com.ui.ApkSteady.app-mergeDebugResources-40:/layout/fragment_match.xml",
-        "source": "com.ui.ApkSteady.app-main-43:/layout/fragment_match.xml"
+        "merged": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-mergeDebugResources-42:\\layout\\fragment_attention.xml",
+        "source": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-main-45:\\layout\\fragment_attention.xml"
     },
     {
-        "merged": "com.ui.ApkSteady.app-mergeDebugResources-40:/layout/fragment_attention.xml",
-        "source": "com.ui.ApkSteady.app-main-43:/layout/fragment_attention.xml"
+        "merged": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-mergeDebugResources-42:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-main-45:\\layout\\activity_main.xml"
     },
     {
-        "merged": "com.ui.ApkSteady.app-mergeDebugResources-40:/layout/fragment_my.xml",
-        "source": "com.ui.ApkSteady.app-main-43:/layout/fragment_my.xml"
+        "merged": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-mergeDebugResources-42:\\layout\\gridlayout_home_match.xml",
+        "source": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-main-45:\\layout\\gridlayout_home_match.xml"
     },
     {
-        "merged": "com.ui.ApkSteady.app-mergeDebugResources-40:/layout/fragment_home.xml",
-        "source": "com.ui.ApkSteady.app-main-43:/layout/fragment_home.xml"
+        "merged": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-mergeDebugResources-42:\\layout\\fragment_match.xml",
+        "source": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-main-45:\\layout\\fragment_match.xml"
+    },
+    {
+        "merged": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-mergeDebugResources-42:\\layout\\activity_base.xml",
+        "source": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-main-45:\\layout\\activity_base.xml"
+    },
+    {
+        "merged": "com.ui.ApkSteady.app-mergeDebugResources-42:/layout/fragment_my.xml",
+        "source": "com.ui.ApkSteady.app-main-45:/layout/fragment_my.xml"
+    },
+    {
+        "merged": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-mergeDebugResources-42:\\layout\\fragment_my.xml",
+        "source": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-main-45:\\layout\\fragment_my.xml"
+    },
+    {
+        "merged": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-mergeDebugResources-42:\\layout\\activity_detail.xml",
+        "source": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-main-45:\\layout\\activity_detail.xml"
     }
 ]

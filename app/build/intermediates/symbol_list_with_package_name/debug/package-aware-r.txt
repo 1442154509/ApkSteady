@@ -1265,6 +1265,8 @@ color bright_foreground_material_dark
 color bright_foreground_material_light
 color button_material_dark
 color button_material_light
+color c2a2a2a
+color card_line
 color cardview_dark_background
 color cardview_light_background
 color cardview_shadow_end_color
@@ -1312,6 +1314,7 @@ color dim_foreground_disabled_material_dark
 color dim_foreground_disabled_material_light
 color dim_foreground_material_dark
 color dim_foreground_material_light
+color e6e6e6
 color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
@@ -1319,6 +1322,7 @@ color foreground_material_light
 color highlighted_text_material_dark
 color highlighted_text_material_light
 color hometext_selest
+color hometext_teamvs
 color hometext_unselest
 color m3_appbar_overlay_color
 color m3_assist_chip_icon_tint_color
@@ -1635,6 +1639,10 @@ color m3_timepicker_display_text_color
 color m3_timepicker_secondary_text_button_ripple_color
 color m3_timepicker_secondary_text_button_text_color
 color m3_tonal_button_ripple_color_selector
+color matchfinish_corner
+color matching_corner
+color matchlive_corner
+color matchunsart_corner
 color material_blue_grey_800
 color material_blue_grey_900
 color material_blue_grey_950
@@ -1812,6 +1820,7 @@ color switch_thumb_material_dark
 color switch_thumb_material_light
 color switch_thumb_normal_material_dark
 color switch_thumb_normal_material_light
+color table_home_select
 color teal_200
 color teal_700
 color test_color
@@ -1819,6 +1828,7 @@ color test_mtrl_calendar_day
 color test_mtrl_calendar_day_selected
 color tooltip_background_dark
 color tooltip_background_light
+color transparent
 color white
 dimen abc_action_bar_content_inset_material
 dimen abc_action_bar_content_inset_with_nav
@@ -1966,6 +1976,7 @@ dimen design_tab_scrollable_min_width
 dimen design_tab_text_size
 dimen design_tab_text_size_2line
 dimen design_textinput_caption_translate_y
+dimen dimen_49
 dimen disabled_alpha_material_dark
 dimen disabled_alpha_material_light
 dimen fastscroll_default_thickness
@@ -2498,11 +2509,20 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable center_lab_line
+drawable corner_matchfinish
+drawable corner_matching
+drawable corner_matchlive
+drawable corner_matchunstart
+drawable corner_matchwhite
 drawable design_fab_background
 drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable group_1103
+drawable group_1104
+drawable group_1106
 drawable home_picselector
 drawable home_select
 drawable home_textselector
@@ -2531,7 +2551,9 @@ drawable m3_tabs_rounded_line_indicator
 drawable m3_tabs_transparent_background
 drawable match_picselector
 drawable match_select
+drawable match_title_bg
 drawable match_unselect
+drawable matching
 drawable material_cursor_drawable
 drawable material_ic_calendar_black_24dp
 drawable material_ic_clear_black_24dp
@@ -2568,10 +2590,15 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable rectangle_731
+drawable tab_background_selected
+drawable tab_background_unselected
+drawable tab_bg
 drawable test_custom_background
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+drawable vector
 id ALT
 id BOTTOM_END
 id BOTTOM_START
@@ -2586,6 +2613,7 @@ id SHOW_PROGRESS
 id SYM
 id TOP_END
 id TOP_START
+id aboutus_btn
 id accelerate
 id accessibility_action_clickable_span
 id accessibility_custom_action_0
@@ -2768,6 +2796,7 @@ id fragment_container_view_tag
 id frost
 id ghost_view
 id ghost_view_holder
+id glide_custom_view_target_tag
 id gone
 id graph
 id graph_wrap
@@ -2775,6 +2804,9 @@ id group_divider
 id grouping
 id groups
 id guideline
+id gv_info
+id h_back
+id h_logo
 id header_title
 id hideable
 id home
@@ -2789,12 +2821,18 @@ id ignore
 id ignoreRequest
 id image
 id immediateStop
+id immersion_fits_layout_overlap
+id immersion_navigation_bar_view
+id immersion_status_bar_view
 id included
 id info
 id invisible
 id inward
 id italic
 id item_touch_helper_previous_elevation
+id iv_eye
+id iv_homematch
+id iv_matchstate
 id jumpToEnd
 id jumpToStart
 id labeled
@@ -2807,6 +2845,8 @@ id line3
 id linear
 id listMode
 id list_item
+id ll_match_state_bg
+id llmatch_title
 id locale
 id ltr
 id masked
@@ -2994,6 +3034,7 @@ id submenuarrow
 id submit_area
 id supportScrollUp
 id tabMode
+id tab_match_title
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
 id tag_accessibility_heading
@@ -3019,7 +3060,6 @@ id textSpacerNoTitle
 id textStart
 id textTop
 id text_dashboard
-id text_home
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -3046,11 +3086,20 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id tv_detail_match_starttime
+id tv_detail_match_state
+id tv_detail_match_team_name
+id tv_expositor
+id tv_home_matchvs_name
+id tv_playstate
+id tv_team_name
+id tv_viewNum
 id unchecked
 id uniform
 id unlabeled
 id up
 id useLogo
+id version_btn
 id vertical_only
 id view_offset_helper
 id view_transition
@@ -3155,6 +3204,8 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_base
+layout activity_detail
 layout activity_main
 layout custom_dialog
 layout design_bottom_navigation_item
@@ -3176,6 +3227,7 @@ layout fragment_attention
 layout fragment_home
 layout fragment_match
 layout fragment_my
+layout gridlayout_home_match
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
@@ -3248,8 +3300,14 @@ layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
 menu bottom_nav_menu
+mipmap banner_detail
 mipmap ic_launcher
 mipmap ic_launcher_round
+mipmap match_finish
+mipmap match_live
+mipmap match_view_eye
+mipmap sport196
+mipmap team_england
 navigation mobile_navigation
 plurals mtrl_badge_content_description
 string abc_action_bar_home_description
@@ -3667,6 +3725,7 @@ style CardView
 style CardView_Dark
 style CardView_Light
 style EmptyTheme
+style MDTheme
 style MaterialAlertDialog_Material3
 style MaterialAlertDialog_Material3_Body_Text
 style MaterialAlertDialog_Material3_Body_Text_CenterStacked
@@ -4409,6 +4468,8 @@ style Widget_MaterialComponents_Toolbar_PrimarySurface
 style Widget_MaterialComponents_Toolbar_Surface
 style Widget_MaterialComponents_Tooltip
 style Widget_Support_CoordinatorLayout
+style radioButtonStyle
+style wallet_third_tab_layout
 styleable ActionBar background backgroundSplit backgroundStacked contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation customNavigationLayout displayOptions divider elevation height hideOnContentScroll homeAsUpIndicator homeLayout icon indeterminateProgressStyle itemPadding logo navigationMode popupTheme progressBarPadding progressBarStyle subtitle subtitleTextStyle title titleTextStyle
 styleable ActionBarLayout android_layout_gravity
 styleable ActionMenuItemView android_minWidth
