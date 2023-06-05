@@ -60,16 +60,16 @@
         "source": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-main-45:\\drawable-xhdpi\\group_1104.webp"
     },
     {
-        "merged": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-merged_res-43:\\drawable-hdpi_vector.webp.flat",
-        "source": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-main-45:\\drawable-hdpi\\vector.webp"
+        "merged": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-merged_res-43:\\drawable_ic_dashboard_black_24dp.xml.flat",
+        "source": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-main-45:\\drawable\\ic_dashboard_black_24dp.xml"
     },
     {
         "merged": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-merged_res-43:\\layout_fragment_match.xml.flat",
         "source": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-main-45:\\layout\\fragment_match.xml"
     },
     {
-        "merged": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-merged_res-43:\\drawable_ic_dashboard_black_24dp.xml.flat",
-        "source": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-main-45:\\drawable\\ic_dashboard_black_24dp.xml"
+        "merged": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-merged_res-43:\\drawable-hdpi_vector.webp.flat",
+        "source": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-main-45:\\drawable-hdpi\\vector.webp"
     },
     {
         "merged": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-merged_res-43:\\mipmap-xxhdpi_match_live.webp.flat",
@@ -100,12 +100,12 @@
         "source": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-main-45:\\mipmap-xhdpi\\team_england.webp"
     },
     {
-        "merged": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-merged_res-43:\\mipmap-xxxhdpi_match_live.webp.flat",
-        "source": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-main-45:\\mipmap-xxxhdpi\\match_live.webp"
-    },
-    {
         "merged": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-merged_res-43:\\mipmap-mdpi_team_england.webp.flat",
         "source": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-main-45:\\mipmap-mdpi\\team_england.webp"
+    },
+    {
+        "merged": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-merged_res-43:\\mipmap-xxxhdpi_match_live.webp.flat",
+        "source": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-main-45:\\mipmap-xxxhdpi\\match_live.webp"
     },
     {
         "merged": "C:\\Users\\EDZ\\.gradle\\daemon\\8.0\\com.ui.ApkSteady.app-merged_res-43:\\mipmap-hdpi_match_view_eye.webp.flat",

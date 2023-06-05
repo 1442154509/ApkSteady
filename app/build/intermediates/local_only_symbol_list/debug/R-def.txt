@@ -4,6 +4,7 @@ color black
 color c2a2a2a
 color card_line
 color e6e6e6
+color f6f7fa
 color hometext_selest
 color hometext_teamvs
 color hometext_unselest

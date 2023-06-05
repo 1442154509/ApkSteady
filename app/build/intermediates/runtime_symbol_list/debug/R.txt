@@ -1316,6 +1316,7 @@ int color dim_foreground_material_light 0x7f050059
 int color e6e6e6 0x7f05025e
 int color error_color_material_dark 0x7f05005a
 int color error_color_material_light 0x7f05005b
+int color f6f7fa 0x7f05025f
 int color foreground_material_dark 0x7f05005c
 int color foreground_material_light 0x7f05005d
 int color highlighted_text_material_dark 0x7f05005e
