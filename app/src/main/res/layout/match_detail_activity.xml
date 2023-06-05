@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".ui.DetailActivity">
 
-    <ImageView
+    <com.ui.ApkSteady.ui.view.ResizableImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/main_bottom_match_title_bg" />
+        app:srcCompat="@mipmap/detail_top_banner" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_vertical"
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:text="- 未开始 -"
+        android:text="-   未开始   -"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
@@ -45,20 +45,21 @@
         android:layout_centerHorizontal="true"
         android:text="开赛时间 05-29 22:30"
         android:textColor="@color/white"
-        android:textSize="15sp"
+        android:textSize="12sp"
+        android:textStyle="normal"
         app:layout_constraintBottom_toTopOf="@+id/tv_detail_match_state"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.792" />
+        app:layout_constraintVertical_bias="0.806" />
 
     <TextView
         android:id="@+id/tv_detail_match_team_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="英格兰足球杯"
+        android:text="英格兰足总杯"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -66,21 +67,86 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.827" />
 
     <ImageView
+        android:id="@+id/imageView_detail_match_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/tv_detail_match_team_name"
         android:layout_alignBottom="@id/tv_detail_match_team_name"
         android:layout_toLeftOf="@id/tv_detail_match_team_name"
         android:src="@mipmap/detail_team_logo_england"
-        app:layout_constraintBottom_toTopOf="@+id/tv_detail_match_starttime"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_detail_match_team_name"
         app:layout_constraintEnd_toStartOf="@+id/tv_detail_match_team_name"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.908"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_detail_match_team_name"
         app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/imageView_detail_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_detail_match_team_name"
+        app:layout_constraintEnd_toStartOf="@+id/imageView_detail_match_name"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_detail_match_team_name"
+        app:layout_constraintVertical_bias="0.857"
+        app:srcCompat="@mipmap/detail_back" />
+
+    <ImageView
+        android:id="@+id/imageView_detail_team_logo_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_detail_match_state"
+        app:layout_constraintStart_toStartOf="@+id/imageView_detail_back"
+        app:layout_constraintTop_toTopOf="@+id/tv_detail_match_state"
+        app:srcCompat="@mipmap/team_logo_brighton" />
+
+    <ImageView
+        android:id="@+id/imageView_detail_start_mark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_detail_match_team_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toEndOf="@+id/tv_detail_match_team_name"
+        app:layout_constraintTop_toTopOf="@+id/tv_detail_match_team_name"
+        app:layout_constraintVertical_bias="0.857"
+        app:srcCompat="@mipmap/detail_start_mark" />
+
+    <TextView
+        android:id="@+id/textView_detail_left_team_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:text="布莱顿"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@+id/imageView_detail_team_logo_left"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_detail_team_logo_left" />
+
+    <ImageView
+        android:id="@+id/imageView_detail_team_logo_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_detail_match_state"
+        app:layout_constraintEnd_toEndOf="@+id/imageView_detail_start_mark"
+        app:layout_constraintTop_toTopOf="@+id/tv_detail_match_state"
+        app:srcCompat="@mipmap/team_logo_brighton" />
+
+    <TextView
+        android:id="@+id/textView_detail_right_team_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="莱斯特城"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_detail_left_team_name"
+        app:layout_constraintEnd_toEndOf="@+id/imageView_detail_team_logo_right"
+        app:layout_constraintTop_toTopOf="@+id/textView_detail_left_team_name" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

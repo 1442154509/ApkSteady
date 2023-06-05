@@ -11,7 +11,7 @@
         android:id="@+id/linearlayout_match_title"
         android:layout_width="match_parent"
         android:layout_height="110dp"
-        android:background="@drawable/main_bottom_match_title_bg"
+        android:background="@mipmap/home_match_top_bg"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="10dp">
