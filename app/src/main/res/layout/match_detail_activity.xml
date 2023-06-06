@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:text="-   未开始   -"
+        android:text="-    未开始    -"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
@@ -148,5 +148,109 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView_detail_team_logo_right"
         app:layout_constraintTop_toTopOf="@+id/textView_detail_left_team_name" />
 
+    <LinearLayout
+        android:id="@+id/linearlayout_video_playbg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/detail_video_play_bg"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dimen_10"
+        android:paddingTop="@dimen/dimen_5"
+        android:paddingRight="@dimen/dimen_10"
+        android:paddingBottom="@dimen/dimen_5"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_detail_left_team_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView_detail_left_team_name">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dimen_10"
+            android:src="@mipmap/detail_video_play" />
+
+        <TextView
+            android:id="@+id/textView_detail_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="视频"
+            android:textColor="@color/white"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout_detail_flag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dimen_10"
+        android:paddingTop="@dimen/dimen_5"
+        android:paddingRight="@dimen/dimen_10"
+        android:paddingBottom="@dimen/dimen_5"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearlayout_video_playbg">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dimen_10"
+            android:src="@mipmap/detail_flag" />
+
+        <TextView
+            android:id="@+id/textView_detail_score_flag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1 - 3"
+            android:textColor="@color/white"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView_detail_score_team1_left_yellow"
+        style="@style/detail_team_score_nocolor"
+        android:layout_marginStart="12dp"
+        android:background="@drawable/detail_score_bg_yellow"
+        android:text="2"
+        android:textColor="@color/c2a2a2a"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_detail_team_logo_left"
+        app:layout_constraintStart_toEndOf="@+id/imageView_detail_team_logo_left"
+        app:layout_constraintTop_toTopOf="@+id/imageView_detail_team_logo_left" />
+
+    <TextView
+        android:id="@+id/textView_detail_score_team1_left_red"
+        style="@style/detail_team_score_nocolor"
+        android:layout_marginStart="6dp"
+        android:background="@drawable/detail_score_bg_red"
+        android:text="3"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_detail_team_logo_left"
+        app:layout_constraintStart_toEndOf="@+id/textView_detail_score_team1_left_yellow"
+        app:layout_constraintTop_toTopOf="@+id/imageView_detail_team_logo_left" />
+
+    <TextView
+        android:id="@+id/textView_detail_score_team1_right_red"
+        style="@style/detail_team_score_nocolor"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/detail_score_bg_red"
+        android:text="1"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_detail_team_logo_right"
+        app:layout_constraintEnd_toStartOf="@+id/imageView_detail_team_logo_right"
+        app:layout_constraintTop_toTopOf="@+id/imageView_detail_team_logo_right" />
+
+    <TextView
+        android:id="@+id/textView_detail_score_team1_right_yellow"
+        style="@style/detail_team_score_nocolor"
+        android:layout_marginEnd="6dp"
+        android:background="@drawable/detail_score_bg_yellow"
+        android:text="2"
+        android:textColor="@color/c2a2a2a"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_detail_team_logo_right"
+        app:layout_constraintEnd_toStartOf="@+id/textView_detail_score_team1_right_red"
+        app:layout_constraintTop_toTopOf="@+id/imageView_detail_team_logo_right" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

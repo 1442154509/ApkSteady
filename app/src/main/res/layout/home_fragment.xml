@@ -13,24 +13,41 @@
         android:layout_height="110dp"
         android:background="@mipmap/home_match_top_bg"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        android:orientation="horizontal">
 
-        <com.ui.ApkSteady.ui.view.ResizableImageView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:paddingLeft="10dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@mipmap/home_top_logo_sport196" />
+            android:layout_weight="4">
+
+            <com.ui.ApkSteady.ui.view.ResizableImageView
+                android:scaleType="centerInside"
+                android:scaleX="1.2"
+                android:scaleY="1.2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:adjustViewBounds="true"
+                android:background="@mipmap/home_top_logo_sport196" />
+        </LinearLayout>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tablayout_match_title"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="8"
             android:background="@android:color/transparent"
             app:tabIndicator="@drawable/home_toptable_bottom_line"
             app:tabIndicatorColor="@color/home_top_table_select"
             app:tabSelectedTextColor="@color/home_top_table_select"
             app:tabTextAppearance="@style/home_top_tab_layout"
             app:tabTextColor="@color/home_item_text_teamvs" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="4" />
     </LinearLayout>
 
 
