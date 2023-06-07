@@ -4,15 +4,19 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.tabs.TabLayout;
 import com.ui.ApkSteady.R;
+import com.ui.ApkSteady.ui.adapter.MatchConditionAdapter;
+import com.ui.ApkSteady.ui.data.MatchConditionBean;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 //比赛页面
@@ -21,6 +25,8 @@ public class MatchFragment extends Fragment {
     TabLayout tabMatchTitle;
     //赛事列表
     RecyclerView rvMatchList;
+    //列表适配器
+    MatchConditionAdapter macthAdapter;
 
     //标题分类
     private String[] tabTitleList = {"全部", "足球", "篮球"};
@@ -41,6 +47,15 @@ public class MatchFragment extends Fragment {
         }
         //初始化recycleView
         rvMatchList=view.findViewById(R.id.rv_match_list);
+        rvMatchList.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+        macthAdapter=new MatchConditionAdapter(new ArrayList());
+        rvMatchList.setAdapter(macthAdapter);
+    }
+
+    //刷新列表数据
+    private void onDataChanged(List<MatchConditionBean> beans){
+        macthAdapter.setNewData(beans);
+        macthAdapter.notifyDataSetChanged();
     }
     @Override
     public void onDestroyView() {
