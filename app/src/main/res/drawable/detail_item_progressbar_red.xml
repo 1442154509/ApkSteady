@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!--3个层的顺序即为显示时的叠加顺序-->
+    <!--背景色-->
+    <item android:id="@android:id/background">
+        <shape>
+            <solid android:color="@color/ececec" />
+        </shape>
+    </item>
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <solid android:color="@color/c04336" />
+            </shape>
+        </clip>
+    </item>
+</layer-list>

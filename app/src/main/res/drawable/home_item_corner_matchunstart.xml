@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/home_matchunsart_corner" />
+    <solid android:color="@color/b28b5d" />
     <corners
         android:bottomLeftRadius="12dp"
         android:bottomRightRadius="0dp"

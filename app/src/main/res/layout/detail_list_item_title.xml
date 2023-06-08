@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dimen_5"
+    android:layout_marginBottom="@dimen/dimen_5"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/dimen_13"
+    android:paddingRight="@dimen/dimen_13">
+
+    <TextView
+        android:id="@+id/textview_detail_item_title_rank"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawablePadding="@dimen/dimen_5"
+        android:text="球队排名"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:id="@+id/linearlayout_detail_title_score"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/textview_detail_title_score_match"
+            style="@style/detail_team_title"
+            android:text="赛" />
+
+        <TextView
+            android:id="@+id/textview_detail_title_score_victort"
+            style="@style/detail_team_title"
+            android:text="胜/平/负" />
+
+        <TextView
+            android:id="@+id/textview_detail_title_score_score"
+            style="@style/detail_team_title"
+            android:text="进/失" />
+
+        <TextView
+            android:id="@+id/textview_detail_title_score_pure"
+            style="@style/detail_team_title"
+            android:text="净" />
+
+        <TextView
+            android:id="@+id/textview_detail_title_score_rank"
+            style="@style/detail_team_title"
+            android:text="排名" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout_detail_title_vs"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/textview_detail_title_vs_vs"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/dimen_5"
+            android:gravity="center"
+            android:text="VS"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textview_detail_title_vs_right"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/dimen_5"
+            android:gravity="end"
+            android:text="球队排名"
+            android:textSize="18sp" />
+    </LinearLayout>
+</LinearLayout>

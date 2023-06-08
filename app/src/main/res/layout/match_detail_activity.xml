@@ -7,7 +7,7 @@
     tools:context=".ui.DetailActivity">
 
     <com.ui.ApkSteady.ui.view.ResizableImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageView_detail_top_bg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +32,7 @@
         android:text="-    未开始    -"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_detail_top_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -189,7 +189,7 @@
         android:paddingTop="@dimen/dimen_5"
         android:paddingRight="@dimen/dimen_10"
         android:paddingBottom="@dimen/dimen_5"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_detail_top_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearlayout_video_playbg">
@@ -252,5 +252,28 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageView_detail_team_logo_right"
         app:layout_constraintEnd_toStartOf="@+id/textView_detail_score_team1_right_red"
         app:layout_constraintTop_toTopOf="@+id/imageView_detail_team_logo_right" />
+
+
+    <ViewStub
+        android:id="@+id/viewstub_detail_contain_nodiscuss"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/black"
+        android:layout="@layout/detail_viewstub_no_discuss"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_detail_top_bg" />
+
+    <ViewStub
+        android:id="@+id/viewstub_detail_contain_matchdata"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/black"
+        android:layout="@layout/detail_list_item_matchdata"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_detail_top_bg" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

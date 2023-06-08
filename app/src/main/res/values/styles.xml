@@ -33,4 +33,19 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">@dimen/dimen_10</item>
     </style>
+    <!--详情页标题头-->
+    <style name="detail_team_title">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">@dimen/dimen_10</item>
+    </style>
+    <!--详情页分割线-->
+    <style name="detail_team_vertivalbar">
+        <item name="android:background">@color/ececec</item>
+        <item name="android:layout_width">@dimen/dimen_1</item>
+        <item name="android:layout_height">@dimen/dimen_5</item>
+    </style>
 </resources>

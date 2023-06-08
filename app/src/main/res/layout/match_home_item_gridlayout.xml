@@ -99,6 +99,6 @@
         android:layout_marginLeft="15dp"
         android:gravity="left"
         android:text="这是一场比赛"
-        android:textColor="@color/home_item_text_teamvs"
+        android:textColor="@color/c2a2a2a"
         android:textSize="15sp" />
 </RelativeLayout>
