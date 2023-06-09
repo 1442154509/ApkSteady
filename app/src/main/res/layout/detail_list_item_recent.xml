@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <include
+        android:id="@+id/ll_include"
+        layout="@layout/detail_list_item_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/ll_include2"
+        layout="@layout/detai_item_recent_5match"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_include"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearlayout_detail_item_recent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/detail_item_history_bg_gray"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/dimen_5"
+        android:paddingBottom="@dimen/dimen_5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_include2">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <TextView
+            android:id="@+id/textView_recent_match_state3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/detail_item_recent_win_bg"
+            android:text="胜"
+            android:textColor="@color/be3f30"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline5"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView_recent_match_state5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/detail_item_recent_lose_bg"
+            android:text="负"
+            android:textColor="@color/c005ce0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView_recent_match_state4" />
+
+        <TextView
+            android:id="@+id/textView_recent_match_state4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/detail_item_recent_lose_bg"
+            android:text="负"
+            android:textColor="@color/c005ce0"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_recent_match_state3"
+            app:layout_constraintEnd_toStartOf="@+id/textView_recent_match_state5"
+            app:layout_constraintStart_toEndOf="@+id/textView_recent_match_state3"
+            app:layout_constraintTop_toTopOf="@+id/textView_recent_match_state3" />
+
+        <TextView
+            android:id="@+id/textView_recent_match_state1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/detail_item_recent_win_bg"
+            android:text="胜"
+            android:textColor="@color/be3f30"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_recent_match_state2"
+            app:layout_constraintStart_toStartOf="@+id/guideline5"
+            app:layout_constraintTop_toTopOf="@+id/textView_recent_match_state2" />
+
+        <TextView
+            android:id="@+id/textView_recent_match_state2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/detail_item_recent_tie_bg"
+            android:text="平"
+            android:textColor="@color/c969696"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_recent_match_state4"
+            app:layout_constraintEnd_toStartOf="@+id/textView_recent_match_state3"
+            app:layout_constraintStart_toEndOf="@+id/textView_recent_match_state1"
+            app:layout_constraintTop_toTopOf="@+id/textView_recent_match_state3" />
+
+        <TextView
+            android:id="@+id/textView_recent_win_ratenum2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10%"
+            android:textColor="@color/c2a2a2a"
+            app:layout_constraintBottom_toTopOf="@+id/guideline4"
+            app:layout_constraintEnd_toStartOf="@+id/guideline5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView_recent_win_rate2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="负率"
+            android:textColor="@color/c2a2a2a"
+            app:layout_constraintEnd_toStartOf="@+id/guideline5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline4" />
+
+        <TextView
+            android:id="@+id/textView_recent_win_rate3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="平率"
+            android:textColor="@color/c2a2a2a"
+            app:layout_constraintEnd_toStartOf="@+id/guideline5"
+            app:layout_constraintStart_toEndOf="@+id/textView_recent_win_rate2"
+            app:layout_constraintTop_toTopOf="@+id/textView_recent_win_rate2" />
+
+        <TextView
+            android:id="@+id/textView_recent_win_rate1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="胜率"
+            android:textColor="@color/c2a2a2a"
+            app:layout_constraintEnd_toStartOf="@+id/textView_recent_win_rate2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView_recent_win_rate2" />
+
+        <TextView
+            android:id="@+id/textView_recent_win_ratenum3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20%"
+            android:textColor="@color/c_005ce0"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_recent_win_ratenum2"
+            app:layout_constraintEnd_toStartOf="@+id/guideline5"
+            app:layout_constraintStart_toEndOf="@+id/textView_recent_win_ratenum2" />
+
+        <TextView
+            android:id="@+id/textView_recent_win_ratenum1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="40%"
+            android:textColor="@color/c04336"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_recent_win_ratenum2"
+            app:layout_constraintEnd_toStartOf="@+id/textView_recent_win_ratenum2"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <View
+            android:id="@+id/textView19"
+            android:layout_width="@dimen/dimen_1"
+            android:layout_height="30dp"
+            android:background="@color/dddddd"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_recent_win_rate2"
+            app:layout_constraintEnd_toStartOf="@+id/textView_recent_win_ratenum2"
+            app:layout_constraintStart_toEndOf="@+id/textView_recent_win_ratenum1"
+            app:layout_constraintTop_toTopOf="@+id/textView_recent_win_ratenum2" />
+
+        <View
+            android:id="@+id/textView20"
+            android:layout_width="@dimen/dimen_1"
+            android:layout_height="30dp"
+            android:background="@color/dddddd"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_recent_win_rate2"
+            app:layout_constraintEnd_toStartOf="@+id/textView_recent_win_ratenum3"
+            app:layout_constraintStart_toEndOf="@+id/textView_recent_win_ratenum2"
+            app:layout_constraintTop_toTopOf="@+id/textView_recent_win_ratenum2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

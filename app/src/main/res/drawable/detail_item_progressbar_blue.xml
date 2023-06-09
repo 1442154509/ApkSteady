@@ -9,7 +9,9 @@
         </shape>
     </item>
     <item android:id="@android:id/progress">
-        <clip>
+        <clip
+            android:clipOrientation="horizontal"
+            android:gravity="right">
             <shape>
                 <solid android:color="@color/c005ce0" />
             </shape>

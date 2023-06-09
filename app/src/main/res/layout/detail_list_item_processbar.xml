@@ -3,144 +3,206 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingLeft="@dimen/dimen_13"
-    android:paddingRight="@dimen/dimen_13">
+    android:layout_height="wrap_content">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
+    <include
+        android:id="@+id/ll_include"
+        layout="@layout/detail_list_item_title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearlayout_detail_item_vs"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
-
-    <TextView
-        android:id="@+id/textview_detail_item_left_team"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintStart_toStartOf="@+id/progressbar_detail_item_left_team"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textview_detail_item_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1-15分钟"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        android:paddingLeft="@dimen/dimen_13"
+        android:paddingRight="@dimen/dimen_13"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/ll_include">
 
-    <TextView
-        android:id="@+id/textview_detail_item_right_team"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintEnd_toEndOf="@+id/progressbar_detail_item_right_team"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <ProgressBar
-        android:id="@+id/progressbar_detail_item_left_team"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/dimen_5"
-        android:layout_marginRight="@dimen/dimen_5"
-        android:progressDrawable="@drawable/detail_item_progressbar_red"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+        <TextView
+            android:id="@+id/textView_detail_history_team_a"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:text="队名a"
+            android:textColor="@color/c2a2a2a" />
 
-    <ProgressBar
-        android:id="@+id/progressbar_detail_item_right_team"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/dimen_5"
-        android:layout_marginLeft="@dimen/dimen_5"
-        android:progressDrawable="@drawable/detail_item_progressbar_blue"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+        <TextView
+            android:id="@+id/textView_detail_history_team_score"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="比分"
+            android:textColor="@color/c2a2a2a"
+            android:textSize="@dimen/dimen_13"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/textview_detail_left_triangle"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/dimen_5"
-        android:background="@drawable/detail_item_progressbar_left_tr_white"
-        app:layout_constraintBottom_toBottomOf="@+id/progressbar_detail_item_left_team"
-        app:layout_constraintStart_toEndOf="@+id/progressbar_detail_item_left_team"
-        app:layout_constraintTop_toTopOf="@+id/progressbar_detail_item_left_team" />
+        <TextView
+            android:id="@+id/textView_detail_history_team_b"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="队名b"
+            android:textColor="@color/c2a2a2a" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView8"
-        style="@style/detail_team_vertivalbar"
-        app:layout_constraintBottom_toBottomOf="@+id/progressbar_detail_item_left_team"
-        app:layout_constraintEnd_toEndOf="@+id/progressbar_detail_item_left_team"
-        app:layout_constraintStart_toStartOf="@+id/progressbar_detail_item_left_team"
-        app:layout_constraintTop_toTopOf="@+id/progressbar_detail_item_left_team" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintnlayout_detail_process_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearlayout_detail_item_vs">
 
-    <TextView
-        android:id="@+id/textView9"
-        style="@style/detail_team_vertivalbar"
-        app:layout_constraintBottom_toBottomOf="@+id/progressbar_detail_item_left_team"
-        app:layout_constraintEnd_toStartOf="@+id/textView8"
-        app:layout_constraintStart_toStartOf="@+id/progressbar_detail_item_left_team"
-        app:layout_constraintTop_toTopOf="@+id/progressbar_detail_item_left_team" />
 
-    <TextView
-        android:id="@+id/textView10"
-        style="@style/detail_team_vertivalbar"
-        app:layout_constraintBottom_toBottomOf="@+id/progressbar_detail_item_left_team"
-        app:layout_constraintEnd_toEndOf="@+id/progressbar_detail_item_left_team"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toTopOf="@+id/progressbar_detail_item_left_team" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
 
-    <TextView
-        android:id="@+id/textview_detail_right_triangle"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/dimen_5"
-        android:background="@drawable/detail_item_progressbar_right_tr_white"
-        app:layout_constraintBottom_toBottomOf="@+id/progressbar_detail_item_right_team"
-        app:layout_constraintEnd_toStartOf="@+id/progressbar_detail_item_right_team"
-        app:layout_constraintTop_toTopOf="@+id/progressbar_detail_item_right_team" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
 
-    <TextView
-        android:id="@+id/textView12"
-        style="@style/detail_team_vertivalbar"
-        app:layout_constraintBottom_toBottomOf="@+id/progressbar_detail_item_right_team"
-        app:layout_constraintEnd_toEndOf="@+id/progressbar_detail_item_right_team"
-        app:layout_constraintStart_toStartOf="@+id/progressbar_detail_item_right_team"
-        app:layout_constraintTop_toTopOf="@+id/progressbar_detail_item_right_team" />
+        <TextView
+            android:id="@+id/textview_detail_item_score_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_13"
+            android:text="0"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textview_detail_item_time"
+            app:layout_constraintStart_toStartOf="@+id/progressbar_detail_item_team_a"
+            app:layout_constraintTop_toTopOf="@+id/textview_detail_item_time" />
 
-    <TextView
-        android:id="@+id/textView15"
-        style="@style/detail_team_vertivalbar"
-        app:layout_constraintBottom_toBottomOf="@+id/progressbar_detail_item_right_team"
-        app:layout_constraintEnd_toEndOf="@+id/progressbar_detail_item_right_team"
-        app:layout_constraintStart_toEndOf="@+id/textView12"
-        app:layout_constraintTop_toTopOf="@+id/progressbar_detail_item_right_team" />
+        <TextView
+            android:id="@+id/textview_detail_item_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1-15分钟"
+            android:textColor="@color/c2a2a2a"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textView19"
-        style="@style/detail_team_vertivalbar"
-        app:layout_constraintBottom_toBottomOf="@+id/progressbar_detail_item_right_team"
-        app:layout_constraintEnd_toStartOf="@+id/textView12"
-        app:layout_constraintStart_toStartOf="@+id/progressbar_detail_item_right_team"
-        app:layout_constraintTop_toTopOf="@+id/progressbar_detail_item_right_team" />
+        <TextView
+            android:id="@+id/textview_detail_item_score_b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dimen_13"
+            android:text="1"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textview_detail_item_time"
+            app:layout_constraintEnd_toEndOf="@+id/progressbar_detail_item_team_b"
+            app:layout_constraintTop_toTopOf="@+id/textview_detail_item_time" />
+
+        <ProgressBar
+            android:id="@+id/progressbar_detail_item_team_a"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dimen_5"
+            android:layout_marginLeft="@dimen/dimen_13"
+            android:layout_marginRight="@dimen/dimen_5"
+            android:progressDrawable="@drawable/detail_item_progressbar_red"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline3" />
+
+        <ProgressBar
+            android:id="@+id/progressbar_detail_item_team_b"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dimen_5"
+            android:layout_marginLeft="@dimen/dimen_5"
+            android:layout_marginRight="@dimen/dimen_13"
+            android:progressDrawable="@drawable/detail_item_progressbar_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toTopOf="@+id/guideline3" />
+
+        <TextView
+            android:id="@+id/textview_detail_triangle_a"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimen_5"
+            android:background="@drawable/detail_item_progressbar_left_tr_white"
+            app:layout_constraintBottom_toBottomOf="@+id/progressbar_detail_item_team_a"
+            app:layout_constraintStart_toEndOf="@+id/progressbar_detail_item_team_a"
+            app:layout_constraintTop_toTopOf="@+id/progressbar_detail_item_team_a" />
+
+        <TextView
+            android:id="@+id/textView8"
+            style="@style/detail_team_vertivalbar"
+            app:layout_constraintBottom_toBottomOf="@+id/progressbar_detail_item_team_a"
+            app:layout_constraintEnd_toEndOf="@+id/progressbar_detail_item_team_a"
+            app:layout_constraintStart_toStartOf="@+id/progressbar_detail_item_team_a"
+            app:layout_constraintTop_toTopOf="@+id/progressbar_detail_item_team_a" />
+
+        <TextView
+            android:id="@+id/textView9"
+            style="@style/detail_team_vertivalbar"
+            app:layout_constraintBottom_toBottomOf="@+id/progressbar_detail_item_team_a"
+            app:layout_constraintEnd_toStartOf="@+id/textView8"
+            app:layout_constraintStart_toStartOf="@+id/progressbar_detail_item_team_a"
+            app:layout_constraintTop_toTopOf="@+id/progressbar_detail_item_team_a" />
+
+        <TextView
+            android:id="@+id/textView10"
+            style="@style/detail_team_vertivalbar"
+            app:layout_constraintBottom_toBottomOf="@+id/progressbar_detail_item_team_a"
+            app:layout_constraintEnd_toEndOf="@+id/progressbar_detail_item_team_a"
+            app:layout_constraintStart_toEndOf="@+id/textView8"
+            app:layout_constraintTop_toTopOf="@+id/progressbar_detail_item_team_a" />
+
+        <TextView
+            android:id="@+id/textview_detail_triangle_b"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimen_5"
+            android:background="@drawable/detail_item_progressbar_right_tr_white"
+            app:layout_constraintBottom_toBottomOf="@+id/progressbar_detail_item_team_b"
+            app:layout_constraintEnd_toStartOf="@+id/progressbar_detail_item_team_b"
+            app:layout_constraintTop_toTopOf="@+id/progressbar_detail_item_team_b" />
+
+        <TextView
+            android:id="@+id/textView12"
+            style="@style/detail_team_vertivalbar"
+            app:layout_constraintBottom_toBottomOf="@+id/progressbar_detail_item_team_b"
+            app:layout_constraintEnd_toEndOf="@+id/progressbar_detail_item_team_b"
+            app:layout_constraintStart_toStartOf="@+id/progressbar_detail_item_team_b"
+            app:layout_constraintTop_toTopOf="@+id/progressbar_detail_item_team_b" />
+
+        <TextView
+            android:id="@+id/textView15"
+            style="@style/detail_team_vertivalbar"
+            app:layout_constraintBottom_toBottomOf="@+id/progressbar_detail_item_team_b"
+            app:layout_constraintEnd_toEndOf="@+id/progressbar_detail_item_team_b"
+            app:layout_constraintStart_toEndOf="@+id/textView12"
+            app:layout_constraintTop_toTopOf="@+id/progressbar_detail_item_team_b" />
+
+        <TextView
+            android:id="@+id/textView19"
+            style="@style/detail_team_vertivalbar"
+            app:layout_constraintBottom_toBottomOf="@+id/progressbar_detail_item_team_b"
+            app:layout_constraintEnd_toStartOf="@+id/textView12"
+            app:layout_constraintStart_toStartOf="@+id/progressbar_detail_item_team_b"
+            app:layout_constraintTop_toTopOf="@+id/progressbar_detail_item_team_b" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

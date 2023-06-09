@@ -41,6 +41,7 @@
         <item name="android:gravity">center</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:textSize">@dimen/dimen_10</item>
+        <item name="android:textColor">@color/c2a2a2a</item>
     </style>
     <!--详情页分割线-->
     <style name="detail_team_vertivalbar">
