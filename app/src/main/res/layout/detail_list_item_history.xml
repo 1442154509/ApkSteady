@@ -37,7 +37,7 @@
             android:id="@+id/linearlayout_detail_item_recent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_5"
+            android:layout_marginTop="@dimen/dimen_13"
             android:layout_marginBottom="@dimen/dimen_5"
             android:background="@drawable/detail_item_history_bg_gray"
             android:gravity="center"
@@ -88,8 +88,10 @@
             android:layout_height="wrap_content"
             android:background="@drawable/detail_item_history_win_bg"
             android:gravity="center"
-            android:padding="@dimen/dimen_1"
+            android:padding="@dimen/dimen_5"
             android:text="胜"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/linearlayout_detail_item_recent"
             app:layout_constraintTop_toTopOf="@+id/textView_detail_history_msg" />
     </androidx.constraintlayout.widget.ConstraintLayout>
