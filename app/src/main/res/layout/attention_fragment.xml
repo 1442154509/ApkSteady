@@ -22,8 +22,8 @@
             app:tabIndicator="@drawable/match_toptable_bottom_line"
             app:tabIndicatorColor="@color/c_005ce0"
             app:tabSelectedTextColor="@color/c_005ce0"
-            app:tabTextAppearance="@style/home_top_tab_layout"
-            app:tabTextColor="@color/c2a2a2a"/>
+            app:tabTextAppearance="@style/HomeTopTabLayout"
+            app:tabTextColor="@color/c_2a2a2a"/>
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView

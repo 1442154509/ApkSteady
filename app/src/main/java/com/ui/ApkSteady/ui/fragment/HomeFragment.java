@@ -7,39 +7,54 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.GridView;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.google.android.material.tabs.TabLayout;
 import com.ui.ApkSteady.R;
 import com.ui.ApkSteady.ui.DetailActivity;
-import com.ui.ApkSteady.ui.adapter.HomematchAdapter;
+import com.ui.ApkSteady.ui.adapter.HomeGrideAdapter;
+import com.ui.ApkSteady.ui.data.HomeAllBean;
 import com.ui.ApkSteady.ui.data.HomeMatchBean;
+import com.ui.ApkSteady.ui.view.LinearSpacingItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 //首页面
 public class HomeFragment extends Fragment {
-    private GridView mCardgv;
-    private TabLayout mMatchTitletlyt;
-    private SwipeRefreshLayout mSwiperlayout;
-    private Bundle mBundle;
+    @BindView(R.id.rv_home_all)
+    RecyclerView rvhome;
+    @BindView(R.id.tablayout_match_title)
+    TabLayout mMatchTitletlyt;
+    @BindView(R.id.swiperlayout_home_match)
+    SwipeRefreshLayout mSwiperlayout;
+    @BindView(R.id.linearlayout_match_title)
+    LinearLayout linearlayoutMatchTitle;
     private List<HomeMatchBean> mMatchDataList;
+    private List<HomeAllBean> mHomeAllBean;
     private String[] sTabTitleName = {"热门", "足球", "篮球"};
 
     @SuppressLint("MissingInflatedId")
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.home_fragment, container, false);
-        mCardgv = (GridView) view.findViewById(R.id.gridview_card);
-        mMatchTitletlyt = (TabLayout) view.findViewById(R.id.tablayout_match_title);
-        mSwiperlayout = (SwipeRefreshLayout) view.findViewById(R.id.swiperlayout_home_match);
-        mBundle = this.getArguments();
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        ButterKnife.bind(this, view);
+        addData();
+        return view;
+    }
+
+    private void addData() {
         mMatchDataList = new ArrayList<>();
 
         //添加tab
@@ -63,23 +78,26 @@ public class HomeFragment extends Fragment {
             }
             mMatchDataList.add(homeMatchBean);
         }
-        HomematchAdapter adapter = new HomematchAdapter(getActivity(), mMatchDataList);
-        mCardgv.setAdapter(adapter);
-        mCardgv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mHomeAllBean = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            HomeAllBean homeAllBean = new HomeAllBean();
+            mHomeAllBean.add(homeAllBean);
+        }
+        HomeGrideAdapter homeGrideAdapter = new HomeGrideAdapter(R.layout.grid_item_match_home, mHomeAllBean);
+        rvhome.addItemDecoration(new LinearSpacingItemDecoration(getActivity(), 20));
+        rvhome.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        rvhome.setAdapter(homeGrideAdapter);
+        homeGrideAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Toast.makeText(getActivity(), position+",", Toast.LENGTH_SHORT).show();
+            public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
+                Bundle mBundle = new Bundle();
+                mBundle.putSerializable("homeallbean", mHomeAllBean.get(position));
                 Intent intent = new Intent();
+                intent.putExtras(mBundle);
                 intent.setClass(getActivity(), DetailActivity.class);
                 startActivity(intent);
             }
         });
-        return view;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
         mSwiperlayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

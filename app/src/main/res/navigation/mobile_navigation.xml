@@ -9,7 +9,7 @@
         android:id="@+id/navigation_home"
         android:name="com.ui.ApkSteady.ui.fragment.HomeFragment"
         android:label="@string/bottom_navigation_home"
-        tools:layout="@layout/home_fragment" />
+        tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_dashboard"

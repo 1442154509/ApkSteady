@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:drawablePadding="@dimen/dimen_5"
             android:text="头部标题"
-            android:textColor="@color/c2a2a2a"
+            android:textColor="@color/c_2a2a2a"
             android:textSize="@dimen/dimen_18sp"
             android:textStyle="bold" />
 
@@ -31,7 +31,7 @@
             android:layout_gravity="center_vertical"
             android:gravity="center"
             android:text="（5场）"
-            android:textColor="@color/c2a2a2a"
+            android:textColor="@color/c_2a2a2a"
             android:textSize="@dimen/dimen_15sp"
             android:visibility="gone" />
 

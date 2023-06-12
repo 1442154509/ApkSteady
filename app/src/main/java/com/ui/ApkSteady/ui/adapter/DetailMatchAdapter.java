@@ -32,23 +32,23 @@ public class DetailMatchAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         switch (viewType) {
             case 0:
-                View view = LayoutInflater.from(mContext).inflate(R.layout.detail_list_item_title_rank, parent, false);
+                View view = LayoutInflater.from(mContext).inflate(R.layout.list_item_title_rank_detail, parent, false);
                 MyViewHolder0 viewHolder0 = new MyViewHolder0(view);
                 return viewHolder0;
             case 1:
-                View view1 = LayoutInflater.from(mContext).inflate(R.layout.detail_list_item_processbar, parent, false);
+                View view1 = LayoutInflater.from(mContext).inflate(R.layout.list_item_processbar_detail, parent, false);
                 MyViewHolder1 viewHolder1 = new MyViewHolder1(view1);
                 return viewHolder1;
             case 2:
-                View view2 = LayoutInflater.from(mContext).inflate(R.layout.detail_list_item_history, parent, false);
+                View view2 = LayoutInflater.from(mContext).inflate(R.layout.item_history_detail, parent, false);
                 MyViewHolder2 viewHolder2 = new MyViewHolder2(view2);
                 return viewHolder2;
             case 3:
-                View view3 = LayoutInflater.from(mContext).inflate(R.layout.detail_list_item_recent, parent, false);
+                View view3 = LayoutInflater.from(mContext).inflate(R.layout.list_item_recent_detail, parent, false);
                 MyViewHolder3 viewHolder3 = new MyViewHolder3(view3);
                 return viewHolder3;
             case 4:
-                View view4 = LayoutInflater.from(mContext).inflate(R.layout.detail_list_item_history, parent, false);
+                View view4 = LayoutInflater.from(mContext).inflate(R.layout.item_history_detail, parent, false);
                 MyViewHolder4 viewHolder4 = new MyViewHolder4(view4);
                 return viewHolder4;
         }

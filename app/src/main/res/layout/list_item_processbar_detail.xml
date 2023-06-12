@@ -7,7 +7,7 @@
 
     <include
         android:id="@+id/ll_include"
-        layout="@layout/detail_list_item_title"
+        layout="@layout/list_item_title_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,7 +34,7 @@
             android:layout_weight="1"
             android:gravity="left"
             android:text="队名a"
-            android:textColor="@color/c2a2a2a" />
+            android:textColor="@color/c_2a2a2a" />
 
         <TextView
             android:id="@+id/textView_detail_history_team_score"
@@ -43,7 +43,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="比分"
-            android:textColor="@color/c2a2a2a"
+            android:textColor="@color/c_2a2a2a"
             android:textSize="@dimen/dimen_13"
             android:textStyle="bold" />
 
@@ -54,7 +54,7 @@
             android:layout_weight="1"
             android:gravity="right"
             android:text="队名b"
-            android:textColor="@color/c2a2a2a" />
+            android:textColor="@color/c_2a2a2a" />
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -94,7 +94,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1-15分钟"
-            android:textColor="@color/c2a2a2a"
+            android:textColor="@color/c_2a2a2a"
             android:textSize="14sp"
             app:layout_constraintBottom_toTopOf="@+id/guideline3"
             app:layout_constraintEnd_toEndOf="parent"
@@ -150,7 +150,7 @@
 
         <TextView
             android:id="@+id/textView8"
-            style="@style/detail_team_vertivalbar"
+            style="@style/DetailTeamVertivalBar"
             app:layout_constraintBottom_toBottomOf="@+id/progressbar_detail_item_team_a"
             app:layout_constraintEnd_toEndOf="@+id/progressbar_detail_item_team_a"
             app:layout_constraintStart_toStartOf="@+id/progressbar_detail_item_team_a"
@@ -158,7 +158,7 @@
 
         <TextView
             android:id="@+id/textView9"
-            style="@style/detail_team_vertivalbar"
+            style="@style/DetailTeamVertivalBar"
             app:layout_constraintBottom_toBottomOf="@+id/progressbar_detail_item_team_a"
             app:layout_constraintEnd_toStartOf="@+id/textView8"
             app:layout_constraintStart_toStartOf="@+id/progressbar_detail_item_team_a"
@@ -166,7 +166,7 @@
 
         <TextView
             android:id="@+id/textView10"
-            style="@style/detail_team_vertivalbar"
+            style="@style/DetailTeamVertivalBar"
             app:layout_constraintBottom_toBottomOf="@+id/progressbar_detail_item_team_a"
             app:layout_constraintEnd_toEndOf="@+id/progressbar_detail_item_team_a"
             app:layout_constraintStart_toEndOf="@+id/textView8"
@@ -183,7 +183,7 @@
 
         <TextView
             android:id="@+id/textView12"
-            style="@style/detail_team_vertivalbar"
+            style="@style/DetailTeamVertivalBar"
             app:layout_constraintBottom_toBottomOf="@+id/progressbar_detail_item_team_b"
             app:layout_constraintEnd_toEndOf="@+id/progressbar_detail_item_team_b"
             app:layout_constraintStart_toStartOf="@+id/progressbar_detail_item_team_b"
@@ -191,7 +191,7 @@
 
         <TextView
             android:id="@+id/textView15"
-            style="@style/detail_team_vertivalbar"
+            style="@style/DetailTeamVertivalBar"
             app:layout_constraintBottom_toBottomOf="@+id/progressbar_detail_item_team_b"
             app:layout_constraintEnd_toEndOf="@+id/progressbar_detail_item_team_b"
             app:layout_constraintStart_toEndOf="@+id/textView12"
@@ -199,7 +199,7 @@
 
         <TextView
             android:id="@+id/textView19"
-            style="@style/detail_team_vertivalbar"
+            style="@style/DetailTeamVertivalBar"
             app:layout_constraintBottom_toBottomOf="@+id/progressbar_detail_item_team_b"
             app:layout_constraintEnd_toStartOf="@+id/textView12"
             app:layout_constraintStart_toStartOf="@+id/progressbar_detail_item_team_b"

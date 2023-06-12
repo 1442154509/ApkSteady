@@ -22,7 +22,7 @@
             android:drawablePadding="6dp"
             android:text="足球"
             android:textSize="14sp"
-            android:textColor="@color/c2a2a2a"/>
+            android:textColor="@color/c_2a2a2a"/>
         <TextView
             android:id="@+id/tv_match_start_time"
             android:layout_width="wrap_content"
@@ -39,7 +39,7 @@
             android:layout_alignParentRight="true"
             android:text="进行中"
             android:textSize="13sp"
-            android:textColor="@color/c2a2a2a"/>
+            android:textColor="@color/c_2a2a2a"/>
     </RelativeLayout>
 
     <ImageView
@@ -64,7 +64,7 @@
         android:textSize="16sp"
         android:maxLines="1"
         android:ellipsize="end"
-        android:textColor="@color/c2a2a2a"
+        android:textColor="@color/c_2a2a2a"
         android:textStyle="bold"/>
 
 
@@ -84,7 +84,7 @@
         android:layout_height="wrap_content"
         android:text="3"
         android:textSize="16dp"
-        android:textColor="@color/c2a2a2a"
+        android:textColor="@color/c_2a2a2a"
         app:layout_constraintRight_toLeftOf="@id/tv_item_match_status"
         app:layout_constraintTop_toTopOf="@id/tv_item_match_status"
         app:layout_constraintBottom_toBottomOf="@id/tv_item_match_status"
@@ -97,7 +97,7 @@
         android:layout_height="wrap_content"
         android:text="3"
         android:textSize="16dp"
-        android:textColor="@color/c2a2a2a"
+        android:textColor="@color/c_2a2a2a"
         app:layout_constraintLeft_toRightOf="@id/tv_item_match_status"
         app:layout_constraintTop_toTopOf="@id/tv_item_match_status"
         app:layout_constraintBottom_toBottomOf="@id/tv_item_match_status"
@@ -127,7 +127,7 @@
         android:textSize="16sp"
         android:maxLines="1"
         android:ellipsize="end"
-        android:textColor="@color/c2a2a2a"
+        android:textColor="@color/c_2a2a2a"
         android:textStyle="bold"/>
 
     <TextView
@@ -138,7 +138,7 @@
         app:layout_constraintLeft_toLeftOf="@id/iv_item_match_logo_a"
         android:text="1"
         android:textSize="11sp"
-        android:textColor="@color/c2a2a2a"
+        android:textColor="@color/c_2a2a2a"
         android:background="@color/c_ffc000"
         android:layout_marginLeft="28dp"
         android:paddingHorizontal="4dp"
@@ -153,7 +153,7 @@
         android:text="2"
         android:textColor="@color/white"
         android:textSize="11sp"
-        android:background="@color/e23737"
+        android:background="@color/c_e23737"
         android:layout_marginLeft="5dp"
         android:paddingHorizontal="4dp"
         android:layout_marginTop="12dp"/>
@@ -167,7 +167,7 @@
         android:text="2"
         android:textColor="@color/white"
         android:textSize="11sp"
-        android:background="@color/e23737"
+        android:background="@color/c_e23737"
         android:paddingHorizontal="4dp"
         android:layout_marginTop="12dp"/>
 
@@ -179,7 +179,7 @@
         app:layout_constraintRight_toLeftOf="@id/tv_item_match_red_b"
         android:text="1"
         android:textSize="11sp"
-        android:textColor="@color/c2a2a2a"
+        android:textColor="@color/c_2a2a2a"
         android:background="@color/c_ffc000"
         android:layout_marginLeft="28dp"
         android:paddingHorizontal="4dp"
@@ -190,7 +190,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1-3"
-        android:textColor="@color/c2a2a2a"
+        android:textColor="@color/c_2a2a2a"
         android:drawableStart="@mipmap/item_match_corner_icon"
         app:layout_constraintTop_toBottomOf="@id/iv_item_match_logo_a"
         app:layout_constraintLeft_toLeftOf="parent"

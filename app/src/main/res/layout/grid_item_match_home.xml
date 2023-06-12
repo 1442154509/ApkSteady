@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/dimen_5"
+    android:layout_marginRight="@dimen/dimen_5"
     android:background="@drawable/home_item_corner_matchwhite"
     android:elevation="1dp"
     android:padding="5dp"
@@ -14,14 +16,14 @@
         android:adjustViewBounds="true" />
 
     <TextView
-        android:id="@+id/tv_team_name"
+        android:id="@+id/tv_competitionname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/iv_homematch"
         android:layout_alignTop="@id/iv_homematch"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="9dp"
-        android:text="队伍名称"
+        android:text="比赛名称"
         android:textColor="@color/white" />
 
     <LinearLayout
@@ -35,10 +37,10 @@
         android:padding="5dp">
 
         <com.ui.ApkSteady.ui.view.ResizableImageView
-            android:layout_marginRight="3dp"
             android:id="@+id/iv_matchstate"
             android:layout_width="14dp"
             android:layout_height="13dp"
+            android:layout_marginRight="3dp"
             android:adjustViewBounds="true" />
 
         <TextView
@@ -72,7 +74,8 @@
         android:layout_marginRight="15dp"
         android:layout_marginBottom="9dp"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <com.ui.ApkSteady.ui.view.ResizableImageView
             android:id="@+id/iv_eye"
@@ -98,7 +101,7 @@
         android:layout_below="@id/iv_homematch"
         android:layout_marginLeft="15dp"
         android:gravity="left"
-        android:text="这是一场比赛"
-        android:textColor="@color/c2a2a2a"
+        android:text="对抗双方"
+        android:textColor="@color/c_2a2a2a"
         android:textSize="15sp" />
 </RelativeLayout>

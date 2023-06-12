@@ -7,7 +7,7 @@
 
     <include
         android:id="@+id/ll_include"
-        layout="@layout/detail_list_item_title"
+        layout="@layout/list_item_title_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -16,7 +16,7 @@
 
     <include
         android:id="@+id/ll_include2"
-        layout="@layout/detai_item_recent_5match"
+        layout="@layout/item_recent_5match"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,7 +60,7 @@
             android:background="@drawable/detail_item_recent_win_bg"
             android:padding="@dimen/dimen_5"
             android:text="胜"
-            android:textColor="@color/be3f30"
+            android:textColor="@color/c_be3f30"
             android:textSize="16sp"
 
             app:layout_constraintBottom_toBottomOf="parent"
@@ -76,7 +76,7 @@
             android:background="@drawable/detail_item_recent_lose_bg"
             android:padding="@dimen/dimen_5"
             android:text="负"
-            android:textColor="@color/c005ce0"
+            android:textColor="@color/c_005ce0"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView_recent_match_state4" />
@@ -88,7 +88,7 @@
             android:background="@drawable/detail_item_recent_lose_bg"
             android:padding="@dimen/dimen_5"
             android:text="负"
-            android:textColor="@color/c005ce0"
+            android:textColor="@color/c_005ce0"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView_recent_match_state3"
             app:layout_constraintEnd_toStartOf="@+id/textView_recent_match_state5"
@@ -102,7 +102,7 @@
             android:background="@drawable/detail_item_recent_win_bg"
             android:padding="@dimen/dimen_5"
             android:text="胜"
-            android:textColor="@color/be3f30"
+            android:textColor="@color/c_be3f30"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView_recent_match_state2"
             app:layout_constraintStart_toStartOf="@+id/guideline5"
@@ -115,7 +115,7 @@
             android:background="@drawable/detail_item_recent_tie_bg"
             android:padding="@dimen/dimen_5"
             android:text="平"
-            android:textColor="@color/c969696"
+            android:textColor="@color/c_969696"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView_recent_match_state4"
             app:layout_constraintEnd_toStartOf="@+id/textView_recent_match_state3"
@@ -127,7 +127,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="10%"
-            android:textColor="@color/c2a2a2a"
+            android:textColor="@color/c_2a2a2a"
             app:layout_constraintBottom_toTopOf="@+id/guideline4"
             app:layout_constraintEnd_toStartOf="@+id/guideline5"
             app:layout_constraintStart_toStartOf="parent" />
@@ -137,7 +137,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="负率"
-            android:textColor="@color/c2a2a2a"
+            android:textColor="@color/c_2a2a2a"
             app:layout_constraintEnd_toStartOf="@+id/guideline5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline4" />
@@ -147,7 +147,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="平率"
-            android:textColor="@color/c2a2a2a"
+            android:textColor="@color/c_2a2a2a"
             app:layout_constraintEnd_toStartOf="@+id/guideline5"
             app:layout_constraintStart_toEndOf="@+id/textView_recent_win_rate2"
             app:layout_constraintTop_toTopOf="@+id/textView_recent_win_rate2" />
@@ -157,7 +157,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="胜率"
-            android:textColor="@color/c2a2a2a"
+            android:textColor="@color/c_2a2a2a"
             app:layout_constraintEnd_toStartOf="@+id/textView_recent_win_rate2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView_recent_win_rate2" />
@@ -177,7 +177,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="40%"
-            android:textColor="@color/c04336"
+            android:textColor="@color/c_c04336"
             app:layout_constraintBottom_toBottomOf="@+id/textView_recent_win_ratenum2"
             app:layout_constraintEnd_toStartOf="@+id/textView_recent_win_ratenum2"
             app:layout_constraintStart_toStartOf="parent" />
@@ -186,7 +186,7 @@
             android:id="@+id/textView19"
             android:layout_width="@dimen/dimen_1"
             android:layout_height="30dp"
-            android:background="@color/dddddd"
+            android:background="@color/c_dddddd"
             app:layout_constraintBottom_toBottomOf="@+id/textView_recent_win_rate2"
             app:layout_constraintEnd_toStartOf="@+id/textView_recent_win_ratenum2"
             app:layout_constraintStart_toEndOf="@+id/textView_recent_win_ratenum1"
@@ -196,7 +196,7 @@
             android:id="@+id/textView20"
             android:layout_width="@dimen/dimen_1"
             android:layout_height="30dp"
-            android:background="@color/dddddd"
+            android:background="@color/c_dddddd"
             app:layout_constraintBottom_toBottomOf="@+id/textView_recent_win_rate2"
             app:layout_constraintEnd_toStartOf="@+id/textView_recent_win_ratenum3"
             app:layout_constraintStart_toEndOf="@+id/textView_recent_win_ratenum2"

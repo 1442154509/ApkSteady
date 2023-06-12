@@ -2,53 +2,62 @@ package com.ui.ApkSteady.ui;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.view.View;
 import android.view.ViewStub;
-import android.widget.ImageView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ui.ApkSteady.R;
 import com.ui.ApkSteady.ui.adapter.DetailMatchAdapter;
+import com.ui.ApkSteady.ui.data.HomeAllBean;
 import com.ui.ApkSteady.ui.data.MyData;
 import com.ui.ApkSteady.ui.view.LinearSpacingItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DetailActivity extends BaseCommonActivity {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-    private ImageView mBackIv;
-    private ViewStub stubNoDiscuss, stubMatchData;
+public class DetailActivity extends BaseCommonActivity {
+    @BindView(R.id.vs_nodiscuss)
+    ViewStub vsNodiscuss;
+    @BindView(R.id.vs_matchdata)
+    ViewStub vsMatchdata;
     private int CONTAINSTATE = 2;//0无评论，1有评论，2比赛数据
     private List<MyData> list;
+    private Bundle mBundle;
+    private HomeAllBean homeAllBean;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.my_fragment);
-        setContentView(R.layout.match_detail_activity);
+        setContentView(R.layout.activity_matchdetail);
+        ButterKnife.bind(this);
+        mBundle = getIntent().getExtras();
+        homeAllBean = (HomeAllBean) mBundle.getSerializable("homeallbean");
 
-        mBackIv = findViewById(R.id.imageView_detail_back);
-        mBackIv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+
+//        mBackIv.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
 
         switch (CONTAINSTATE) {
             case 0:
-                stubNoDiscuss = (ViewStub) findViewById(R.id.viewstub_detail_contain_nodiscuss);
-                stubNoDiscuss.inflate();
+                vsNodiscuss = (ViewStub) findViewById(R.id.vs_nodiscuss);
+                vsNodiscuss.inflate();
                 break;
             case 1:
                 break;
             case 2:
-                stubMatchData = (ViewStub) findViewById(R.id.viewstub_detail_contain_matchdata);
-                stubMatchData.inflate();
+                vsMatchdata = (ViewStub) findViewById(R.id.vs_matchdata);
+                vsMatchdata.inflate();
 
                 RecyclerView recyclerView = (RecyclerView) findViewById(R.id.detail_match_item);
                 recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -59,8 +68,8 @@ public class DetailActivity extends BaseCommonActivity {
 
                 break;
             default:
-                stubNoDiscuss = (ViewStub) findViewById(R.id.viewstub_detail_contain_nodiscuss);
-                stubNoDiscuss.inflate();
+                vsNodiscuss = (ViewStub) findViewById(R.id.vs_nodiscuss);
+                vsNodiscuss.inflate();
         }
 
     }
@@ -127,6 +136,10 @@ public class DetailActivity extends BaseCommonActivity {
         list.add(data27);
         list.add(data28);
 
+    }
 
+    @OnClick(R.id.iv_detail_back)
+    public void onClick() {
+        finish();
     }
 }

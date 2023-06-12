@@ -13,7 +13,7 @@ public class BaseCommonActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.base_common_activity);
+        setContentView(R.layout.activity_base_common);
         //沉浸状态栏代码
         if (!immersionModel) {
             ImmersionBar.with(this).statusBarColor(R.color.white).statusBarDarkFont(true).fitsSystemWindows(true).init();

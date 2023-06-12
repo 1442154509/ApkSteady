@@ -5,13 +5,13 @@
     <!--背景色-->
     <item android:id="@android:id/background">
         <shape>
-            <solid android:color="@color/ececec" />
+            <solid android:color="@color/c_ececec" />
         </shape>
     </item>
     <item android:id="@android:id/progress">
         <clip>
             <shape>
-                <solid android:color="@color/c04336" />
+                <solid android:color="@color/c_c04336" />
             </shape>
         </clip>
     </item>

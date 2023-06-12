@@ -18,25 +18,34 @@ import com.ui.ApkSteady.ui.fragment.MyFragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends BaseCommonActivity {
 
-    //    private ActivityMainBinding binding;
-    private ViewPager viewPager;
-    private RadioGroup radioGroup;
+    @BindView(R.id.viewpage_main)
+    ViewPager viewPager;
+    @BindView(R.id.radiogroup_main_bottom)
+    RadioGroup radioGroup;
+    @BindView(R.id.radiobutton_main_home_bottom)
+    RadioButton rbHome;
+    @BindView(R.id.radiobutton_main_match_bottom)
+    RadioButton rbMatch;
+    @BindView(R.id.radiobutton_main_attention_bottom)
+    RadioButton rbAttention;
+    @BindView(R.id.radiobutton_main_my_bottom)
+    RadioButton rbMy;
 
 
     private List<Fragment> pagelist;
-    private RadioButton rHome;
-    private RadioButton rMatch;
-    private RadioButton rAttention;
-    private RadioButton rMy;
     public boolean darkStatusBar = true;//当是沉浸式状态栏时，状态栏字体是否黑色字体，false时表示白色字体，true表示黑色字体
     boolean immersionModel = true;//是否是沉浸式状态栏，true时表示是沉浸式
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_home_activity);
+        setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 //        if (!immersionModel) {
 //            ImmersionBar.with(this).statusBarColor(R.color.white).statusBarDarkFont(true).fitsSystemWindows(true).init();
 //        } else {
@@ -46,8 +55,6 @@ public class MainActivity extends BaseCommonActivity {
 //                ImmersionBar.with(this).init();
 //            }
 //        }
-        viewPager = findViewById(R.id.viewpage_main);
-        radioGroup = findViewById(R.id.radiogroup_main_bottom);
         pagelist = new ArrayList<>();
         //为viewpager设置适配器
         pagelist = new ArrayList<>();
@@ -57,12 +64,8 @@ public class MainActivity extends BaseCommonActivity {
         pagelist.add(new MyFragment());
 
         radioGroup.setClickable(true);
-        rHome = (RadioButton) findViewById(R.id.radiobutton_main_home_bottom);
-        rMatch = (RadioButton) findViewById(R.id.radiobutton_main_home_bottom);
-        rAttention = (RadioButton) findViewById(R.id.radiobutton_main_home_bottom);
-        rMy = (RadioButton) findViewById(R.id.radiobutton_main_home_bottom);
         //设置选中
-        rHome.setChecked(true);
+        rbHome.setChecked(true);
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @NonNull
             @Override

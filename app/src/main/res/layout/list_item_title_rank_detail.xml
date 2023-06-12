@@ -20,7 +20,7 @@
             android:layout_weight="1"
             android:drawablePadding="@dimen/dimen_5"
             android:text="球队排名"
-            android:textColor="@color/c2a2a2a"
+            android:textColor="@color/c_2a2a2a"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -36,27 +36,27 @@
 
             <TextView
                 android:id="@+id/textview_detail_title_score_match"
-                style="@style/detail_team_title"
+                style="@style/DetailTeamTitle"
                 android:text="赛" />
 
             <TextView
                 android:id="@+id/textview_detail_title_score_victort"
-                style="@style/detail_team_title"
+                style="@style/DetailTeamTitle"
                 android:text="胜/平/负" />
 
             <TextView
                 android:id="@+id/textview_detail_title_score_score"
-                style="@style/detail_team_title"
+                style="@style/DetailTeamTitle"
                 android:text="进/失" />
 
             <TextView
                 android:id="@+id/textview_detail_title_score_pure"
-                style="@style/detail_team_title"
+                style="@style/DetailTeamTitle"
                 android:text="净" />
 
             <TextView
                 android:id="@+id/textview_detail_title_score_rank"
-                style="@style/detail_team_title"
+                style="@style/DetailTeamTitle"
                 android:text="排名" />
         </LinearLayout>
 

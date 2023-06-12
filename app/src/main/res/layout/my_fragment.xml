@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity"
-        android:background="@color/f6f7fa"
+        android:background="@color/c_f6f7fa"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -71,7 +71,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="72dp"
                     android:text="关于我们"
-                    android:textColor="@color/c2a2a2a"
+                    android:textColor="@color/c_2a2a2a"
                     android:textStyle="normal"
                     android:textFontWeight="400"
                     android:textSize="22sp" />
@@ -83,7 +83,7 @@
                 android:layout_height="1dp"
                 android:layout_marginLeft="72dp"
                 android:layout_marginRight="0dp"
-                android:background="@color/e6e6e6" />
+                android:background="@color/c_e6e6e6" />
 
             <RelativeLayout
                 android:id="@+id/version_btn"
@@ -112,7 +112,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="72dp"
                     android:text="版本号"
-                    android:textColor="@color/c2a2a2a"
+                    android:textColor="@color/c_2a2a2a"
                     android:textSize="22sp" />
 
                 <TextView
@@ -122,7 +122,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginRight="40dp"
                     android:text="v1.0.8(20210808)"
-                    android:textColor="@color/c8b8b8b"
+                    android:textColor="@color/c_8b8b8b"
                     android:textSize="20sp" />
             </RelativeLayout>
 

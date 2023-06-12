@@ -26,14 +26,14 @@
 
         <RadioButton
             android:id="@+id/radiobutton_main_home_bottom"
-            style="@style/bottom_navigation_radioButtonStyle"
+            style="@style/BottomNavigationRadioButtonStyle"
             android:checked="false"
             android:drawableTop="@drawable/selector_main_bottom_home_pic"
             android:text="@string/bottom_navigation_home" />
 
         <RadioButton
             android:id="@+id/radiobutton_main_match_bottom"
-            style="@style/bottom_navigation_radioButtonStyle"
+            style="@style/BottomNavigationRadioButtonStyle"
             android:checked="false"
             android:drawableTop="@drawable/selector_main_bottom_match_pic"
             android:text="@string/bottom_navigation_match"
@@ -41,14 +41,14 @@
 
         <RadioButton
             android:id="@+id/radiobutton_main_attention_bottom"
-            style="@style/bottom_navigation_radioButtonStyle"
+            style="@style/BottomNavigationRadioButtonStyle"
             android:checked="false"
             android:drawableTop="@drawable/selector_main_bottom_attention_pic"
             android:text="@string/bottom_navigation_attention" />
 
         <RadioButton
             android:id="@+id/radiobutton_main_my_bottom"
-            style="@style/bottom_navigation_radioButtonStyle"
+            style="@style/BottomNavigationRadioButtonStyle"
             android:checked="false"
             android:drawableTop="@drawable/selector_main_bottom_my_pic"
             android:text="@string/bottom_navigation_my" />

@@ -5,7 +5,7 @@
     <!--背景色-->
     <item android:id="@android:id/background">
         <shape>
-            <solid android:color="@color/ececec" />
+            <solid android:color="@color/c_ececec" />
         </shape>
     </item>
     <item android:id="@android:id/progress">
@@ -13,7 +13,7 @@
             android:clipOrientation="horizontal"
             android:gravity="right">
             <shape>
-                <solid android:color="@color/c005ce0" />
+                <solid android:color="@color/c_005ce0" />
             </shape>
         </clip>
     </item>
