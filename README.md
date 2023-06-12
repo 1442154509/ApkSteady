@@ -3,19 +3,19 @@
 #############################   命名规则 #########################
 
 layout:
-	模块名+业务名+功能名+描述名1+描述名2....
+	模块名+功能名+描述名
 
 	ps1:如果是common; 用 模块名+业务名 = common
 	ps2:描述可多项，也可没有
 
-	模块名：app，bus,msg,common
-	业务名：根据实际情况顶
+	模块名：app，bus,msg,common,若无模块分类可去掉
 	功能名：activity，fragment,item,include
 	描述名：根据实际情况顶
 	eg:
-		1.bus_me_fragment
-		2.bus_me_item_user
-		3.common_recycler
+		1.fragment_me
+		2.activity_main
+		3.activity_setting
+		4.common_activity_fail （通用模块的错误页面）
 
 string,raw,styles ,array, dimens,ids,attrs,anim:
 	模块名+业务名+描述名1+描述名2....
@@ -23,30 +23,28 @@ string,raw,styles ,array, dimens,ids,attrs,anim:
 	ps1:如果是common; 用 模块名+业务名 = common
 	ps2:描述可多项，也可没有
 
-	模块名：app，bus,msg,common
+	模块名：app，bus,msg,common，无模块分类可去掉
 	业务名：根据实际情况顶
 	描述名：根据实际情况顶
 	eg:
-		1.bus_login_password_empty = "密码为空"
-		2.common_fail = “失败”
+		1.login_password_empty_text = "密码为空"
+		2.common_fail_text = “失败”
 
 color:
-	英文开头 就用颜色小写
-	数字开头 c+颜色小写
+	用c_颜色值
 	eg:
-		1.f4f4f4
-		2.c59c1ff
+		2.c_59c1ff
 
 
 mipmap:
-	模块名+业务名+功能名+描述名1+描述名2....
+	模块名+业务名+功能名+描述名
 
 	ps1:如果是common;用 模块名+业务名 = common
 	ps2:描述可多项，也可没有
 
 	模块名：app，bus,msg,common
 	业务名：根据实际情况顶
-	功能名：icon，bg,holder(占位图)
+	功能名：icon，bg,holder(占位图)，top(顶部图片)
 	描述名：根据实际情况顶
 	eg:
 		1.bus_me_icon_user
@@ -98,11 +96,15 @@ drawable:
 
 
 xml的ID 命名
-    控件名+描述名1+描述名2....
+    控件名缩写+描述名1+描述名2....
 
     eg:
-    1.text_view_name
-    2.image_view_user
+    1.tv_user_name(tv=textView缩写)
+    2.iv_user
+
+
+
+代码遵从驼峰命名规则，不可用拼音，用英文单词，静态常量用英文单词全字母大写+下划线 
 
 
 #############################   命名规则 #########################
