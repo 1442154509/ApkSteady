@@ -5,7 +5,7 @@ import com.chad.library.adapter.base.entity.MultiItemEntity;
 /**
  * 赛事详情Bean
  */
-public class MatchConditionBean implements MultiItemEntity {
+public class MatchConditionBean extends MatchItemBean {
     // 球种类型
     private int sportsId;
     //赛事id
@@ -51,16 +51,21 @@ public class MatchConditionBean implements MultiItemEntity {
     // 客队比分
     private int bScore;
 
-    @Override
-    public int getItemType() {
-        return sportsId;
-    }
-
     public static class SportType {
         //足球
         public static final int FOOTBALL = 1;
         //篮球
         public static final int BASKETBALL = 2;
+    }
+
+
+    public static class MatchStatus {
+        //未开始
+        public static final int NOT_START = 0;
+        //进行中
+        public static final int IN_PROGRESS = 1;
+        //已结束
+        public static final int FINISH = 2;
     }
 
 

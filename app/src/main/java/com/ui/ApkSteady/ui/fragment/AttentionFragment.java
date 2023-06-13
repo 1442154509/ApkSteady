@@ -2,6 +2,7 @@ package com.ui.ApkSteady.ui.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,17 +19,22 @@ import com.ui.ApkSteady.R;
 import com.ui.ApkSteady.ui.DetailActivity;
 import com.ui.ApkSteady.ui.adapter.MatchConditionAdapter;
 import com.ui.ApkSteady.ui.data.MatchConditionBean;
+import com.ui.ApkSteady.ui.data.MatchItemBean;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 //关注页面
 public class AttentionFragment extends Fragment {
-
-    //比赛分类tab
+    //赛事分类
+    @BindView(R.id.tab_match_title)
     TabLayout tabMatchTitle;
     //赛事列表
+    @BindView(R.id.rv_match_list)
     RecyclerView rvMatchList;
     //列表适配器
     MatchConditionAdapter macthAdapter;
@@ -39,19 +45,18 @@ public class AttentionFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.attention_fragment, container, false);
-        initView(rootView);
+        ButterKnife.bind(this, rootView);
+        initView();
         return rootView;
     }
 
     //初始化布局
-    private void initView(View view) {
+    private void initView() {
         //初始化tab
-        tabMatchTitle = view.findViewById(R.id.tab_match_title);
         for (int i = 0; i < tabTitleList.length; i++) {
             tabMatchTitle.addTab(tabMatchTitle.newTab().setText(tabTitleList[i]));
         }
         //初始化recycleView
-        rvMatchList = view.findViewById(R.id.rv_match_list);
         rvMatchList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         macthAdapter = new MatchConditionAdapter(new ArrayList());
         rvMatchList.setAdapter(macthAdapter);
@@ -71,7 +76,8 @@ public class AttentionFragment extends Fragment {
         //足球
         for (int i = 1; i < 20; i++) {
             MatchConditionBean matchConditionBean = new MatchConditionBean();
-            matchConditionBean.setSportsId(new Random().nextBoolean() ? 1 : 2);
+            matchConditionBean.setItemType(new Random().nextBoolean() ? 11 : 12);
+            matchConditionBean.setMatchStatus(new Random().nextBoolean() ? 0 : 1);
             list.add(matchConditionBean);
         }
         onDataChanged(list);
@@ -79,7 +85,26 @@ public class AttentionFragment extends Fragment {
 
     //刷新列表数据
     private void onDataChanged(List<MatchConditionBean> beans) {
-        macthAdapter.setNewData(beans);
+        List<MatchConditionBean> inProgressList = new ArrayList<>();
+        List<MatchConditionBean> finishList = new ArrayList<>();
+        for (MatchConditionBean bean : beans) {
+            if (bean.getMatchStatus() == MatchConditionBean.MatchStatus.IN_PROGRESS) {
+                inProgressList.add(bean);
+            }
+        }
+        if (inProgressList.size() > 0) {
+            macthAdapter.addData(new MatchItemBean().setItemType(MatchItemBean.ItemType.TYPE_HEADER_IN_PROGRESS));
+            macthAdapter.addData(inProgressList);
+        }
+        for (MatchConditionBean bean : beans) {
+            if (bean.getMatchStatus() == MatchConditionBean.MatchStatus.NOT_START) {
+                finishList.add(bean);
+            }
+        }
+        if (finishList.size() > 0) {
+            macthAdapter.addData(new MatchItemBean().setItemType(MatchItemBean.ItemType.TYPE_HEADER_UNSTART));
+            macthAdapter.addData(finishList);
+        }
         macthAdapter.notifyDataSetChanged();
     }
 
