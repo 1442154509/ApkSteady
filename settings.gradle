@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "ApkSteady"
-include ':app'
+include ':app',':base-libs'

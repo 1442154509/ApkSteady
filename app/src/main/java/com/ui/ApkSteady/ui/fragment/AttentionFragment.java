@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.google.android.material.tabs.TabLayout;
+import com.hazz.baselibs.base.BaseFragment;
+import com.hazz.baselibs.mvp.BasePresenter;
 import com.ui.ApkSteady.R;
 import com.ui.ApkSteady.ui.DetailActivity;
 import com.ui.ApkSteady.ui.adapter.MatchConditionAdapter;
@@ -29,7 +31,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 //关注页面
-public class AttentionFragment extends Fragment {
+public class AttentionFragment extends BaseFragment<BasePresenter> {
     //赛事分类
     @BindView(R.id.tab_match_title)
     TabLayout tabMatchTitle;
@@ -41,17 +43,18 @@ public class AttentionFragment extends Fragment {
 
     //标题分类
     private String[] tabTitleList = {"全部", "足球", "篮球"};
-
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.attention_fragment, container, false);
-        ButterKnife.bind(this, rootView);
-        initView();
-        return rootView;
-    }
+//
+//    public View onCreateView(@NonNull LayoutInflater inflater,
+//                             ViewGroup container, Bundle savedInstanceState) {
+//        View rootView = inflater.inflate(R.layout.attention_fragment, container, false);
+//        ButterKnife.bind(this, rootView);
+//        initView();
+//        return rootView;
+//    }
 
     //初始化布局
-    private void initView() {
+    @Override
+    protected void initView() {
         //初始化tab
         for (int i = 0; i < tabTitleList.length; i++) {
             tabMatchTitle.addTab(tabMatchTitle.newTab().setText(tabTitleList[i]));
@@ -68,7 +71,22 @@ public class AttentionFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        test();
+//        test();
+    }
+
+    @Override
+    protected void initListener() {
+
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    protected boolean useEventBus() {
+        return false;
     }
 
     private void test() {
@@ -111,5 +129,20 @@ public class AttentionFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.attention_fragment;
+    }
+
+    @Override
+    protected BasePresenter createPresenter() {
+        return null;
+    }
+
+    @Override
+    public void showError(String msg) {
+
     }
 }
