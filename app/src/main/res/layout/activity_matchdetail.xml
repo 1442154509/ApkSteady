@@ -55,7 +55,7 @@
         app:layout_constraintVertical_bias="0.806" />
 
     <TextView
-        android:id="@+id/tv_detail_match_team_name"
+        android:id="@+id/tv_detail_match_competition_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -70,36 +70,36 @@
         app:layout_constraintVertical_bias="0.827" />
 
     <ImageView
-        android:id="@+id/ivdetail_match_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/tv_detail_match_team_name"
-        android:layout_alignBottom="@id/tv_detail_match_team_name"
-        android:layout_toLeftOf="@id/tv_detail_match_team_name"
+        android:id="@+id/ivdetail_match_competition_logo"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_alignTop="@id/tv_detail_match_competition_name"
+        android:layout_alignBottom="@id/tv_detail_match_competition_name"
+        android:layout_toLeftOf="@id/tv_detail_match_competition_name"
         android:src="@mipmap/detail_team_logo_england"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_detail_match_team_name"
-        app:layout_constraintEnd_toStartOf="@+id/tv_detail_match_team_name"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_detail_match_competition_name"
+        app:layout_constraintEnd_toStartOf="@+id/tv_detail_match_competition_name"
         app:layout_constraintHorizontal_bias="0.908"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_detail_match_team_name"
+        app:layout_constraintTop_toTopOf="@+id/tv_detail_match_competition_name"
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/iv_detail_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_detail_match_team_name"
-        app:layout_constraintEnd_toStartOf="@+id/ivdetail_match_name"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_detail_match_competition_name"
+        app:layout_constraintEnd_toStartOf="@+id/ivdetail_match_competition_logo"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_detail_match_team_name"
+        app:layout_constraintTop_toTopOf="@+id/tv_detail_match_competition_name"
         app:layout_constraintVertical_bias="0.857"
         app:srcCompat="@mipmap/detail_back" />
 
     <ImageView
         android:id="@+id/iv_team_logo_a"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_detail_match_state"
         app:layout_constraintStart_toStartOf="@+id/iv_detail_back"
         app:layout_constraintTop_toTopOf="@+id/tv_detail_match_state"
@@ -109,11 +109,11 @@
         android:id="@+id/iv_detail_mark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_detail_match_team_name"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_detail_match_competition_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toEndOf="@+id/tv_detail_match_team_name"
-        app:layout_constraintTop_toTopOf="@+id/tv_detail_match_team_name"
+        app:layout_constraintStart_toEndOf="@+id/tv_detail_match_competition_name"
+        app:layout_constraintTop_toTopOf="@+id/tv_detail_match_competition_name"
         app:layout_constraintVertical_bias="0.857"
         app:srcCompat="@mipmap/detail_start_mark" />
 
@@ -130,8 +130,8 @@
 
     <ImageView
         android:id="@+id/iv_team_logo_b"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_detail_match_state"
         app:layout_constraintEnd_toEndOf="@+id/iv_detail_mark"
         app:layout_constraintTop_toTopOf="@+id/tv_detail_match_state"

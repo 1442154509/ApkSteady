@@ -23,7 +23,7 @@
         android:layout_alignTop="@id/iv_homematch"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="9dp"
-        android:text="比赛名称"
+        android:text="联赛名"
         android:textColor="@color/white" />
 
     <LinearLayout
@@ -56,6 +56,7 @@
 
 
     <TextView
+        android:visibility="invisible"
         android:id="@+id/tv_expositor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -84,6 +85,7 @@
             android:adjustViewBounds="true" />
 
         <TextView
+            android:visibility="invisible"
             android:id="@+id/tv_viewNum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -95,13 +97,13 @@
 
 
     <TextView
-        android:id="@+id/tv_home_matchvs_name"
+        android:id="@+id/tv_home_match_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/iv_homematch"
         android:layout_marginLeft="15dp"
         android:gravity="left"
-        android:text="对抗双方"
+        android:text="比赛名"
         android:textColor="@color/c_2a2a2a"
         android:textSize="15sp" />
 </RelativeLayout>

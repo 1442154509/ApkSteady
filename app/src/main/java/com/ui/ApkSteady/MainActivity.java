@@ -3,6 +3,7 @@ package com.ui.ApkSteady;
 import android.os.Bundle;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -10,16 +11,35 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.ui.ApkSteady.ui.BaseCommonActivity;
+import com.ui.ApkSteady.ui.data.req.Index;
+import com.ui.ApkSteady.ui.data.res.IndexRes;
 import com.ui.ApkSteady.ui.fragment.AttentionFragment;
 import com.ui.ApkSteady.ui.fragment.HomeFragment;
 import com.ui.ApkSteady.ui.fragment.MatchFragment;
 import com.ui.ApkSteady.ui.fragment.MyFragment;
+import com.ui.ApkSteady.ui.utils.ConstantsUtils;
+import com.ui.ApkSteady.ui.utils.LogUtils;
+import com.ui.ApkSteady.ui.utils.SSLHUtils;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
+import okhttp3.CipherSuite;
+import okhttp3.ConnectionSpec;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+import okhttp3.TlsVersion;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends BaseCommonActivity {
 
@@ -41,11 +61,80 @@ public class MainActivity extends BaseCommonActivity {
     public boolean darkStatusBar = true;//当是沉浸式状态栏时，状态栏字体是否黑色字体，false时表示白色字体，true表示黑色字体
     boolean immersionModel = true;//是否是沉浸式状态栏，true时表示是沉浸式
 
+    private void getcontent() throws IOException {
+
+//        ConnectionSpec spec = new ConnectionSpec.Builder(ConnectionSpec.COMPATIBLE_TLS)
+//                .tlsVersions(TlsVersion.TLS_1_2, TlsVersion.TLS_1_1, TlsVersion.TLS_1_0)
+//                .cipherSuites(
+//                        CipherSuite.TLS_AES_128_GCM_SHA256,
+//                        CipherSuite.TLS_AES_256_GCM_SHA384,
+//                        CipherSuite.TLS_CHACHA20_POLY1305_SHA256,
+//                        CipherSuite.TLS_AES_128_CCM_SHA256,
+//                        CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+//                        CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
+//                        CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,
+//                        CipherSuite.TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
+//                        CipherSuite.TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256,
+//                        CipherSuite.TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256,
+//                        CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,
+//                        CipherSuite.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,
+//                        CipherSuite.TLS_RSA_WITH_AES_128_GCM_SHA256,
+//                        CipherSuite.TLS_RSA_WITH_AES_256_GCM_SHA384,
+//                        CipherSuite.TLS_RSA_WITH_AES_128_CBC_SHA,
+//                        CipherSuite.TLS_RSA_WITH_AES_256_CBC_SHA,
+//                        CipherSuite.TLS_RSA_WITH_3DES_EDE_CBC_SHA)
+//                .allEnabledCipherSuites()
+//                .build();
+//        ConnectionSpec spec1 = new ConnectionSpec.Builder(ConnectionSpec.CLEARTEXT).build();
+////        ConnectionSpec spec2 = new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS).build();
+//        final OkHttpClient okHttpClient = new OkHttpClient.Builder()
+//                .readTimeout(180, TimeUnit.SECONDS)
+//                .connectTimeout(180, TimeUnit.SECONDS)
+////                .addInterceptor(logging)
+//                .connectionSpecs(Arrays.asList(spec, spec1))
+//                .build();
+//
+//
+//        Retrofit retrofit = new Retrofit.Builder()
+//                .baseUrl(ConstantsUtils.BASEURL)
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .client(SSLHUtils.getUnsafeOkHttpClient())
+////                .client(okHttpClient)
+//                .build();
+//        Index service = retrofit.create(Index.class);
+//        Call<IndexRes> call = service.getIndex("0");
+//        call.enqueue(new Callback<IndexRes>() {
+//            @Override
+//            public void onResponse(Call<IndexRes> call, retrofit2.Response<IndexRes> response) {
+////                LogUtils.e("得到数据" + response.body().toString());
+////                Toast.makeText(getApplicationContext(), "得到数据" + response.body().toString(), Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<IndexRes> call, Throwable t) {
+////                LogUtils.e("得到数据" + t.toString());
+////                Toast.makeText(getApplicationContext(), "得到数据" + t.toString(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+
+
+//        OkHttpClient client = new OkHttpClient().newBuilder()
+//                .build();
+//        MediaType mediaType = MediaType.parse("text/plain");
+//        RequestBody body = RequestBody.create(mediaType, "");
+//        Request request = new Request.Builder()
+//                .url("http://34.80.205.147:12300/Api/Index?sportsId=0")
+//                .method("GET", body)
+//                .build();
+////        Response response = client.newCall(request).execute();
+//        LogUtils.e("得到数据" + client.newCall(request).execute().toString());
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+//        setContentView(R.layout.activity_main);
+//        ButterKnife.bind(this);
 //        if (!immersionModel) {
 //            ImmersionBar.with(this).statusBarColor(R.color.white).statusBarDarkFont(true).fitsSystemWindows(true).init();
 //        } else {
@@ -55,6 +144,22 @@ public class MainActivity extends BaseCommonActivity {
 //                ImmersionBar.with(this).init();
 //            }
 //        }
+
+    }
+
+    @Override
+    protected int setLayout() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void initData() {
+        try {
+            getcontent();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         pagelist = new ArrayList<>();
         //为viewpager设置适配器
         pagelist = new ArrayList<>();

@@ -2,16 +2,25 @@ package com.ui.ApkSteady.ui;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
 import android.view.ViewStub;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.ui.ApkSteady.R;
 import com.ui.ApkSteady.ui.adapter.DetailMatchAdapter;
 import com.ui.ApkSteady.ui.data.HomeAllBean;
 import com.ui.ApkSteady.ui.data.MyData;
+import com.ui.ApkSteady.ui.data.res.IndexRes;
+import com.ui.ApkSteady.ui.utils.DateUtils;
 import com.ui.ApkSteady.ui.view.LinearSpacingItemDecoration;
+import com.ui.ApkSteady.ui.view.ResizableImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,28 +34,65 @@ public class DetailActivity extends BaseCommonActivity {
     ViewStub vsNodiscuss;
     @BindView(R.id.vs_matchdata)
     ViewStub vsMatchdata;
-    private int CONTAINSTATE = 2;//0无评论，1有评论，2比赛数据
+    @BindView(R.id.tv_detail_match_competition_name)
+    TextView tvCompetionName;
+    @BindView(R.id.tv_team_name_a)
+    TextView tvTeamAName;
+    @BindView(R.id.tv_team_name_b)
+    TextView tvTeamBName;
+    @BindView(R.id.tv_yellow_a)
+    TextView tvYellowA;
+    @BindView(R.id.tv_red_a)
+    TextView tvRedA;
+    @BindView(R.id.tv_yellow_b)
+    TextView tvYellowB;
+    @BindView(R.id.tv_red_b)
+    TextView tvRedB;
+    @BindView(R.id.tv_detail_match_starttime)
+    TextView tvMatchTime;
+    @BindView(R.id.ivdetail_match_competition_logo)
+    ImageView ivCompetionLogo;
+    @BindView(R.id.iv_team_logo_a)
+    ImageView ivTeamALogo;
+    @BindView(R.id.iv_team_logo_b)
+    ImageView ivTeamBLogo;
+    @BindView(R.id.ll_video_playbg)
+    LinearLayout llVideoPlay;
+    private int CONTAINSTATE = 0;//0无评论，1有评论，2比赛数据
     private List<MyData> list;
     private Bundle mBundle;
-    private HomeAllBean homeAllBean;
+    private IndexRes.DataDTO data;
 
-    @SuppressLint("MissingInflatedId")
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.my_fragment);
-        setContentView(R.layout.activity_matchdetail);
-        ButterKnife.bind(this);
+    protected int setLayout() {
+        return R.layout.activity_matchdetail;
+    }
+
+    @Override
+    protected void initData() {
         mBundle = getIntent().getExtras();
-        homeAllBean = (HomeAllBean) mBundle.getSerializable("homeallbean");
+        data = (IndexRes.DataDTO) mBundle.getSerializable("IndexRes.DataDTO");
+        if (data == null) {
+            data = new IndexRes.DataDTO();
+        }
+        tvCompetionName.setText(data.getMatchVediosInfo().getLeagueName());
+        tvTeamAName.setText(data.getMatchVediosInfo().getHome());
+        tvTeamBName.setText(data.getMatchVediosInfo().getAway());
+        tvRedA.setText(String.valueOf(data.getMatchVediosInfo().getARed()));
+        tvRedB.setText(String.valueOf(data.getMatchVediosInfo().getBRed()));
+        tvYellowA.setText(String.valueOf(data.getMatchVediosInfo().getAYellow()));
+        tvYellowB.setText(String.valueOf(data.getMatchVediosInfo().getBYellow()));
+        tvMatchTime.setText("开赛时间 "+DateUtils.timeStampToSmdhm(data.getMatchVediosInfo().getMatchTime()));
+        Glide.with(this).load(data.getMatchVediosInfo().getLeagueLogo()).into(ivCompetionLogo);
+        Glide.with(this).load(data.getMatchVediosInfo().getALogo()).into(ivTeamALogo);
+        Glide.with(this).load(data.getMatchVediosInfo().getBLogo()).into(ivTeamBLogo);
 
+        if (data.getMatchVediosInfo().isIsLive() && !TextUtils.isEmpty(data.getMatchVediosInfo().getLiveUrl())) {
+            llVideoPlay.setVisibility(View.VISIBLE);
 
-//        mBackIv.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                finish();
-//            }
-//        });
+        } else {
+            llVideoPlay.setVisibility(View.GONE);
+        }
 
         switch (CONTAINSTATE) {
             case 0:
@@ -71,7 +117,6 @@ public class DetailActivity extends BaseCommonActivity {
                 vsNodiscuss = (ViewStub) findViewById(R.id.vs_nodiscuss);
                 vsNodiscuss.inflate();
         }
-
     }
 
     //创造数据

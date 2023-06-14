@@ -1,38 +1,50 @@
 package com.ui.ApkSteady.ui.fragment;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.LayoutInflater;
+import android.os.Looper;
+import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.google.android.material.tabs.TabLayout;
 import com.ui.ApkSteady.R;
+import com.ui.ApkSteady.ui.BaseFragment;
 import com.ui.ApkSteady.ui.DetailActivity;
 import com.ui.ApkSteady.ui.adapter.HomeGrideAdapter;
 import com.ui.ApkSteady.ui.data.HomeAllBean;
 import com.ui.ApkSteady.ui.data.HomeMatchBean;
+import com.ui.ApkSteady.ui.data.res.IndexRes;
+import com.ui.ApkSteady.ui.utils.ApiJsonRequest;
+import com.ui.ApkSteady.ui.utils.ConstantsUtils;
+import com.ui.ApkSteady.ui.utils.LogUtils;
+import com.ui.ApkSteady.ui.utils.ToastUtils;
 import com.ui.ApkSteady.ui.view.LinearSpacingItemDecoration;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
 
 //首页面
-public class HomeFragment extends Fragment {
+public class HomeFragment extends BaseFragment {
     @BindView(R.id.rv_home_all)
     RecyclerView rvhome;
     @BindView(R.id.tablayout_match_title)
@@ -43,19 +55,20 @@ public class HomeFragment extends Fragment {
     LinearLayout linearlayoutMatchTitle;
     private List<HomeMatchBean> mMatchDataList;
     private List<HomeAllBean> mHomeAllBean;
+    private List<IndexRes.DataDTO> data;
     private String[] sTabTitleName = {"热门", "足球", "篮球"};
+    private HomeGrideAdapter homeGrideAdapter;
 
-    @SuppressLint("MissingInflatedId")
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
-        ButterKnife.bind(this, view);
-        addData();
-        return view;
+    @Override
+    protected int setLayout() {
+        return R.layout.fragment_home;
     }
 
-    private void addData() {
+    @Override
+    protected void initData() {
+
         mMatchDataList = new ArrayList<>();
+        data = new ArrayList<>();
 
         //添加tab
         for (int i = 0; i < sTabTitleName.length; i++) {
@@ -83,7 +96,7 @@ public class HomeFragment extends Fragment {
             HomeAllBean homeAllBean = new HomeAllBean();
             mHomeAllBean.add(homeAllBean);
         }
-        HomeGrideAdapter homeGrideAdapter = new HomeGrideAdapter(R.layout.grid_item_match_home, mHomeAllBean);
+        homeGrideAdapter = new HomeGrideAdapter(R.layout.grid_item_match_home, data);
         rvhome.addItemDecoration(new LinearSpacingItemDecoration(getActivity(), 20));
         rvhome.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         rvhome.setAdapter(homeGrideAdapter);
@@ -91,16 +104,18 @@ public class HomeFragment extends Fragment {
             @Override
             public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
                 Bundle mBundle = new Bundle();
-                mBundle.putSerializable("homeallbean", mHomeAllBean.get(position));
+                mBundle.putSerializable("IndexRes.DataDTO", data.get(position));
                 Intent intent = new Intent();
                 intent.putExtras(mBundle);
                 intent.setClass(getActivity(), DetailActivity.class);
                 startActivity(intent);
+                onFragmentUnVisible();
             }
         });
         mSwiperlayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                getRequest();
                 //模拟网络请求需要3000毫秒，请求完成，设置setRefreshing 为false，停止刷新
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -111,10 +126,81 @@ public class HomeFragment extends Fragment {
 
             }
         });
+        isTimmerUse = true;
+        getRequest();
+    }
+
+    private void getRequest() {
+        ApiJsonRequest<IndexRes> apiJsonRequest = new ApiJsonRequest<>(
+                "http://34.80.205.147:12300/Api/Index?sportsId=0", new com.android.volley.Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                LogUtils.e(error.toString());
+                ToastUtils.show(error.toString());
+            }
+        }, new Response.Listener<IndexRes>() {
+            @Override
+            public void onResponse(IndexRes response) {
+                data.clear();
+                data.addAll(response.getData());
+                homeGrideAdapter.setNewData(data);
+                homeGrideAdapter.notifyDataSetChanged();
+                for (IndexRes.DataDTO dto :
+                        response.getData()) {
+                    LogUtils.e(dto.toString());
+                }
+                //获取最新数据
+//                processData(response);
+                //显示新闻
+//                showNews();
+
+            }
+        }, IndexRes.class);
+        addVolleyResQue(apiJsonRequest);
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
+    protected void onFragmentVisible() {
+        super.onFragmentVisible();
+        meHandler();
     }
+
+    @Override
+    protected void onFragmentUnVisible() {
+        super.onFragmentUnVisible();
+    }
+
+    final Handler handler = new Handler();
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            // TODO 在此处添加执行的代码
+            handler.postDelayed(this, 1000);// 50是延时时长
+        }
+    };
+//
+//    private static final int PERIOD = 10 * 1000;
+//    private static final int DELAY = 100;
+//    private Timer mTimer;
+//    private TimerTask mTimerTask;
+//
+//    protected void timeLooprefesh() {
+//        LogUtils.e("++++定时器开始++++");
+//        mTimer = new Timer();
+//        mTimerTask = new TimerTask() {
+//            @Override
+//            public void run() {
+//                getActivity().runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        LogUtils.e("$$$$$定时器刷新了$$$$");
+//                    }
+//                });
+//                //在此添加轮询
+//
+//            }
+//        };
+//        mTimer.schedule(mTimerTask, DELAY, PERIOD);
+//    }
+
 }

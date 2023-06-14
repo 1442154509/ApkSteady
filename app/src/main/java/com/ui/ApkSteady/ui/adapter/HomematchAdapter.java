@@ -49,7 +49,7 @@ public class HomematchAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.grid_item_match_home, null);
             viewHolder = new ViewHolder();
-            viewHolder.tvMatchVs = (TextView) convertView.findViewById(R.id.tv_home_matchvs_name);
+            viewHolder.tvMatchVs = (TextView) convertView.findViewById(R.id.tv_home_match_name);
 
             viewHolder.tvTeamName = (TextView) convertView.findViewById(R.id.tv_competitionname);
 
