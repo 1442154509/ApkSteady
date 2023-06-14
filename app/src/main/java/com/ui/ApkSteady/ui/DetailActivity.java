@@ -1,6 +1,5 @@
 package com.ui.ApkSteady.ui;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -15,18 +14,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.ui.ApkSteady.R;
 import com.ui.ApkSteady.ui.adapter.DetailMatchAdapter;
-import com.ui.ApkSteady.ui.data.HomeAllBean;
 import com.ui.ApkSteady.ui.data.MyData;
 import com.ui.ApkSteady.ui.data.res.IndexRes;
 import com.ui.ApkSteady.ui.utils.DateUtils;
 import com.ui.ApkSteady.ui.view.LinearSpacingItemDecoration;
-import com.ui.ApkSteady.ui.view.ResizableImageView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class DetailActivity extends BaseCommonActivity {
@@ -34,8 +30,8 @@ public class DetailActivity extends BaseCommonActivity {
     ViewStub vsNodiscuss;
     @BindView(R.id.vs_matchdata)
     ViewStub vsMatchdata;
-    @BindView(R.id.tv_detail_match_competition_name)
-    TextView tvCompetionName;
+    @BindView(R.id.tv_detail_match_leaguename)
+    TextView tvLeagueName;
     @BindView(R.id.tv_team_name_a)
     TextView tvTeamAName;
     @BindView(R.id.tv_team_name_b)
@@ -50,14 +46,24 @@ public class DetailActivity extends BaseCommonActivity {
     TextView tvRedB;
     @BindView(R.id.tv_detail_match_starttime)
     TextView tvMatchTime;
-    @BindView(R.id.ivdetail_match_competition_logo)
-    ImageView ivCompetionLogo;
+    @BindView(R.id.tv_detail_match_state)
+    TextView tvMatchState;
+    @BindView(R.id.tv_detail_match_score_a)
+    TextView tvScoreA;
+    @BindView(R.id.tv_detail_match_score_b)
+    TextView tvScoreB;
+    @BindView(R.id.tv_corner)
+    TextView tvCorner;
+    @BindView(R.id.ivdetail_match_leaguelogo)
+    ImageView ivLeagueLogo;
     @BindView(R.id.iv_team_logo_a)
     ImageView ivTeamALogo;
     @BindView(R.id.iv_team_logo_b)
     ImageView ivTeamBLogo;
     @BindView(R.id.ll_video_playbg)
     LinearLayout llVideoPlay;
+    @BindView(R.id.ll_detail_flag)
+    LinearLayout llFlag;
     private int CONTAINSTATE = 0;//0无评论，1有评论，2比赛数据
     private List<MyData> list;
     private Bundle mBundle;
@@ -75,23 +81,47 @@ public class DetailActivity extends BaseCommonActivity {
         if (data == null) {
             data = new IndexRes.DataDTO();
         }
-        tvCompetionName.setText(data.getMatchVediosInfo().getLeagueName());
+        tvLeagueName.setText(data.getMatchVediosInfo().getLeagueName());
         tvTeamAName.setText(data.getMatchVediosInfo().getHome());
         tvTeamBName.setText(data.getMatchVediosInfo().getAway());
         tvRedA.setText(String.valueOf(data.getMatchVediosInfo().getARed()));
         tvRedB.setText(String.valueOf(data.getMatchVediosInfo().getBRed()));
         tvYellowA.setText(String.valueOf(data.getMatchVediosInfo().getAYellow()));
         tvYellowB.setText(String.valueOf(data.getMatchVediosInfo().getBYellow()));
-        tvMatchTime.setText("开赛时间 "+DateUtils.timeStampToSmdhm(data.getMatchVediosInfo().getMatchTime()));
-        Glide.with(this).load(data.getMatchVediosInfo().getLeagueLogo()).into(ivCompetionLogo);
+        Glide.with(this).load(data.getMatchVediosInfo().getLeagueLogo()).into(ivLeagueLogo);
         Glide.with(this).load(data.getMatchVediosInfo().getALogo()).into(ivTeamALogo);
         Glide.with(this).load(data.getMatchVediosInfo().getBLogo()).into(ivTeamBLogo);
+        //赛事状态 ， 0.为开赛，1.开赛中，3.完赛
+        if (data.getMatchVediosInfo().getMatchStatus() == 0) {
+            tvMatchState.setText("未开始");
+            tvScoreA.setText("-");
+            tvScoreB.setText("-");
+            tvMatchTime.setText("开赛时间 " + DateUtils.timeStampToSmdhm(data.getMatchVediosInfo().getMatchTime()));
+
+            tvRedA.setVisibility(View.INVISIBLE);
+            tvRedB.setVisibility(View.INVISIBLE);
+            tvYellowA.setVisibility(View.INVISIBLE);
+            tvYellowB.setVisibility(View.INVISIBLE);
+            llFlag.setVisibility(View.INVISIBLE);
+        } else if (data.getMatchVediosInfo().getMatchStatus() == 1) {
+            tvMatchState.setText(":");
+            tvScoreA.setText(String.valueOf(data.getMatchVediosInfo().getAScore()));
+            tvScoreB.setText(String.valueOf(data.getMatchVediosInfo().getBScore()));
+            tvMatchTime.setText(data.getMatchVediosInfo().getMatchType() + " " + data.getMatchVediosInfo().getRunTime());
+            tvCorner.setText(data.getMatchVediosInfo().getACorner() + "-" + data.getMatchVediosInfo().getBCorner());
+        } else if (data.getMatchVediosInfo().getMatchStatus() == 2) {
+            tvMatchState.setText(":");
+            tvScoreA.setText(String.valueOf(data.getMatchVediosInfo().getAScore()));
+            tvScoreB.setText(String.valueOf(data.getMatchVediosInfo().getBScore()));
+            tvMatchTime.setText("开赛时间 " + DateUtils.timeStampToSmdhm(data.getMatchVediosInfo().getMatchTime()));
+            tvCorner.setText(data.getMatchVediosInfo().getACorner() + "-" + data.getMatchVediosInfo().getBCorner());
+        }
 
         if (data.getMatchVediosInfo().isIsLive() && !TextUtils.isEmpty(data.getMatchVediosInfo().getLiveUrl())) {
             llVideoPlay.setVisibility(View.VISIBLE);
 
         } else {
-            llVideoPlay.setVisibility(View.GONE);
+            llVideoPlay.setVisibility(View.INVISIBLE);
         }
 
         switch (CONTAINSTATE) {
