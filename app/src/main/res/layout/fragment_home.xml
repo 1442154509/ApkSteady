@@ -21,7 +21,7 @@
             android:layout_weight="4"
             android:paddingLeft="10dp">
 
-            <com.ui.ApkSteady.ui.view.ResizableImageView
+            <com.ui.ApkSteady.ui.customview.ResizableImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -40,6 +40,7 @@
             android:background="@android:color/transparent"
             app:tabIndicator="@drawable/home_toptable_bottom_line"
             app:tabIndicatorColor="@color/c_ff0000"
+            app:tabRippleColor = "@android:color/transparent"
             app:tabSelectedTextColor="@color/c_ff0000"
             app:tabTextAppearance="@style/HomeTopTabLayout"
             app:tabTextColor="@color/c_2a2a2a" />

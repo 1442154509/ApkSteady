@@ -6,7 +6,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-public interface Index {
+public interface IndexReq {
     @GET("Index")
     Call<IndexRes> getIndex(@Query("sportsId") String sportsId);
 }

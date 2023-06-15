@@ -3,8 +3,6 @@ package com.ui.ApkSteady.ui.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -26,22 +24,14 @@ import com.ui.ApkSteady.ui.data.HomeAllBean;
 import com.ui.ApkSteady.ui.data.HomeMatchBean;
 import com.ui.ApkSteady.ui.data.res.IndexRes;
 import com.ui.ApkSteady.ui.utils.ApiJsonRequest;
-import com.ui.ApkSteady.ui.utils.ConstantsUtils;
 import com.ui.ApkSteady.ui.utils.LogUtils;
 import com.ui.ApkSteady.ui.utils.ToastUtils;
-import com.ui.ApkSteady.ui.view.LinearSpacingItemDecoration;
+import com.ui.ApkSteady.ui.customview.LinearSpacingItemDecoration;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import butterknife.BindView;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
 
 //首页面
 public class HomeFragment extends BaseFragment {
@@ -67,35 +57,36 @@ public class HomeFragment extends BaseFragment {
     @Override
     protected void initData() {
 
-        mMatchDataList = new ArrayList<>();
         data = new ArrayList<>();
-
         //添加tab
         for (int i = 0; i < sTabTitleName.length; i++) {
             mMatchTitletlyt.addTab(mMatchTitletlyt.newTab().setText(sTabTitleName[i]));
         }
-        for (int i = 0; i <= 20; i++) {
-            HomeMatchBean homeMatchBean;
-            if ((i + 1) % 4 == 0) {
-                homeMatchBean = new HomeMatchBean("中超", "未开始", "建宏说球", "4567",
-                        "泰格雷斯 VS 蒙特瑞", R.mipmap.home_item_matching_card_show_placeholder);
-            } else if ((i + 1) % 3 == 0) {
-                homeMatchBean = new HomeMatchBean("中超", "完赛", "建宏说球", "3456",
-                        "泰格雷斯 VS 蒙特瑞", R.mipmap.home_item_matching_card_show_placeholder);
-            } else if ((i + 1) % 2 == 0) {
-                homeMatchBean = new HomeMatchBean("墨西哥篮联", "进行中", "建宏说球", "2345",
-                        "泰格雷斯 VS 蒙特瑞", R.mipmap.home_item_matching_card_show_placeholder);
-            } else {
-                homeMatchBean = new HomeMatchBean("中超", "直播", "建宏说球", "1234",
-                        "泰格雷斯 VS 蒙特瑞", R.mipmap.home_item_matching_card_show_placeholder);
-            }
-            mMatchDataList.add(homeMatchBean);
-        }
-        mHomeAllBean = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            HomeAllBean homeAllBean = new HomeAllBean();
-            mHomeAllBean.add(homeAllBean);
-        }
+//        mMatchDataList = new ArrayList<>();
+
+//        for (int i = 0; i <= 20; i++) {
+//            HomeMatchBean homeMatchBean;
+//            if ((i + 1) % 4 == 0) {
+//                homeMatchBean = new HomeMatchBean("中超", "未开始", "建宏说球", "4567",
+//                        "泰格雷斯 VS 蒙特瑞", R.mipmap.home_item_matching_card_show_placeholder);
+//            } else if ((i + 1) % 3 == 0) {
+//                homeMatchBean = new HomeMatchBean("中超", "完赛", "建宏说球", "3456",
+//                        "泰格雷斯 VS 蒙特瑞", R.mipmap.home_item_matching_card_show_placeholder);
+//            } else if ((i + 1) % 2 == 0) {
+//                homeMatchBean = new HomeMatchBean("墨西哥篮联", "进行中", "建宏说球", "2345",
+//                        "泰格雷斯 VS 蒙特瑞", R.mipmap.home_item_matching_card_show_placeholder);
+//            } else {
+//                homeMatchBean = new HomeMatchBean("中超", "直播", "建宏说球", "1234",
+//                        "泰格雷斯 VS 蒙特瑞", R.mipmap.home_item_matching_card_show_placeholder);
+//            }
+//            mMatchDataList.add(homeMatchBean);
+//        }
+//        mHomeAllBean = new ArrayList<>();
+//        for (int i = 0; i < 20; i++) {
+//            HomeAllBean homeAllBean = new HomeAllBean();
+//            mHomeAllBean.add(homeAllBean);
+//        }
+
         homeGrideAdapter = new HomeGrideAdapter(R.layout.grid_item_match_home, data);
         rvhome.addItemDecoration(new LinearSpacingItemDecoration(getActivity(), 20));
         rvhome.setLayoutManager(new GridLayoutManager(getActivity(), 2));
@@ -115,7 +106,7 @@ public class HomeFragment extends BaseFragment {
         mSwiperlayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                getRequest();
+                getRequest(0);
                 //模拟网络请求需要3000毫秒，请求完成，设置setRefreshing 为false，停止刷新
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -126,13 +117,30 @@ public class HomeFragment extends BaseFragment {
 
             }
         });
+        mMatchTitletlyt.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                int position = tab.getPosition();
+                getRequest(position);
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
         isTimmerUse = true;
-        getRequest();
+        getRequest(0);
     }
 
-    private void getRequest() {
+    private void getRequest(int position) {
         ApiJsonRequest<IndexRes> apiJsonRequest = new ApiJsonRequest<>(
-                "http://34.80.205.147:12300/Api/Index?sportsId=0", new com.android.volley.Response.ErrorListener() {
+                "http://34.80.205.147:12300/Api/Index?sportsId=" + position, new com.android.volley.Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 LogUtils.e(error.toString());
@@ -141,14 +149,15 @@ public class HomeFragment extends BaseFragment {
         }, new Response.Listener<IndexRes>() {
             @Override
             public void onResponse(IndexRes response) {
+                ToastUtils.show(position+"");
                 data.clear();
                 data.addAll(response.getData());
                 homeGrideAdapter.setNewData(data);
                 homeGrideAdapter.notifyDataSetChanged();
-                for (IndexRes.DataDTO dto :
-                        response.getData()) {
-                    LogUtils.e(dto.toString());
-                }
+//                for (IndexRes.DataDTO dto :
+//                        response.getData()) {
+//                    LogUtils.e(dto.toString());
+//                }
                 //获取最新数据
 //                processData(response);
                 //显示新闻

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.DetailActivity">
 
-    <com.ui.ApkSteady.ui.view.ResizableImageView
+    <com.ui.ApkSteady.ui.customview.ResizableImageView
         android:id="@+id/imageView_detail_top_bg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

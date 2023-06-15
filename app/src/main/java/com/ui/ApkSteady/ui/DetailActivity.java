@@ -11,13 +11,20 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.bumptech.glide.Glide;
 import com.ui.ApkSteady.R;
 import com.ui.ApkSteady.ui.adapter.DetailMatchAdapter;
 import com.ui.ApkSteady.ui.data.MyData;
+import com.ui.ApkSteady.ui.data.res.BasketBallDetailRes;
+import com.ui.ApkSteady.ui.data.res.FootBallDetailRes;
 import com.ui.ApkSteady.ui.data.res.IndexRes;
+import com.ui.ApkSteady.ui.utils.ApiJsonRequest;
 import com.ui.ApkSteady.ui.utils.DateUtils;
-import com.ui.ApkSteady.ui.view.LinearSpacingItemDecoration;
+import com.ui.ApkSteady.ui.customview.LinearSpacingItemDecoration;
+import com.ui.ApkSteady.ui.utils.LogUtils;
+import com.ui.ApkSteady.ui.utils.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -147,6 +154,42 @@ public class DetailActivity extends BaseCommonActivity {
                 vsNodiscuss = (ViewStub) findViewById(R.id.vs_nodiscuss);
                 vsNodiscuss.inflate();
         }
+        questdetail(data.getMatchId(), data.getSportsId());
+    }
+
+    private void questdetail(int matchId, int sportsId) {
+        if (sportsId == 1) {
+            ApiJsonRequest<FootBallDetailRes> apiJsonRequest = new ApiJsonRequest<>(
+                    "http://34.80.205.147:12300/Api/Detail/Football?matchId=" + matchId + "&sportsId=1", new com.android.volley.Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    LogUtils.e(error.toString());
+                    ToastUtils.show(error.toString());
+                }
+            }, new Response.Listener<FootBallDetailRes>() {
+                @Override
+                public void onResponse(FootBallDetailRes response) {
+                    LogUtils.e(response.getData().getGameInfoId() + "");
+                }
+            }, FootBallDetailRes.class);
+            addVolleyResQue(apiJsonRequest);
+        } else {
+            ApiJsonRequest<BasketBallDetailRes> apiJsonRequest = new ApiJsonRequest<>(
+                    "http://34.80.205.147:12300/Api/Detail/Basketball?matchId=" + matchId + "&sportsId=2", new com.android.volley.Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    LogUtils.e(error.toString());
+                    ToastUtils.show(error.toString());
+                }
+            }, new Response.Listener<BasketBallDetailRes>() {
+                @Override
+                public void onResponse(BasketBallDetailRes response) {
+                    LogUtils.e(response.getData().getMatchTime() + "");
+                }
+            }, BasketBallDetailRes.class);
+            addVolleyResQue(apiJsonRequest);
+        }
+
     }
 
     //创造数据

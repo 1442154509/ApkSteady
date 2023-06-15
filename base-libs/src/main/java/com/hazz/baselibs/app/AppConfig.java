@@ -7,5 +7,5 @@ package com.hazz.baselibs.app;
  */
 public class AppConfig {
 
-    public static final String BASE_URL="http://34.80.205.147:12300/";
+    public static final String BASE_URL="http://34.80.205.147:12300/Api/";
 }

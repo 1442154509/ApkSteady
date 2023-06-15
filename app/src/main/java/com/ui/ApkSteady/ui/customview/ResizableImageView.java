@@ -1,4 +1,4 @@
-package com.ui.ApkSteady.ui.view;
+package com.ui.ApkSteady.ui.customview;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

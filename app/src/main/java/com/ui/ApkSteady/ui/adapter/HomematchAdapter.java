@@ -13,7 +13,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.ui.ApkSteady.R;
 import com.ui.ApkSteady.ui.data.HomeMatchBean;
-import com.ui.ApkSteady.ui.view.ResizableImageView;
+import com.ui.ApkSteady.ui.customview.ResizableImageView;
 
 import java.util.List;
 

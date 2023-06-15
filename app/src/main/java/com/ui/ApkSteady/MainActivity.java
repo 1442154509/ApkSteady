@@ -3,7 +3,6 @@ package com.ui.ApkSteady;
 import android.os.Bundle;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -11,35 +10,16 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.ui.ApkSteady.ui.BaseCommonActivity;
-import com.ui.ApkSteady.ui.data.req.Index;
-import com.ui.ApkSteady.ui.data.res.IndexRes;
 import com.ui.ApkSteady.ui.fragment.AttentionFragment;
 import com.ui.ApkSteady.ui.fragment.HomeFragment;
 import com.ui.ApkSteady.ui.fragment.MatchFragment;
 import com.ui.ApkSteady.ui.fragment.MyFragment;
-import com.ui.ApkSteady.ui.utils.ConstantsUtils;
-import com.ui.ApkSteady.ui.utils.LogUtils;
-import com.ui.ApkSteady.ui.utils.SSLHUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
-import okhttp3.CipherSuite;
-import okhttp3.ConnectionSpec;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
-import okhttp3.TlsVersion;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends BaseCommonActivity {
 

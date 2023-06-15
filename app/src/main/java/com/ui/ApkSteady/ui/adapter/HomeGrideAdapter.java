@@ -10,7 +10,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.ui.ApkSteady.R;
 import com.ui.ApkSteady.ui.data.res.IndexRes;
-import com.ui.ApkSteady.ui.view.ResizableImageView;
+import com.ui.ApkSteady.ui.customview.ResizableImageView;
 
 import java.util.List;
 
