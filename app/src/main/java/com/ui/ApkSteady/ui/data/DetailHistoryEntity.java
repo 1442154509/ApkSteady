@@ -20,6 +20,10 @@ public class DetailHistoryEntity implements MultiItemEntity {
     private GoalDistributionsDTO goalDistributions;
     private HistoryBattlesDTO historyBattles;
 
+    public DetailHistoryEntity(int typeRank) {
+        this.itemType = typeRank;
+    }
+
     public GoalDistributionsDTO getGoalDistributions() {
         return goalDistributions;
     }

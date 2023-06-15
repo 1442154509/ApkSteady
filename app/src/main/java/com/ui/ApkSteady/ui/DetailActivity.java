@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +17,9 @@ import com.android.volley.VolleyError;
 import com.bumptech.glide.Glide;
 import com.ui.ApkSteady.R;
 import com.ui.ApkSteady.ui.adapter.DetailMatchAdapter;
+import com.ui.ApkSteady.ui.adapter.DetailMultiAdapter;
+import com.ui.ApkSteady.ui.adapter.HomeGrideAdapter;
+import com.ui.ApkSteady.ui.data.DetailHistoryEntity;
 import com.ui.ApkSteady.ui.data.MyData;
 import com.ui.ApkSteady.ui.data.res.BasketBallDetailRes;
 import com.ui.ApkSteady.ui.data.res.FootBallDetailRes;
@@ -71,10 +75,11 @@ public class DetailActivity extends BaseCommonActivity {
     LinearLayout llVideoPlay;
     @BindView(R.id.ll_detail_flag)
     LinearLayout llFlag;
-    private int CONTAINSTATE = 0;//0无评论，1有评论，2比赛数据
+    private int CONTAINSTATE = 2;//0无评论，1有评论，2比赛数据
     private List<MyData> list;
     private Bundle mBundle;
     private IndexRes.DataDTO data;
+    private RecyclerView recyclerView;
 
     @Override
     protected int setLayout() {
@@ -142,12 +147,12 @@ public class DetailActivity extends BaseCommonActivity {
                 vsMatchdata = (ViewStub) findViewById(R.id.vs_matchdata);
                 vsMatchdata.inflate();
 
-                RecyclerView recyclerView = (RecyclerView) findViewById(R.id.detail_match_item);
+                recyclerView = (RecyclerView) findViewById(R.id.detail_match_item);
                 recyclerView.setLayoutManager(new LinearLayoutManager(this));
                 createData();
                 recyclerView.addItemDecoration(new LinearSpacingItemDecoration(this, 10));
-                DetailMatchAdapter adapter = new DetailMatchAdapter(this, list);
-                recyclerView.setAdapter(adapter);
+//                DetailMatchAdapter adapter = new DetailMatchAdapter(this, list);
+//                recyclerView.setAdapter(adapter);
 
                 break;
             default:
@@ -158,6 +163,11 @@ public class DetailActivity extends BaseCommonActivity {
     }
 
     private void questdetail(int matchId, int sportsId) {
+        List<DetailHistoryEntity> detailHistoryEntities = new ArrayList<>();
+        DetailMultiAdapter detailMultiAdapter = new DetailMultiAdapter(detailHistoryEntities);
+//        rvhome.addItemDecoration(new LinearSpacingItemDecoration(getActivity(), 20));
+//        rvhome.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        recyclerView.setAdapter(detailMultiAdapter);
         if (sportsId == 1) {
             ApiJsonRequest<FootBallDetailRes> apiJsonRequest = new ApiJsonRequest<>(
                     "http://34.80.205.147:12300/Api/Detail/Football?matchId=" + matchId + "&sportsId=1", new com.android.volley.Response.ErrorListener() {
@@ -169,6 +179,25 @@ public class DetailActivity extends BaseCommonActivity {
             }, new Response.Listener<FootBallDetailRes>() {
                 @Override
                 public void onResponse(FootBallDetailRes response) {
+                    for (FootBallDetailRes.DataDTO.RanksDTO.HomeDTO ranksDTO :
+                            response.getData().getRanks().getHome()) {
+                        DetailHistoryEntity detailHistoryEntity = new DetailHistoryEntity(DetailHistoryEntity.TYPE_RANK);
+                        DetailHistoryEntity.RankDTO rankDTO = new DetailHistoryEntity.RankDTO();
+                        rankDTO.setAgainst(ranksDTO.getAgainst());
+                        rankDTO.setDiff(ranksDTO.getDiff());
+                        rankDTO.setLost(ranksDTO.getLost());
+                        rankDTO.setDrawn(ranksDTO.getDrawn());
+                        rankDTO.setGoals(ranksDTO.getGoals());
+                        rankDTO.setPlayed(ranksDTO.getPlayed());
+                        rankDTO.setPoints(ranksDTO.getPoints());
+                        rankDTO.setWon(ranksDTO.getWon());
+                        rankDTO.setAwayGoals(ranksDTO.getAwayGoals());
+                        rankDTO.setTeamtype(response.getData().getRanks().getHome().size() > 0 ? 1 : 0);
+                        detailHistoryEntity.setRank(rankDTO);
+                        detailHistoryEntities.add(detailHistoryEntity);
+                    }
+                    detailMultiAdapter.setNewData(detailHistoryEntities);
+                    detailMultiAdapter.notifyDataSetChanged();
                     LogUtils.e(response.getData().getGameInfoId() + "");
                 }
             }, FootBallDetailRes.class);
@@ -184,6 +213,25 @@ public class DetailActivity extends BaseCommonActivity {
             }, new Response.Listener<BasketBallDetailRes>() {
                 @Override
                 public void onResponse(BasketBallDetailRes response) {
+                    for (BasketBallDetailRes.DataDTO.HistoryMatchesDTO.HistoryBattlesDTO historyBattlesDTO :
+                            response.getData().getHistoryMatches().getHistoryBattles()) {
+                        DetailHistoryEntity detailHistoryEntity = new DetailHistoryEntity(DetailHistoryEntity.TYPE_HISTORYBATTLES);
+                        DetailHistoryEntity.HistoryBattlesDTO historyBattlesDTO1 = new DetailHistoryEntity.HistoryBattlesDTO();
+                        historyBattlesDTO1.setAwayScore(historyBattlesDTO.getAwayScore());
+                        historyBattlesDTO1.setAwayTeamId(historyBattlesDTO.getAwayTeamId());
+                        historyBattlesDTO1.setAwayTeamLogo(historyBattlesDTO.getAwayTeamLogo());
+                        historyBattlesDTO1.setHomeScore(historyBattlesDTO.getHomeScore());
+                        historyBattlesDTO1.setAwayTeamName(historyBattlesDTO.getAwayTeamName());
+                        historyBattlesDTO1.setHomeScore(historyBattlesDTO.getHomeScore());
+                        historyBattlesDTO1.setAwayScore(historyBattlesDTO.getAwayScore());
+                        historyBattlesDTO1.setHomeTeamName(historyBattlesDTO.getHomeTeamName());
+                        historyBattlesDTO1.setMatchTime(historyBattlesDTO.getMatchTime());
+                        historyBattlesDTO1.setTeamtype(response.getData().getHistoryMatches().getHomeRecentBattles().size() > 0 ? 1 : 0);
+                        detailHistoryEntity.setHistoryBattles(historyBattlesDTO1);
+                        detailHistoryEntities.add(detailHistoryEntity);
+                    }
+                    detailMultiAdapter.setNewData(detailHistoryEntities);
+                    detailMultiAdapter.notifyDataSetChanged();
                     LogUtils.e(response.getData().getMatchTime() + "");
                 }
             }, BasketBallDetailRes.class);
