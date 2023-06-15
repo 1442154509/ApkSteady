@@ -5,14 +5,14 @@ import com.hazz.baselibs.net.interceptor.ProgressInterceptor;
 
 import java.util.concurrent.TimeUnit;
 
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.functions.Consumer;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 import okhttp3.OkHttpClient;
 import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Streaming;
 import retrofit2.http.Url;
@@ -67,7 +67,7 @@ public class DownLoadManager {
 
         retrofit = new Retrofit.Builder()
                 .client(okHttpClient)
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
                 .baseUrl(AppConfig.BASE_URL)
                 .build();
     }

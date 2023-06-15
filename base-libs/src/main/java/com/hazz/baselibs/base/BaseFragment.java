@@ -68,6 +68,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends RxFragment i
         }
         initView();
         initListener();
+        initData();
     }
 
 
@@ -79,11 +80,11 @@ public abstract class BaseFragment<T extends BasePresenter> extends RxFragment i
         }
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        initData();
-    }
+//    @Override
+//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+//        super.onActivityCreated(savedInstanceState);
+//        initData();
+//    }
 
     @Override
     public void onDestroyView() {

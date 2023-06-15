@@ -1,6 +1,7 @@
 package com.hazz.baselibs.rx;
 
-import io.reactivex.observers.DisposableObserver;
+
+import io.reactivex.rxjava3.observers.DisposableObserver;
 
 /**
  * 为RxBus使用的Subscriber, 主要提供next事件的try,catch

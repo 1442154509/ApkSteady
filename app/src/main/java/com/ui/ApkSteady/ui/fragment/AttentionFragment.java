@@ -18,6 +18,8 @@ import com.google.android.material.tabs.TabLayout;
 import com.hazz.baselibs.base.BaseFragment;
 import com.hazz.baselibs.mvp.BasePresenter;
 import com.ui.ApkSteady.R;
+import com.ui.ApkSteady.contract.MatchContract;
+import com.ui.ApkSteady.presenter.MatchPresenter;
 import com.ui.ApkSteady.ui.DetailActivity;
 import com.ui.ApkSteady.ui.adapter.MatchConditionAdapter;
 import com.ui.ApkSteady.ui.data.MatchConditionBean;
@@ -31,7 +33,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 //关注页面
-public class AttentionFragment extends BaseFragment<BasePresenter> {
+public class AttentionFragment extends BaseFragment<MatchPresenter> implements MatchContract.View{
     //赛事分类
     @BindView(R.id.tab_match_title)
     TabLayout tabMatchTitle;
@@ -71,7 +73,7 @@ public class AttentionFragment extends BaseFragment<BasePresenter> {
                 startActivity(intent);
             }
         });
-//        test();
+
     }
 
     @Override
@@ -81,7 +83,7 @@ public class AttentionFragment extends BaseFragment<BasePresenter> {
 
     @Override
     protected void initData() {
-
+        mPresenter.getMatchList();
     }
 
     @Override
@@ -137,8 +139,8 @@ public class AttentionFragment extends BaseFragment<BasePresenter> {
     }
 
     @Override
-    protected BasePresenter createPresenter() {
-        return null;
+    protected MatchPresenter createPresenter() {
+        return new MatchPresenter();
     }
 
     @Override

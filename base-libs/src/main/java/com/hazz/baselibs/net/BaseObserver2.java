@@ -3,7 +3,6 @@ package com.hazz.baselibs.net;
 
 import android.accounts.NetworkErrorException;
 
-
 import com.hazz.baselibs.mvp.IView;
 import com.hazz.baselibs.net.exception.ServerException;
 
@@ -14,23 +13,22 @@ import java.util.concurrent.TimeoutException;
 import io.reactivex.rxjava3.core.Observer;
 import io.reactivex.rxjava3.disposables.Disposable;
 
-
 /**
  * @author xuhao
  * @date 2018/6/12 10:51
  * @desc Observer基类
  */
-public abstract class BaseObserver<T> implements Observer<BaseResBean<T>> {
+public abstract class BaseObserver2<T> implements Observer<BaseHttpResult<T>> {
 
     private IView mView;
 
     private boolean isShowDialog = true;
 
-    public BaseObserver(IView mView) {
+    public BaseObserver2(IView mView) {
         this.mView = mView;
     }
 
-    public BaseObserver(IView mView, boolean isShowDialog) {
+    public BaseObserver2(IView mView, boolean isShowDialog) {
         this.mView = mView;
         this.isShowDialog = isShowDialog;
     }
@@ -41,7 +39,7 @@ public abstract class BaseObserver<T> implements Observer<BaseResBean<T>> {
     }
 
     @Override
-    public void onNext(BaseResBean<T> result) {
+    public void onNext(BaseHttpResult<T> result) {
         hideLoadingDialog();
         if (result.getCode()==200) {
             onSuccess(result);
@@ -65,7 +63,6 @@ public abstract class BaseObserver<T> implements Observer<BaseResBean<T>> {
     }
 
     /**
-
      * * 请求成功了才会调用 onComplete
      * onError 时不会调用
      */
@@ -80,7 +77,7 @@ public abstract class BaseObserver<T> implements Observer<BaseResBean<T>> {
      *
      * @param result 服务器返回数据
      */
-    public abstract void onSuccess(BaseResBean<T> result);
+    public abstract void onSuccess(BaseHttpResult<T> result);
 
     /**
      * 请求失败返回

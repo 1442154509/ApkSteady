@@ -5,10 +5,9 @@ import android.app.Activity;
 import com.hazz.baselibs.utils.Preconditions;
 import com.trello.rxlifecycle4.LifecycleProvider;
 
-import java.util.HashMap;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
+import io.reactivex.rxjava3.disposables.Disposable;
 
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
 
 /**
  * @author xuhao

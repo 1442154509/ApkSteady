@@ -2,12 +2,7 @@ package com.hazz.baselibs.net;
 
 import java.io.Serializable;
 
-/**
- * @author xuhao
- * @date 2018/6/12 00:58
- * @desc 抽取的一个基类的bean, 直接在泛型中传data就行
- */
-public class BaseHttpResult<T> implements Serializable {
+public class BaseResBean<T> implements Serializable {
     private int code;
     private String msg;
     private T data;

@@ -3,11 +3,10 @@ package com.ui.ApkSteady.ui;
 import android.app.Application;
 import android.content.Context;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
+import com.hazz.baselibs.app.BaseApplication;
 
 
-public class MyApplication extends Application {
+public class MyApplication extends BaseApplication {
     public static Context context;
 
     @Override
