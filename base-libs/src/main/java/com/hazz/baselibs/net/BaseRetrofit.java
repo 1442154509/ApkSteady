@@ -24,7 +24,7 @@ import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
 
 public class BaseRetrofit {
     private static OkHttpClient client;
@@ -89,7 +89,7 @@ public class BaseRetrofit {
                             .Builder()
                             .baseUrl(AppConfig.BASE_URL)  //baseUrl配置
                             .client(client)
-                            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
                             .addConverterFactory(GsonConverterBodyFactory.create())
                             .build();
                 }

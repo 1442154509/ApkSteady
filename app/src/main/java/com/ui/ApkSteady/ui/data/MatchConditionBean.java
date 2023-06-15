@@ -2,10 +2,12 @@ package com.ui.ApkSteady.ui.data;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 
+import java.io.Serializable;
+
 /**
  * 赛事详情Bean
  */
-public class MatchConditionBean extends MatchItemBean {
+public class MatchConditionBean extends MatchItemBean implements Serializable {
     // 球种类型
     private int sportsId;
     //赛事id

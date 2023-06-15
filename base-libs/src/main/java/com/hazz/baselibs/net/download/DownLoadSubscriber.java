@@ -1,6 +1,6 @@
 package com.hazz.baselibs.net.download;
 
-import io.reactivex.observers.DisposableObserver;
+import io.reactivex.rxjava3.observers.DisposableObserver;
 
 public class DownLoadSubscriber<T> extends DisposableObserver<T> {
     private ProgressCallBack fileCallBack;

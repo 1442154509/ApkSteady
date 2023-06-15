@@ -1,4 +1,24 @@
 package com.ui.ApkSteady.model;
 
-public class MatchModel{
+import com.hazz.baselibs.net.BaseHttpResult;
+import com.ui.ApkSteady.contract.MatchContract;
+import com.ui.ApkSteady.http.RetrofitUtils;
+import com.ui.ApkSteady.ui.data.MatchConditionBean;
+import com.ui.ApkSteady.ui.data.res.BaseResBean;
+import com.ui.ApkSteady.ui.data.res.BaseResListBean;
+
+import java.util.List;
+
+import io.reactivex.rxjava3.core.Observable;
+
+public class MatchModel implements MatchContract.Model {
+    @Override
+    public Observable<BaseHttpResult<List<MatchConditionBean>>> getMatchList() {
+        return RetrofitUtils.getHttpService().getMatchList();
+    }
+
+    @Override
+    public void onDestroy() {
+
+    }
 }
