@@ -110,6 +110,11 @@ public class DetailActivity extends BaseMvpActivity<DetailHisttoryPresenter> imp
 
     @Override
     protected void initData() {
+
+    }
+
+    @Override
+    protected void initMvp() {
         mBundle = getIntent().getExtras();
         data = (IndexRes) mBundle.getSerializable("IndexRes.Data");
         if (data == null) {
@@ -171,7 +176,7 @@ public class DetailActivity extends BaseMvpActivity<DetailHisttoryPresenter> imp
 
                 recyclerView = (RecyclerView) findViewById(R.id.detail_match_item);
                 recyclerView.setLayoutManager(new LinearLayoutManager(this));
-                createData();
+//                createData();
                 recyclerView.addItemDecoration(new LinearSpacingItemDecoration(this, 10));
 //                DetailMatchAdapter adapter = new DetailMatchAdapter(this, list);
 //                recyclerView.setAdapter(adapter);

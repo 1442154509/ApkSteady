@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 public class BasketBallDetailRes implements Serializable {
-
     private String gameInfoId;
     private int matchId;
     private int matchTime;

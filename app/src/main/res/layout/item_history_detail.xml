@@ -51,6 +51,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_detail_history_msg">
 
+            <ImageView
+                android:id="@+id/imageview_detail_history_team_a_logo"
+                android:layout_width="@dimen/dimen_20"
+                android:layout_height="@dimen/dimen_20"
+                android:layout_marginRight="@dimen/dimen_5" />
+
             <TextView
                 android:id="@+id/textView_detail_history_team_a"
                 android:layout_width="0dp"
@@ -79,6 +85,13 @@
                 android:gravity="right"
                 android:text="队名b"
                 android:textColor="@color/c_2a2a2a" />
+
+            <ImageView
+                android:id="@+id/imageview_detail_history_team_b_logo"
+                android:layout_width="@dimen/dimen_20"
+                android:layout_height="@dimen/dimen_20"
+                android:layout_marginLeft="@dimen/dimen_5"
+                android:layout_marginRight="@dimen/dimen_5" />
         </LinearLayout>
 
 

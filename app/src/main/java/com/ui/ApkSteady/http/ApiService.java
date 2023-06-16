@@ -21,8 +21,8 @@ public interface ApiService {
     Observable<BaseHttpResult<List<IndexRes>>> getIndex(@Query("sportsId") String sportsId);
 
     @GET("Detail/Football?")
-    Observable<BaseHttpResult<List<FootBallDetailRes>>> getFootBallHistoryDetail(@Query("matchId") String matchId, @Query("sportsId") String sportsId);
+    Observable<BaseHttpResult<FootBallDetailRes>> getFootBallHistoryDetail(@Query("matchId") String matchId, @Query("sportsId") String sportsId);
 
     @GET("Detail/Basketball?")
-    Observable<BaseHttpResult<List<BasketBallDetailRes>>> getBasketBallHistoryDetail(@Query("matchId") String matchId, @Query("sportsId") String sportsId);
+    Observable<BaseHttpResult<BasketBallDetailRes>> getBasketBallHistoryDetail(@Query("matchId") String matchId, @Query("sportsId") String sportsId);
 }

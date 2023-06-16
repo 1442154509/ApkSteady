@@ -43,88 +43,11 @@ public class MainActivity extends BaseCommonActivity {
     boolean immersionModel = true;//是否是沉浸式状态栏，true时表示是沉浸式
 
     private void getcontent() throws IOException {
-
-//        ConnectionSpec spec = new ConnectionSpec.Builder(ConnectionSpec.COMPATIBLE_TLS)
-//                .tlsVersions(TlsVersion.TLS_1_2, TlsVersion.TLS_1_1, TlsVersion.TLS_1_0)
-//                .cipherSuites(
-//                        CipherSuite.TLS_AES_128_GCM_SHA256,
-//                        CipherSuite.TLS_AES_256_GCM_SHA384,
-//                        CipherSuite.TLS_CHACHA20_POLY1305_SHA256,
-//                        CipherSuite.TLS_AES_128_CCM_SHA256,
-//                        CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
-//                        CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
-//                        CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,
-//                        CipherSuite.TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
-//                        CipherSuite.TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256,
-//                        CipherSuite.TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256,
-//                        CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,
-//                        CipherSuite.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,
-//                        CipherSuite.TLS_RSA_WITH_AES_128_GCM_SHA256,
-//                        CipherSuite.TLS_RSA_WITH_AES_256_GCM_SHA384,
-//                        CipherSuite.TLS_RSA_WITH_AES_128_CBC_SHA,
-//                        CipherSuite.TLS_RSA_WITH_AES_256_CBC_SHA,
-//                        CipherSuite.TLS_RSA_WITH_3DES_EDE_CBC_SHA)
-//                .allEnabledCipherSuites()
-//                .build();
-//        ConnectionSpec spec1 = new ConnectionSpec.Builder(ConnectionSpec.CLEARTEXT).build();
-////        ConnectionSpec spec2 = new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS).build();
-//        final OkHttpClient okHttpClient = new OkHttpClient.Builder()
-//                .readTimeout(180, TimeUnit.SECONDS)
-//                .connectTimeout(180, TimeUnit.SECONDS)
-////                .addInterceptor(logging)
-//                .connectionSpecs(Arrays.asList(spec, spec1))
-//                .build();
-//
-//
-//        Retrofit retrofit = new Retrofit.Builder()
-//                .baseUrl(ConstantsUtils.BASEURL)
-//                .addConverterFactory(GsonConverterFactory.create())
-//                .client(SSLHUtils.getUnsafeOkHttpClient())
-////                .client(okHttpClient)
-//                .build();
-//        Index service = retrofit.create(Index.class);
-//        Call<IndexRes> call = service.getIndex("0");
-//        call.enqueue(new Callback<IndexRes>() {
-//            @Override
-//            public void onResponse(Call<IndexRes> call, retrofit2.Response<IndexRes> response) {
-////                LogUtils.e("得到数据" + response.body().toString());
-////                Toast.makeText(getApplicationContext(), "得到数据" + response.body().toString(), Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onFailure(Call<IndexRes> call, Throwable t) {
-////                LogUtils.e("得到数据" + t.toString());
-////                Toast.makeText(getApplicationContext(), "得到数据" + t.toString(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
-
-//        OkHttpClient client = new OkHttpClient().newBuilder()
-//                .build();
-//        MediaType mediaType = MediaType.parse("text/plain");
-//        RequestBody body = RequestBody.create(mediaType, "");
-//        Request request = new Request.Builder()
-//                .url("http://34.80.205.147:12300/Api/Index?sportsId=0")
-//                .method("GET", body)
-//                .build();
-////        Response response = client.newCall(request).execute();
-//        LogUtils.e("得到数据" + client.newCall(request).execute().toString());
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-//        ButterKnife.bind(this);
-//        if (!immersionModel) {
-//            ImmersionBar.with(this).statusBarColor(R.color.white).statusBarDarkFont(true).fitsSystemWindows(true).init();
-//        } else {
-//            if (darkStatusBar) {
-//                ImmersionBar.with(this).statusBarDarkFont(true).init();
-//            } else {
-//                ImmersionBar.with(this).init();
-//            }
-//        }
 
     }
 
