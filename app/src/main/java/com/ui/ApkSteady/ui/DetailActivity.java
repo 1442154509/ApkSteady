@@ -10,17 +10,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.bumptech.glide.Glide;
+import com.hazz.baselibs.base.BaseMvpActivity;
 import com.ui.ApkSteady.R;
-import com.ui.ApkSteady.ui.adapter.DetailMatchAdapter;
+import com.ui.ApkSteady.contract.DetailHistoryContract;
+import com.ui.ApkSteady.presenter.DetailHisttoryPresenter;
+import com.ui.ApkSteady.presenter.HomePresenter;
 import com.ui.ApkSteady.ui.adapter.DetailMultiAdapter;
-import com.ui.ApkSteady.ui.adapter.HomeGrideAdapter;
+import com.ui.ApkSteady.ui.customview.LinearSpacingItemDecoration;
 import com.ui.ApkSteady.ui.data.DetailHistoryEntity;
 import com.ui.ApkSteady.ui.data.MyData;
 import com.ui.ApkSteady.ui.data.res.BasketBallDetailRes;
@@ -28,7 +30,6 @@ import com.ui.ApkSteady.ui.data.res.FootBallDetailRes;
 import com.ui.ApkSteady.ui.data.res.IndexRes;
 import com.ui.ApkSteady.ui.utils.ApiJsonRequest;
 import com.ui.ApkSteady.ui.utils.DateUtils;
-import com.ui.ApkSteady.ui.customview.LinearSpacingItemDecoration;
 import com.ui.ApkSteady.ui.utils.LogUtils;
 import com.ui.ApkSteady.ui.utils.ToastUtils;
 
@@ -38,7 +39,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class DetailActivity extends BaseCommonActivity {
+public class DetailActivity extends BaseMvpActivity<DetailHisttoryPresenter> implements DetailHistoryContract.DetailHistoryView {
     @BindView(R.id.vs_nodiscuss)
     ViewStub vsNodiscuss;
     @Nullable
@@ -81,8 +82,10 @@ public class DetailActivity extends BaseCommonActivity {
     private int CONTAINSTATE = 2;//0无评论，1有评论，2比赛数据
     private List<MyData> list;
     private Bundle mBundle;
-    private IndexRes.DataDTO data;
+    private IndexRes data;
     private RecyclerView recyclerView;
+    private List<DetailHistoryEntity> detailHistoryEntities;
+    private DetailMultiAdapter detailMultiAdapter;
 
 
     @Override
@@ -108,9 +111,9 @@ public class DetailActivity extends BaseCommonActivity {
     @Override
     protected void initData() {
         mBundle = getIntent().getExtras();
-        data = (IndexRes.DataDTO) mBundle.getSerializable("IndexRes.DataDTO");
+        data = (IndexRes) mBundle.getSerializable("IndexRes.Data");
         if (data == null) {
-            data = new IndexRes.DataDTO();
+            data = new IndexRes();
         }
         tvLeagueName.setText(data.getMatchVediosInfo().getLeagueName());
         tvTeamAName.setText(data.getMatchVediosInfo().getHome());
@@ -178,98 +181,112 @@ public class DetailActivity extends BaseCommonActivity {
                 vsNodiscuss = (ViewStub) findViewById(R.id.vs_nodiscuss);
                 vsNodiscuss.inflate();
         }
-        questdetail(data.getMatchId(), data.getSportsId());
-    }
+//        questdetail(data.getMatchId(), data.getSportsId());
+        try {
+            detailHistoryEntities = new ArrayList<>();
+            detailMultiAdapter = new DetailMultiAdapter(detailHistoryEntities);
+            recyclerView.setAdapter(detailMultiAdapter);
+            if (data.getSportsId() == 1) {
+                mPresenter.getFootBallHistoryDetail(String.valueOf(data.getMatchId()), String.valueOf(data.getSportsId()));
+            } else if (data.getSportsId() == 2) {
+                mPresenter.getBasketBallHistoryDetail(String.valueOf(data.getMatchId()), String.valueOf(data.getSportsId()));
+            }
 
-    private void questdetail(int matchId, int sportsId) {
-        List<DetailHistoryEntity> detailHistoryEntities = new ArrayList<>();
-        DetailMultiAdapter detailMultiAdapter = new DetailMultiAdapter(detailHistoryEntities);
-//        rvhome.addItemDecoration(new LinearSpacingItemDecoration(getActivity(), 20));
-//        rvhome.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-        recyclerView.setAdapter(detailMultiAdapter);
-        if (sportsId == 1) {
-            ApiJsonRequest<FootBallDetailRes> apiJsonRequest = new ApiJsonRequest<>(
-                    "http://34.80.205.147:12300/Api/Detail/Football?matchId=" + matchId + "&sportsId=1", new com.android.volley.Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    LogUtils.e(error.toString());
-                    ToastUtils.show(error.toString());
-                }
-            }, new Response.Listener<FootBallDetailRes>() {
-                @Override
-                public void onResponse(FootBallDetailRes response) {
-                    for (FootBallDetailRes.DataDTO.GoalDistributionsDTO.HomeDTOX homeDTOX :
-                            response.getData().getGoalDistributions().getHome()) {
-                        int position = response.getData().getGoalDistributions().getHome().indexOf(homeDTOX);
-                        FootBallDetailRes.DataDTO.GoalDistributionsDTO.AwayDTOX awayDTOX = response.getData().getGoalDistributions().getAway().get(position);
-
-                        DetailHistoryEntity detailHistoryEntity = new DetailHistoryEntity(DetailHistoryEntity.TYPE_GOALDISTRIBUTIONS);
-                        DetailHistoryEntity.GoalDistributionsDTO goalDistributionsDTO = new DetailHistoryEntity.GoalDistributionsDTO();
-
-                        goalDistributionsDTO.setGoals_1_15_team_a(homeDTOX.getGoals_1_15());
-                        goalDistributionsDTO.setGoals_16_30_team_a(homeDTOX.getGoals_16_30());
-                        goalDistributionsDTO.setGoals_31_45_team_a(homeDTOX.getGoals_31_45());
-                        goalDistributionsDTO.setGoals_46_60_team_a(homeDTOX.getGoals_46_60());
-                        goalDistributionsDTO.setGoals_61_75_team_a(homeDTOX.getGoals_61_75());
-                        goalDistributionsDTO.setGoals_76_90_team_a(homeDTOX.getGoals_76_90());
-
-
-                        goalDistributionsDTO.setGoals_1_15_team_b(awayDTOX.getGoals_1_15());
-                        goalDistributionsDTO.setGoals_16_30_team_b(awayDTOX.getGoals_1_15());
-                        goalDistributionsDTO.setGoals_31_45_team_b(awayDTOX.getGoals_1_15());
-                        goalDistributionsDTO.setGoals_46_60_team_b(awayDTOX.getGoals_1_15());
-                        goalDistributionsDTO.setGoals_61_75_team_b(awayDTOX.getGoals_1_15());
-                        goalDistributionsDTO.setGoals_76_90_team_b(awayDTOX.getGoals_1_15());
-
-//                        DetailHistoryEntity.RankDTO rankDTO = new DetailHistoryEntity.RankDTO();
-//                        rankDTO.setAgainst(ranksDTO.getAgainst());
-//                        rankDTO.setDiff(ranksDTO.getDiff());
-//                        rankDTO.setLost(ranksDTO.getLost());
-//                        rankDTO.setDrawn(ranksDTO.getDrawn());
-//                        rankDTO.setGoals(ranksDTO.getGoals());
-//                        rankDTO.setPlayed(ranksDTO.getPlayed());
-//                        rankDTO.setPoints(ranksDTO.getPoints());
-//                        rankDTO.setWon(ranksDTO.getWon());
-//                        rankDTO.setAwayGoals(ranksDTO.getAwayGoals());
-//                        rankDTO.setTeamtype(response.getData().getRanks().getHome().size() > 0 ? 1 : 0);
-
-                        detailHistoryEntity.setGoalDistributions(goalDistributionsDTO);
-                        detailHistoryEntities.add(detailHistoryEntity);
-                    }
-                    detailMultiAdapter.setNewData(detailHistoryEntities);
-                    detailMultiAdapter.notifyDataSetChanged();
-                    LogUtils.e(response.getData().getGameInfoId() + "");
-                }
-            }, FootBallDetailRes.class);
-            addVolleyResQue(apiJsonRequest);
-        } else {
-            ApiJsonRequest<BasketBallDetailRes> apiJsonRequest = new ApiJsonRequest<>(
-                    "http://34.80.205.147:12300/Api/Detail/Basketball?matchId=" + matchId + "&sportsId=2", new com.android.volley.Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    LogUtils.e(error.toString());
-                    ToastUtils.show(error.toString());
-                }
-            }, new Response.Listener<BasketBallDetailRes>() {
-                @Override
-                public void onResponse(BasketBallDetailRes response) {
-                    for (BasketBallDetailRes.DataDTO.HistoryMatchesDTO.HistoryBattlesDTO historyBattlesDTO :
-                            response.getData().getHistoryMatches().getHistoryBattles()) {
-
-                        DetailHistoryEntity detailHistoryEntity = new DetailHistoryEntity(DetailHistoryEntity.TYPE_HISTORYBATTLES);
-
-                        detailHistoryEntity.setHistoryBattles(historyBattlesDTO);
-                        detailHistoryEntities.add(detailHistoryEntity);
-                    }
-                    detailMultiAdapter.setNewData(detailHistoryEntities);
-                    detailMultiAdapter.notifyDataSetChanged();
-                    LogUtils.e(response.getData().getMatchTime() + "");
-                }
-            }, BasketBallDetailRes.class);
-            addVolleyResQue(apiJsonRequest);
+//            detailMultiAdapter.notifyDataSetChanged();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
     }
+
+//    private void questdetail(int matchId, int sportsId) {
+//        List<DetailHistoryEntity> detailHistoryEntities = new ArrayList<>();
+//        DetailMultiAdapter detailMultiAdapter = new DetailMultiAdapter(detailHistoryEntities);
+////        rvhome.addItemDecoration(new LinearSpacingItemDecoration(getActivity(), 20));
+////        rvhome.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+//        recyclerView.setAdapter(detailMultiAdapter);
+//        if (sportsId == 1) {
+//            ApiJsonRequest<FootBallDetailRes> apiJsonRequest = new ApiJsonRequest<>(
+//                    "http://34.80.205.147:12300/Api/Detail/Football?matchId=" + matchId + "&sportsId=1", new com.android.volley.Response.ErrorListener() {
+//                @Override
+//                public void onErrorResponse(VolleyError error) {
+//                    LogUtils.e(error.toString());
+//                    ToastUtils.show(error.toString());
+//                }
+//            }, new Response.Listener<FootBallDetailRes>() {
+//                @Override
+//                public void onResponse(FootBallDetailRes response) {
+//                    for (FootBallDetailRes.DataDTO.GoalDistributionsDTO.HomeDTOX homeDTOX :
+//                            response.getData().getGoalDistributions().getHome()) {
+//                        int position = response.getData().getGoalDistributions().getHome().indexOf(homeDTOX);
+//                        FootBallDetailRes.DataDTO.GoalDistributionsDTO.AwayDTOX awayDTOX = response.getData().getGoalDistributions().getAway().get(position);
+//
+//                        DetailHistoryEntity detailHistoryEntity = new DetailHistoryEntity(DetailHistoryEntity.TYPE_GOALDISTRIBUTIONS);
+//                        DetailHistoryEntity.GoalDistributionsDTO goalDistributionsDTO = new DetailHistoryEntity.GoalDistributionsDTO();
+//
+//                        goalDistributionsDTO.setGoals_1_15_team_a(homeDTOX.getGoals_1_15());
+//                        goalDistributionsDTO.setGoals_16_30_team_a(homeDTOX.getGoals_16_30());
+//                        goalDistributionsDTO.setGoals_31_45_team_a(homeDTOX.getGoals_31_45());
+//                        goalDistributionsDTO.setGoals_46_60_team_a(homeDTOX.getGoals_46_60());
+//                        goalDistributionsDTO.setGoals_61_75_team_a(homeDTOX.getGoals_61_75());
+//                        goalDistributionsDTO.setGoals_76_90_team_a(homeDTOX.getGoals_76_90());
+//
+//
+//                        goalDistributionsDTO.setGoals_1_15_team_b(awayDTOX.getGoals_1_15());
+//                        goalDistributionsDTO.setGoals_16_30_team_b(awayDTOX.getGoals_1_15());
+//                        goalDistributionsDTO.setGoals_31_45_team_b(awayDTOX.getGoals_1_15());
+//                        goalDistributionsDTO.setGoals_46_60_team_b(awayDTOX.getGoals_1_15());
+//                        goalDistributionsDTO.setGoals_61_75_team_b(awayDTOX.getGoals_1_15());
+//                        goalDistributionsDTO.setGoals_76_90_team_b(awayDTOX.getGoals_1_15());
+//
+////                        DetailHistoryEntity.RankDTO rankDTO = new DetailHistoryEntity.RankDTO();
+////                        rankDTO.setAgainst(ranksDTO.getAgainst());
+////                        rankDTO.setDiff(ranksDTO.getDiff());
+////                        rankDTO.setLost(ranksDTO.getLost());
+////                        rankDTO.setDrawn(ranksDTO.getDrawn());
+////                        rankDTO.setGoals(ranksDTO.getGoals());
+////                        rankDTO.setPlayed(ranksDTO.getPlayed());
+////                        rankDTO.setPoints(ranksDTO.getPoints());
+////                        rankDTO.setWon(ranksDTO.getWon());
+////                        rankDTO.setAwayGoals(ranksDTO.getAwayGoals());
+////                        rankDTO.setTeamtype(response.getData().getRanks().getHome().size() > 0 ? 1 : 0);
+//
+//                        detailHistoryEntity.setGoalDistributions(goalDistributionsDTO);
+//                        detailHistoryEntities.add(detailHistoryEntity);
+//                    }
+//                    detailMultiAdapter.setNewData(detailHistoryEntities);
+//                    detailMultiAdapter.notifyDataSetChanged();
+//                    LogUtils.e(response.getData().getGameInfoId() + "");
+//                }
+//            }, FootBallDetailRes.class);
+//            addVolleyResQue(apiJsonRequest);
+//        } else {
+//            ApiJsonRequest<BasketBallDetailRes> apiJsonRequest = new ApiJsonRequest<>(
+//                    "http://34.80.205.147:12300/Api/Detail/Basketball?matchId=" + matchId + "&sportsId=2", new com.android.volley.Response.ErrorListener() {
+//                @Override
+//                public void onErrorResponse(VolleyError error) {
+//                    LogUtils.e(error.toString());
+//                    ToastUtils.show(error.toString());
+//                }
+//            }, new Response.Listener<BasketBallDetailRes>() {
+//                @Override
+//                public void onResponse(BasketBallDetailRes response) {
+//                    for (BasketBallDetailRes.DataDTO.HistoryMatchesDTO.HistoryBattlesDTO historyBattlesDTO :
+//                            response.getData().getHistoryMatches().getHistoryBattles()) {
+//
+//                        DetailHistoryEntity detailHistoryEntity = new DetailHistoryEntity(DetailHistoryEntity.TYPE_HISTORYBATTLES);
+//
+//                        detailHistoryEntity.setHistoryBattles(historyBattlesDTO);
+//                        detailHistoryEntities.add(detailHistoryEntity);
+//                    }
+//                    detailMultiAdapter.setNewData(detailHistoryEntities);
+//                    detailMultiAdapter.notifyDataSetChanged();
+//                    LogUtils.e(response.getData().getMatchTime() + "");
+//                }
+//            }, BasketBallDetailRes.class);
+//            addVolleyResQue(apiJsonRequest);
+//        }
+//
+//    }
 
     //创造数据
     private void createData() {
@@ -338,5 +355,30 @@ public class DetailActivity extends BaseCommonActivity {
     @OnClick(R.id.iv_detail_back)
     public void onClick() {
         finish();
+    }
+
+    @Override
+    public void upataFootBallUI(List<DetailHistoryEntity> data) {
+        detailHistoryEntities.addAll(data);
+        detailMultiAdapter.setNewData(detailHistoryEntities);
+        detailMultiAdapter.notifyDataSetChanged();
+
+    }
+
+    @Override
+    public void updataBasketBallUI(List<DetailHistoryEntity> data) {
+        detailHistoryEntities.addAll(data);
+        detailMultiAdapter.setNewData(detailHistoryEntities);
+        detailMultiAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void showError(String msg) {
+
+    }
+
+    @Override
+    protected DetailHisttoryPresenter createPresenter() {
+        return new DetailHisttoryPresenter();
     }
 }

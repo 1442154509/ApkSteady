@@ -20,18 +20,21 @@ public class DetailMultiAdapter extends BaseMultiItemQuickAdapter<DetailHistoryE
 
     @Override
     protected void convert(BaseViewHolder helper, DetailHistoryEntity item) {
-        DetailHistoryEntity homeEntity = (DetailHistoryEntity) item;
-        switch (homeEntity.getItemType()) {
+        DetailHistoryEntity HistoryEntity = (DetailHistoryEntity) item;
+        switch (HistoryEntity.getItemType()) {
 //            case DetailHistoryEntity.TYPE_RANK:
-//                DetailHistoryEntity.GoalDistributionsDTO rankntity = homeEntity.getGoalDistributions();
-//                helper.setText(R.id.textview_detail_item_title_rank, entity.getHome().get(0).getDrawn())
+//                DetailHistoryEntity.RankDTO rankDTO = HistoryEntity.getRank();
+//
+//                helper.setText(R.id.textview_detail_item_title_rank, rankDTO.getDiff())
 //                        .setText(R.id.tv_lowest_price, entity.getPrePrice());
 //            case DetailHistoryEntity.TYPE_GOALDISTRIBUTIONS:
-//                DetailHistoryEntity.GoalDistributionsDTO entity = homeEntity.getRank();
+//                DetailHistoryEntity.GoalDistributionsDTO goalDistributions = HistoryEntity.getGoalDistributions();
+//
 //                helper.setText(R.id.textview_detail_item_title_rank, entity.getHome().get(0).getDrawn())
 //                        .setText(R.id.tv_lowest_price, entity.getPrePrice());
 //            case DetailHistoryEntity.TYPE_HISTORYBATTLES:
-//                DetailHistoryEntity.TYPE_BATTER.HistoryBattlesDTO seriesEntity = homeEntity.getHistoryBattles();
+//                DetailHistoryEntity.HistoryBattlesDTO historyBattlesDTO = HistoryEntity.getHistoryBattles();
+//
 //                helper.setText(R.id.tv_name, seriesEntity.getName());
         }
     }

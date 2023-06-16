@@ -1,13 +1,9 @@
 package com.ui.ApkSteady.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
 import com.android.volley.Request;
-import com.gyf.immersionbar.ImmersionBar;
 import com.hazz.baselibs.base.BaseActivity;
-import com.ui.ApkSteady.R;
 import com.ui.ApkSteady.ui.utils.LogUtils;
 import com.ui.ApkSteady.ui.utils.VolleyResQue;
 
@@ -25,15 +21,15 @@ public abstract class BaseCommonActivity extends BaseActivity {
 //        setContentView(R.layout.activity_base_common);
         ButterKnife.bind(this);
         //沉浸状态栏代码
-        if (!immersionModel) {
-            ImmersionBar.with(this).statusBarColor(R.color.white).statusBarDarkFont(true).fitsSystemWindows(true).init();
-        } else {
-            if (darkStatusBar) {
-                ImmersionBar.with(this).statusBarDarkFont(true).init();
-            } else {
-                ImmersionBar.with(this).init();
-            }
-        }
+//        if (!immersionModel) {
+//            ImmersionBar.with(this).statusBarColor(R.color.white).statusBarDarkFont(true).fitsSystemWindows(true).init();
+//        } else {
+//            if (darkStatusBar) {
+//                ImmersionBar.with(this).statusBarDarkFont(true).init();
+//            } else {
+//                ImmersionBar.with(this).init();
+//            }
+//        }
     }
 
     @Override

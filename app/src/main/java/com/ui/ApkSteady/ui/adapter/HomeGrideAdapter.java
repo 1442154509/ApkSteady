@@ -15,13 +15,13 @@ import com.ui.ApkSteady.ui.customview.ResizableImageView;
 import java.util.List;
 
 //首页适配器
-public class HomeGrideAdapter extends BaseQuickAdapter<IndexRes.DataDTO, BaseViewHolder> {
-    public HomeGrideAdapter(int layoutResId, @Nullable List<IndexRes.DataDTO> data) {
+public class HomeGrideAdapter extends BaseQuickAdapter<IndexRes, BaseViewHolder> {
+    public HomeGrideAdapter(int layoutResId, @Nullable List<IndexRes> data) {
         super(layoutResId, data);
     }
 
     @Override
-    protected void convert(@NonNull BaseViewHolder baseViewHolder, IndexRes.DataDTO data) {
+    protected void convert(@NonNull BaseViewHolder baseViewHolder, IndexRes data) {
 //        baseViewHolder.getView(R.id.imageView_detail_start_mark);
         baseViewHolder.setText(R.id.tv_home_match_name, data.getMatchVediosInfo().getHome() + " VS " + data.getMatchVediosInfo().getAway());
         // 赛事状态 ： 0未开始,1直播中,2直播结束
