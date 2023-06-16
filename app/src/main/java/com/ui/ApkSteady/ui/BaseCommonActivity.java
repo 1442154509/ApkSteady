@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.android.volley.Request;
 import com.gyf.immersionbar.ImmersionBar;
+import com.hazz.baselibs.base.BaseActivity;
 import com.ui.ApkSteady.R;
 import com.ui.ApkSteady.ui.utils.LogUtils;
 import com.ui.ApkSteady.ui.utils.VolleyResQue;
@@ -13,7 +14,7 @@ import com.ui.ApkSteady.ui.utils.VolleyResQue;
 import butterknife.ButterKnife;
 
 //activity基类
-public abstract class BaseCommonActivity extends AppCompatActivity {
+public abstract class BaseCommonActivity extends BaseActivity {
     public boolean darkStatusBar = true;//当是沉浸式状态栏时，状态栏字体是否黑色字体，false时表示白色字体，true表示黑色字体
     boolean immersionModel = true;//是否是沉浸式状态栏，true时表示是沉浸式
     private String TAG;
@@ -22,7 +23,6 @@ public abstract class BaseCommonActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_base_common);
-        setContentView(setLayout());
         ButterKnife.bind(this);
         //沉浸状态栏代码
         if (!immersionModel) {
@@ -36,12 +36,6 @@ public abstract class BaseCommonActivity extends AppCompatActivity {
         }
         initData();
     }
-
-    //加载布局
-    protected abstract int setLayout();
-
-    //初始化数据
-    protected abstract void initData();
 
     @Override
     protected void onResume() {

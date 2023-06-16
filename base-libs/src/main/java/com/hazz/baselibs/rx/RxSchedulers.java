@@ -8,8 +8,8 @@ import com.trello.rxlifecycle4.LifecycleProvider;
 import com.trello.rxlifecycle4.LifecycleTransformer;
 import com.trello.rxlifecycle4.android.ActivityEvent;
 import com.trello.rxlifecycle4.android.FragmentEvent;
-import com.trello.rxlifecycle4.components.RxFragment;
 import com.trello.rxlifecycle4.components.support.RxAppCompatActivity;
+import com.trello.rxlifecycle4.components.support.RxFragment;
 
 import java.util.concurrent.TimeUnit;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
