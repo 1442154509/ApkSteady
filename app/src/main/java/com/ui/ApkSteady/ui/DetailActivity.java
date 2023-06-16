@@ -179,21 +179,42 @@ public class DetailActivity extends BaseCommonActivity {
             }, new Response.Listener<FootBallDetailRes>() {
                 @Override
                 public void onResponse(FootBallDetailRes response) {
-                    for (FootBallDetailRes.DataDTO.RanksDTO.HomeDTO ranksDTO :
-                            response.getData().getRanks().getHome()) {
-                        DetailHistoryEntity detailHistoryEntity = new DetailHistoryEntity(DetailHistoryEntity.TYPE_RANK);
-                        DetailHistoryEntity.RankDTO rankDTO = new DetailHistoryEntity.RankDTO();
-                        rankDTO.setAgainst(ranksDTO.getAgainst());
-                        rankDTO.setDiff(ranksDTO.getDiff());
-                        rankDTO.setLost(ranksDTO.getLost());
-                        rankDTO.setDrawn(ranksDTO.getDrawn());
-                        rankDTO.setGoals(ranksDTO.getGoals());
-                        rankDTO.setPlayed(ranksDTO.getPlayed());
-                        rankDTO.setPoints(ranksDTO.getPoints());
-                        rankDTO.setWon(ranksDTO.getWon());
-                        rankDTO.setAwayGoals(ranksDTO.getAwayGoals());
-                        rankDTO.setTeamtype(response.getData().getRanks().getHome().size() > 0 ? 1 : 0);
-                        detailHistoryEntity.setRank(rankDTO);
+                    for (FootBallDetailRes.DataDTO.GoalDistributionsDTO.HomeDTOX homeDTOX :
+                            response.getData().getGoalDistributions().getHome()) {
+                        int position = response.getData().getGoalDistributions().getHome().indexOf(homeDTOX);
+                        FootBallDetailRes.DataDTO.GoalDistributionsDTO.AwayDTOX awayDTOX = response.getData().getGoalDistributions().getAway().get(position);
+
+                        DetailHistoryEntity detailHistoryEntity = new DetailHistoryEntity(DetailHistoryEntity.TYPE_GOALDISTRIBUTIONS);
+                        DetailHistoryEntity.GoalDistributionsDTO goalDistributionsDTO = new DetailHistoryEntity.GoalDistributionsDTO();
+
+                        goalDistributionsDTO.setGoals_1_15_team_a(homeDTOX.getGoals_1_15());
+                        goalDistributionsDTO.setGoals_16_30_team_a(homeDTOX.getGoals_16_30());
+                        goalDistributionsDTO.setGoals_31_45_team_a(homeDTOX.getGoals_31_45());
+                        goalDistributionsDTO.setGoals_46_60_team_a(homeDTOX.getGoals_46_60());
+                        goalDistributionsDTO.setGoals_61_75_team_a(homeDTOX.getGoals_61_75());
+                        goalDistributionsDTO.setGoals_76_90_team_a(homeDTOX.getGoals_76_90());
+
+
+                        goalDistributionsDTO.setGoals_1_15_team_b(awayDTOX.getGoals_1_15());
+                        goalDistributionsDTO.setGoals_16_30_team_b(awayDTOX.getGoals_1_15());
+                        goalDistributionsDTO.setGoals_31_45_team_b(awayDTOX.getGoals_1_15());
+                        goalDistributionsDTO.setGoals_46_60_team_b(awayDTOX.getGoals_1_15());
+                        goalDistributionsDTO.setGoals_61_75_team_b(awayDTOX.getGoals_1_15());
+                        goalDistributionsDTO.setGoals_76_90_team_b(awayDTOX.getGoals_1_15());
+
+//                        DetailHistoryEntity.RankDTO rankDTO = new DetailHistoryEntity.RankDTO();
+//                        rankDTO.setAgainst(ranksDTO.getAgainst());
+//                        rankDTO.setDiff(ranksDTO.getDiff());
+//                        rankDTO.setLost(ranksDTO.getLost());
+//                        rankDTO.setDrawn(ranksDTO.getDrawn());
+//                        rankDTO.setGoals(ranksDTO.getGoals());
+//                        rankDTO.setPlayed(ranksDTO.getPlayed());
+//                        rankDTO.setPoints(ranksDTO.getPoints());
+//                        rankDTO.setWon(ranksDTO.getWon());
+//                        rankDTO.setAwayGoals(ranksDTO.getAwayGoals());
+//                        rankDTO.setTeamtype(response.getData().getRanks().getHome().size() > 0 ? 1 : 0);
+
+                        detailHistoryEntity.setGoalDistributions(goalDistributionsDTO);
                         detailHistoryEntities.add(detailHistoryEntity);
                     }
                     detailMultiAdapter.setNewData(detailHistoryEntities);
@@ -215,19 +236,10 @@ public class DetailActivity extends BaseCommonActivity {
                 public void onResponse(BasketBallDetailRes response) {
                     for (BasketBallDetailRes.DataDTO.HistoryMatchesDTO.HistoryBattlesDTO historyBattlesDTO :
                             response.getData().getHistoryMatches().getHistoryBattles()) {
+
                         DetailHistoryEntity detailHistoryEntity = new DetailHistoryEntity(DetailHistoryEntity.TYPE_HISTORYBATTLES);
-                        DetailHistoryEntity.HistoryBattlesDTO historyBattlesDTO1 = new DetailHistoryEntity.HistoryBattlesDTO();
-                        historyBattlesDTO1.setAwayScore(historyBattlesDTO.getAwayScore());
-                        historyBattlesDTO1.setAwayTeamId(historyBattlesDTO.getAwayTeamId());
-                        historyBattlesDTO1.setAwayTeamLogo(historyBattlesDTO.getAwayTeamLogo());
-                        historyBattlesDTO1.setHomeScore(historyBattlesDTO.getHomeScore());
-                        historyBattlesDTO1.setAwayTeamName(historyBattlesDTO.getAwayTeamName());
-                        historyBattlesDTO1.setHomeScore(historyBattlesDTO.getHomeScore());
-                        historyBattlesDTO1.setAwayScore(historyBattlesDTO.getAwayScore());
-                        historyBattlesDTO1.setHomeTeamName(historyBattlesDTO.getHomeTeamName());
-                        historyBattlesDTO1.setMatchTime(historyBattlesDTO.getMatchTime());
-                        historyBattlesDTO1.setTeamtype(response.getData().getHistoryMatches().getHomeRecentBattles().size() > 0 ? 1 : 0);
-                        detailHistoryEntity.setHistoryBattles(historyBattlesDTO1);
+
+                        detailHistoryEntity.setHistoryBattles(historyBattlesDTO);
                         detailHistoryEntities.add(detailHistoryEntity);
                     }
                     detailMultiAdapter.setNewData(detailHistoryEntities);

@@ -2,11 +2,7 @@ package com.ui.ApkSteady.ui.presenter;
 
 import com.hazz.baselibs.mvp.BasePresenter;
 import com.ui.ApkSteady.ui.contract.HomeContract;
-import com.ui.ApkSteady.ui.data.res.IndexRes;
 import com.ui.ApkSteady.ui.model.HomeModel;
-
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
 
 public class HomePresenter extends BasePresenter<HomeModel, HomeContract.HomeView> {
 

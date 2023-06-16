@@ -4,12 +4,8 @@ import com.ui.ApkSteady.http.RetrofitUtils;
 import com.ui.ApkSteady.ui.contract.HomeContract;
 import com.ui.ApkSteady.ui.data.res.IndexRes;
 
-import io.reactivex.Observable;
-import okhttp3.Callback;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
+import io.reactivex.rxjava3.core.Observable;
+
 
 public class HomeModel implements HomeContract.HomeModel {
     @Override

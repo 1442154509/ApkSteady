@@ -4,8 +4,6 @@ import com.hazz.baselibs.mvp.IModel;
 import com.hazz.baselibs.mvp.IView;
 import com.hazz.baselibs.net.BaseHttpResult;
 import com.ui.ApkSteady.ui.data.MatchConditionBean;
-import com.ui.ApkSteady.ui.data.res.BaseResBean;
-import com.ui.ApkSteady.ui.data.res.BaseResListBean;
 
 import java.util.List;
 
