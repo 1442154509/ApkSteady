@@ -1,7 +1,10 @@
 package com.hazz.baselibs.net.exception;
 
+import android.util.Log;
+
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonSerializer;
+import com.hazz.baselibs.utils.LogUtils;
 
 import org.apache.http.conn.ConnectTimeoutException;
 import org.json.JSONException;
@@ -39,6 +42,7 @@ public class ServerException extends Exception {
     }
 
     public static ServerException handleException(Throwable e) {
+        Log.e("数据获取",e.getMessage());
         ServerException ex;
         if (e instanceof HttpException) {
             HttpException httpException = (HttpException) e;

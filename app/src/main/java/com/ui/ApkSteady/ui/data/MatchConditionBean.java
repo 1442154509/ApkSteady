@@ -41,7 +41,7 @@ public class MatchConditionBean extends MatchItemBean implements Serializable {
     // 客队黄牌
     private int bYellow;
     // 是否有直播视频源
-    private int isLive;
+    private boolean isLive;
     // 直播地址
     private String liveUrl;
     // 主队角球
@@ -52,6 +52,14 @@ public class MatchConditionBean extends MatchItemBean implements Serializable {
     private int aScore;
     // 客队比分
     private int bScore;
+
+    public boolean isLive() {
+        return isLive;
+    }
+
+    public void setLive(boolean live) {
+        isLive = live;
+    }
 
     public static class SportType {
         //足球
@@ -199,13 +207,6 @@ public class MatchConditionBean extends MatchItemBean implements Serializable {
         return this.bYellow;
     }
 
-    public void setIsLive(int isLive) {
-        this.isLive = isLive;
-    }
-
-    public int getIsLive() {
-        return this.isLive;
-    }
 
     public void setLiveUrl(String liveUrl) {
         this.liveUrl = liveUrl;

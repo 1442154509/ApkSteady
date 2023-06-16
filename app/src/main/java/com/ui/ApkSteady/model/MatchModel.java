@@ -11,8 +11,8 @@ import io.reactivex.rxjava3.core.Observable;
 
 public class MatchModel implements MatchContract.Model {
     @Override
-    public Observable<BaseHttpResult<List<MatchConditionBean>>> getMatchList() {
-        return RetrofitUtils.getHttpService().getMatchList();
+    public Observable<BaseHttpResult<List<MatchConditionBean>>> getMatchList(int type) {
+        return RetrofitUtils.getHttpService().getMatchList(type);
     }
 
     @Override

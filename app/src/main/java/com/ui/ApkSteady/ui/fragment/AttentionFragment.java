@@ -24,6 +24,7 @@ import com.ui.ApkSteady.ui.DetailActivity;
 import com.ui.ApkSteady.ui.adapter.MatchConditionAdapter;
 import com.ui.ApkSteady.ui.data.MatchConditionBean;
 import com.ui.ApkSteady.ui.data.MatchItemBean;
+import com.ui.ApkSteady.ui.utils.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,6 +62,22 @@ public class AttentionFragment extends BaseFragment<MatchPresenter> implements M
         for (int i = 0; i < tabTitleList.length; i++) {
             tabMatchTitle.addTab(tabMatchTitle.newTab().setText(tabTitleList[i]));
         }
+        tabMatchTitle.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                initData();
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
         //初始化recycleView
         rvMatchList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         macthAdapter = new MatchConditionAdapter(new ArrayList());
@@ -83,7 +100,8 @@ public class AttentionFragment extends BaseFragment<MatchPresenter> implements M
 
     @Override
     protected void initData() {
-        mPresenter.getMatchList();
+        ToastUtils.show("获取数据");
+//        mPresenter.getMatchList();
     }
 
     @Override
@@ -145,6 +163,16 @@ public class AttentionFragment extends BaseFragment<MatchPresenter> implements M
 
     @Override
     public void showError(String msg) {
+
+    }
+
+    @Override
+    public void onGetMatchLsitSuccess(List<MatchConditionBean> matchList) {
+
+    }
+
+    @Override
+    public void onGetMatchLsitFail(String msg) {
 
     }
 }

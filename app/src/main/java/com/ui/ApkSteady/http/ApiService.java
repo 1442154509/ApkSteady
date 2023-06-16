@@ -15,7 +15,7 @@ import retrofit2.http.Query;
 
 public interface ApiService {
     @GET("/Api/CompetitionList")
-    Observable<BaseHttpResult<List<MatchConditionBean>>> getMatchList();
+    Observable<BaseHttpResult<List<MatchConditionBean>>>getMatchList(@Query("sportsId") int type);
 
     @GET("Index")
     Observable<BaseHttpResult<List<IndexRes>>> getIndex(@Query("sportsId") String sportsId);

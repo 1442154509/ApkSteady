@@ -55,6 +55,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends RxFragment i
         if(parent!=null){
             parent.removeView(mRootView);
         }
+        initView();
         return mRootView;
     }
 
@@ -66,7 +67,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends RxFragment i
         if (mPresenter != null) {
             mPresenter.attachView(this);
         }
-        initView();
+
         initListener();
         initData();
     }
