@@ -44,18 +44,30 @@ public abstract class BaseFragment<T extends BasePresenter> extends RxFragment i
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if(mRootView==null){
-            mRootView=inflater.inflate(getLayoutId(),null);
+        mPresenter = createPresenter();
+        if (mPresenter != null) {
+            mPresenter.attachView(this);
+        }
+        if (null != mRootView) {
+            ViewGroup parent = (ViewGroup) mRootView.getParent();
+            if (null != parent) {
+                parent.removeView(mRootView);
+            }
+        } else {
+            mRootView = inflater.inflate(getLayoutId(), null);
+            mRootView = inflater.inflate(getLayoutId(), null);
             unBinder = ButterKnife.bind(this, mRootView);
             if (useEventBus()) {
                 EventBus.getDefault().register(this);//注册eventBus
             }
+            /**
+             * 控件的初始化
+             */
+            initView();
+            initListener();
+            initData();
         }
-        ViewGroup parent= (ViewGroup) mRootView.getParent();
-        if(parent!=null){
-            parent.removeView(mRootView);
-        }
-        initView();
+
         return mRootView;
     }
 
@@ -63,13 +75,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends RxFragment i
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mPresenter =createPresenter();
-        if (mPresenter != null) {
-            mPresenter.attachView(this);
-        }
 
-        initListener();
-        initData();
     }
 
 
@@ -149,13 +155,13 @@ public abstract class BaseFragment<T extends BasePresenter> extends RxFragment i
     }
 
 
-
     /**
      * 返回一个用于显示界面的布局id
      */
     protected abstract @LayoutRes int getLayoutId();
 
     protected abstract T createPresenter();
+
     /**
      * 初始化View的代码写在这个方法中
      */
@@ -172,6 +178,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends RxFragment i
     protected abstract void initData();
 
     protected abstract boolean useEventBus();
+
     /**
      * 通过Class跳转界面
      **/
