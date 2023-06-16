@@ -34,7 +34,6 @@ public abstract class BaseCommonActivity extends BaseActivity {
                 ImmersionBar.with(this).init();
             }
         }
-        initData();
     }
 
     @Override

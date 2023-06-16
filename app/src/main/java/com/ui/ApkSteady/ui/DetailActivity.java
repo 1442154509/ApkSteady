@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -40,6 +41,7 @@ import butterknife.OnClick;
 public class DetailActivity extends BaseCommonActivity {
     @BindView(R.id.vs_nodiscuss)
     ViewStub vsNodiscuss;
+    @Nullable
     @BindView(R.id.vs_matchdata)
     ViewStub vsMatchdata;
     @BindView(R.id.tv_detail_match_leaguename)
@@ -161,7 +163,7 @@ public class DetailActivity extends BaseCommonActivity {
             case 1:
                 break;
             case 2:
-                vsMatchdata = (ViewStub) findViewById(R.id.vs_matchdata);
+//                vsMatchdata = (ViewStub) findViewById(R.id.vs_matchdata);
                 vsMatchdata.inflate();
 
                 recyclerView = (RecyclerView) findViewById(R.id.detail_match_item);
