@@ -1,5 +1,6 @@
 package com.ui.ApkSteady.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -81,9 +82,25 @@ public class DetailActivity extends BaseCommonActivity {
     private IndexRes.DataDTO data;
     private RecyclerView recyclerView;
 
+
     @Override
-    protected int setLayout() {
+    protected int getLayoutId() {
         return R.layout.activity_matchdetail;
+    }
+
+    @Override
+    protected void getIntent(Intent intent) {
+
+    }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initListener() {
+
     }
 
     @Override

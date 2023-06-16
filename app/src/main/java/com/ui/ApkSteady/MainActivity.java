@@ -1,5 +1,6 @@
 package com.ui.ApkSteady;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -128,9 +129,25 @@ public class MainActivity extends BaseCommonActivity {
     }
 
     @Override
-    protected int setLayout() {
+    protected int getLayoutId() {
         return R.layout.activity_main;
     }
+
+    @Override
+    protected void getIntent(Intent intent) {
+
+    }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initListener() {
+
+    }
+
 
     @Override
     protected void initData() {
