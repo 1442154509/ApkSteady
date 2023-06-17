@@ -3,6 +3,8 @@ package com.ui.ApkSteady.ui.adapter;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.core.content.ContextCompat;
+
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
@@ -20,6 +22,7 @@ public class DetailMultiAdapter extends BaseMultiItemQuickAdapter<DetailHistoryE
         addItemType(DetailHistoryEntity.TYPE_RANK, R.layout.list_item_title_rank_detail);
         addItemType(DetailHistoryEntity.TYPE_GOALDISTRIBUTIONS, R.layout.list_item_processbar_detail);
         addItemType(DetailHistoryEntity.TYPE_HISTORYBATTLES, R.layout.item_history_detail);
+        addItemType(DetailHistoryEntity.TYPE_RECENT, R.layout.list_item_recent_detail);
     }
 
     @Override
@@ -31,7 +34,7 @@ public class DetailMultiAdapter extends BaseMultiItemQuickAdapter<DetailHistoryE
                 helper.setText(R.id.textview_detail_item_title_rank, HistoryEntity.getHistoryBattles().getHomeTeamName())
                         .setText(R.id.textview_detail_title_score_match, rankDTO.getPlayed())
                         .setText(R.id.textview_detail_title_score_score, rankDTO.getWon() + "/" + rankDTO.getDrawn() + "/" + rankDTO.getLost())
-                        .setText(R.id.textview_detail_title_score_pure, rankDTO.getGoals() + "/" + rankDTO.getAgainst())
+                        .setText(R.id.textview_detail_title_score_draw, rankDTO.getGoals() + "/" + rankDTO.getAgainst())
                         .setText(R.id.textview_detail_title_score_rank, rankDTO.getPosition())
                 ;
 
@@ -54,9 +57,9 @@ public class DetailMultiAdapter extends BaseMultiItemQuickAdapter<DetailHistoryE
                     if (helper.getLayoutPosition() == 1) {
                         helper.getView(R.id.ll_include2).setVisibility(View.VISIBLE);
                         helper.setText(R.id.textview_detail_title_score_match, "近" + ConstantsUtils.his_battler_size + "场");
-                        helper.setText(R.id.textview_detail_title_score_victort, ConstantsUtils.his_battler_won + "胜");
-                        helper.setText(R.id.textview_detail_title_score_pure, ConstantsUtils.his_battler_drawn + "平");
-                        helper.setText(R.id.textview_detail_title_score_rank2, ConstantsUtils.his_battler_lost + "负");
+                        helper.setText(R.id.textview_detail_title_score_win, ConstantsUtils.his_battler_won + "胜");
+                        helper.setText(R.id.textview_detail_title_score_draw, ConstantsUtils.his_battler_drawn + "平");
+                        helper.setText(R.id.textview_detail_title_score_lost, ConstantsUtils.his_battler_lost + "负");
                         helper.setText(R.id.textview_detail_item_title_team_a, HistoryEntity.getHistoryBattles().getHomeTeamName());
                     }
                     helper.setText(R.id.textView_detail_historybat_team_a, historyBattlesDTO.getHomeTeamName());
@@ -78,6 +81,42 @@ public class DetailMultiAdapter extends BaseMultiItemQuickAdapter<DetailHistoryE
 
                     Glide.with(getContext()).load(historyBattlesDTO.getHomeTeamLogo()).into((ImageView) helper.getView(R.id.imageview_detail_history_team_a_logo));
                     Glide.with(getContext()).load(historyBattlesDTO.getAwayTeamLogo()).into((ImageView) helper.getView(R.id.imageview_detail_history_team_b_logo));
+                }
+            case DetailHistoryEntity.TYPE_RECENT:
+                DetailHistoryEntity.RecentBattles recentBattles = HistoryEntity.getRecentBattles();
+                if (helper.getLayoutPosition() == 0) {
+                    helper.setText(R.id.textview_detail_item_title, "近期战绩");
+                    helper.setVisible(R.id.textview_detail_title_5match, true);
+                    helper.getView(R.id.ll_include2).setVisibility(View.GONE);
+                    helper.getView(R.id.linearlayout_detail_item_recent).setVisibility(View.GONE);
+                } else {
+                    helper.setVisible(R.id.ll_include, false);
+                    helper.setText(R.id.textview_detail_item_title_team_a, recentBattles.getTeamname());
+                    Glide.with(getContext()).load(recentBattles.getTeamlogo()).into((ImageView) helper.getView(R.id.imageview_detail_recent_teamlogo));
+
+                    helper.setText(R.id.textview_detail_title_score_match, "近" + ConstantsUtils.his_recent_home_size + "场");
+                    helper.setText(R.id.textview_detail_title_score_win, recentBattles.getWin() + "胜");
+                    helper.setText(R.id.textview_detail_title_score_draw, recentBattles.getDrawn() + "平");
+                    helper.setText(R.id.textview_detail_title_score_lost, recentBattles.getLost() + "负");
+                    helper.setText(R.id.textView_recent_win_ratenum1, DateUtils.getPercent2(recentBattles.getWin(), ConstantsUtils.his_recent_home_size));
+                    helper.setText(R.id.textView_recent_win_ratenum2, DateUtils.getPercent2(recentBattles.getLost(), ConstantsUtils.his_recent_home_size));
+                    helper.setText(R.id.textView_recent_win_ratenum3, DateUtils.getPercent2(recentBattles.getDrawn(), ConstantsUtils.his_recent_home_size));
+                    int[] stateid = {R.id.textView_recent_match_state1, R.id.textView_recent_match_state2, R.id.textView_recent_match_state3, R.id.textView_recent_match_state4, R.id.textView_recent_match_state5};
+                    for (int i = 1; i < recentBattles.getMatchwinstate().size(); i++) {
+                        if (recentBattles.getMatchwinstate().get(i) == 1) {
+                            helper.setText(stateid[i], "胜");
+                            helper.setBackgroundResource(stateid[i], R.drawable.detail_item_recent_win_bg);
+                            helper.setTextColor(stateid[i], ContextCompat.getColor(getContext(), R.color.c_be3f30));
+                        } else if (recentBattles.getMatchwinstate().get(i) == 2) {
+                            helper.setText(stateid[i], "平");
+                            helper.setBackgroundResource(stateid[i], R.drawable.detail_item_recent_tie_bg);
+                            helper.setTextColor(stateid[i], ContextCompat.getColor(getContext(), R.color.c_969696));
+                        } else if (recentBattles.getMatchwinstate().get(i) == 3) {
+                            helper.setText(stateid[i], "负");
+                            helper.setBackgroundResource(stateid[i], R.drawable.detail_item_recent_lose_bg);
+                            helper.setTextColor(stateid[i], ContextCompat.getColor(getContext(), R.color.c_005ce0));
+                        }
+                    }
                 }
 
 

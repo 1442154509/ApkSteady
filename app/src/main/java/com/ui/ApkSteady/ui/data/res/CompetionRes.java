@@ -1,7 +1,7 @@
 package com.ui.ApkSteady.ui.data.res;
 
 import java.io.Serializable;
-
+/*比赛详情查询，详情页头部结果轮询*/
 public class CompetionRes implements Serializable {
 
     private int sportsId;

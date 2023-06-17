@@ -2,6 +2,10 @@ package com.ui.ApkSteady.ui.data;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 
+import java.io.Serializable;
+import java.util.List;
+
+/*历史数据适配器*/
 public class DetailHistoryEntity implements MultiItemEntity {
     /*球队排名*/
     public static final int TYPE_RANK = 1;
@@ -30,7 +34,16 @@ public class DetailHistoryEntity implements MultiItemEntity {
     private GoalDistributionsDTO goalDistributions;
     /*历史数据，来源篮球*/
     private HistoryBattlesDTO historyBattles;
+    /*历史数据，来源篮球*/
+    private RecentBattles recentBattles;
 
+    public RecentBattles getRecentBattles() {
+        return recentBattles;
+    }
+
+    public void setRecentBattles(RecentBattles recentBattles) {
+        this.recentBattles = recentBattles;
+    }
 
     public GoalDistributionsDTO getGoalDistributions() {
         return goalDistributions;
@@ -55,6 +68,63 @@ public class DetailHistoryEntity implements MultiItemEntity {
 
     public void setRank(RankDTO rank) {
         this.rank = rank;
+    }
+
+    public static class RecentBattles implements Serializable {
+        private String teamname;
+        private String teamlogo;
+        private int win;
+        private int drawn;
+        private int lost;
+        private List<Integer> matchwinstate;
+
+        public String getTeamname() {
+            return teamname;
+        }
+
+        public void setTeamname(String teamname) {
+            this.teamname = teamname;
+        }
+
+        public String getTeamlogo() {
+            return teamlogo;
+        }
+
+        public void setTeamlogo(String teamlogo) {
+            this.teamlogo = teamlogo;
+        }
+
+        public int getWin() {
+            return win;
+        }
+
+        public void setWin(int win) {
+            this.win = win;
+        }
+
+        public int getDrawn() {
+            return drawn;
+        }
+
+        public void setDrawn(int drawn) {
+            this.drawn = drawn;
+        }
+
+        public int getLost() {
+            return lost;
+        }
+
+        public void setLost(int lost) {
+            this.lost = lost;
+        }
+
+        public List<Integer> getMatchwinstate() {
+            return matchwinstate;
+        }
+
+        public void setMatchwinstate(List<Integer> matchwinstate) {
+            this.matchwinstate = matchwinstate;
+        }
     }
 
     public static class GoalDistributionsDTO {

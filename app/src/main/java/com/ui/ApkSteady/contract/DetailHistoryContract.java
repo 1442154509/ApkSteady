@@ -20,7 +20,7 @@ public interface DetailHistoryContract {
         Observable<BaseHttpResult<FootBallDetailRes>> getFootBallHistoryDetail(String matchId, String sportsId);
 
         Observable<BaseHttpResult<BasketBallDetailRes>> getBasketBallHistoryDetail(String matchId, String sportsId);
-        Observable<BaseHttpResult<List<CompetionRes>>> getCompetition(RequestBody body);
+        Observable<BaseHttpResult<List<CompetionRes>>> getCompetition(CompetitionReq body);
     }
 
     interface DetailHistoryView extends IView {

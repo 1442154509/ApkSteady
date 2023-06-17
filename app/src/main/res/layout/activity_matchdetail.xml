@@ -88,7 +88,7 @@
         app:layout_constraintVertical_bias="0.806" />
 
     <TextView
-        android:id="@+id/tv_detail_match_leaguename"
+        android:id="@+id/tv_detail_match_competitionname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -102,28 +102,28 @@
         app:layout_constraintVertical_bias="0.827" />
 
     <ImageView
-        android:id="@+id/ivdetail_match_leaguelogo"
+        android:id="@+id/ivdetail_match_competitionlogo"
         android:layout_width="22dp"
         android:layout_height="22dp"
-        android:layout_alignTop="@id/tv_detail_match_leaguename"
-        android:layout_alignBottom="@id/tv_detail_match_leaguename"
-        android:layout_toLeftOf="@id/tv_detail_match_leaguename"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_detail_match_leaguename"
-        app:layout_constraintEnd_toStartOf="@+id/tv_detail_match_leaguename"
+        android:layout_alignTop="@id/tv_detail_match_competitionname"
+        android:layout_alignBottom="@id/tv_detail_match_competitionname"
+        android:layout_toLeftOf="@id/tv_detail_match_competitionname"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_detail_match_competitionname"
+        app:layout_constraintEnd_toStartOf="@+id/tv_detail_match_competitionname"
         app:layout_constraintHorizontal_bias="0.908"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_detail_match_leaguename"
+        app:layout_constraintTop_toTopOf="@+id/tv_detail_match_competitionname"
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/iv_detail_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_detail_match_leaguename"
-        app:layout_constraintEnd_toStartOf="@+id/ivdetail_match_leaguelogo"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_detail_match_competitionname"
+        app:layout_constraintEnd_toStartOf="@+id/ivdetail_match_competitionlogo"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_detail_match_leaguename"
+        app:layout_constraintTop_toTopOf="@+id/tv_detail_match_competitionname"
         app:layout_constraintVertical_bias="0.857"
         app:srcCompat="@mipmap/detail_back" />
 
@@ -139,11 +139,11 @@
         android:id="@+id/iv_detail_mark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_detail_match_leaguename"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_detail_match_competitionname"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toEndOf="@+id/tv_detail_match_leaguename"
-        app:layout_constraintTop_toTopOf="@+id/tv_detail_match_leaguename"
+        app:layout_constraintStart_toEndOf="@+id/tv_detail_match_competitionname"
+        app:layout_constraintTop_toTopOf="@+id/tv_detail_match_competitionname"
         app:layout_constraintVertical_bias="0.857"
         app:srcCompat="@mipmap/detail_start_mark" />
 

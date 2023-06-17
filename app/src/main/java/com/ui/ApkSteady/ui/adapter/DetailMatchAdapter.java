@@ -306,10 +306,10 @@ public class DetailMatchAdapter extends RecyclerView.Adapter {
 //
             tvtitleteama = (TextView) itemView.findViewById(R.id.textview_detail_item_title_team_a);
             tvmatch = (TextView) itemView.findViewById(R.id.textview_detail_title_score_match);
-            tvvictort = (TextView) itemView.findViewById(R.id.textview_detail_title_score_victort);
+            tvvictort = (TextView) itemView.findViewById(R.id.textview_detail_title_score_win);
             tvscore = (TextView) itemView.findViewById(R.id.textview_detail_title_score_score);
-            tvpure = (TextView) itemView.findViewById(R.id.textview_detail_title_score_pure);
-            tvrank = (TextView) itemView.findViewById(R.id.textview_detail_title_score_rank2);
+            tvpure = (TextView) itemView.findViewById(R.id.textview_detail_title_score_draw);
+            tvrank = (TextView) itemView.findViewById(R.id.textview_detail_title_score_lost);
 
             llyt5match = (LinearLayout) itemView.findViewById(R.id.detail_list_item_title5match);
 
@@ -372,10 +372,10 @@ public class DetailMatchAdapter extends RecyclerView.Adapter {
 //
             tvtitleteama = (TextView) itemView.findViewById(R.id.textview_detail_item_title_team_a);
             tvmatch = (TextView) itemView.findViewById(R.id.textview_detail_title_score_match);
-            tvvictort = (TextView) itemView.findViewById(R.id.textview_detail_title_score_victort);
+            tvvictort = (TextView) itemView.findViewById(R.id.textview_detail_title_score_win);
             tvscore = (TextView) itemView.findViewById(R.id.textview_detail_title_score_score);
-            tvpure = (TextView) itemView.findViewById(R.id.textview_detail_title_score_pure);
-            tvrank = (TextView) itemView.findViewById(R.id.textview_detail_title_score_rank2);
+            tvpure = (TextView) itemView.findViewById(R.id.textview_detail_title_score_draw);
+            tvrank = (TextView) itemView.findViewById(R.id.textview_detail_title_score_lost);
 
             llyt5match = (LinearLayout) itemView.findViewById(R.id.detail_list_item_title5match);
 

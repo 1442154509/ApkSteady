@@ -2,7 +2,7 @@ package com.ui.ApkSteady.ui.data.res;
 
 import java.io.Serializable;
 import java.util.List;
-
+/*首页比赛数据*/
 public class IndexRes implements Serializable {
     private String portraitUrl;
     private int matchId;

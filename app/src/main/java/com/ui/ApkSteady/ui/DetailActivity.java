@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.google.gson.Gson;
 import com.hazz.baselibs.base.BaseMvpActivity;
 import com.ui.ApkSteady.R;
 import com.ui.ApkSteady.contract.DetailHistoryContract;
@@ -33,9 +32,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import okhttp3.FormBody;
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
 
 public class DetailActivity extends BaseMvpActivity<DetailHisttoryPresenter> implements DetailHistoryContract.DetailHistoryView {
     @BindView(R.id.vs_nodiscuss)
@@ -43,8 +39,8 @@ public class DetailActivity extends BaseMvpActivity<DetailHisttoryPresenter> imp
     @Nullable
     @BindView(R.id.vs_matchdata)
     ViewStub vsMatchdata;
-    @BindView(R.id.tv_detail_match_leaguename)
-    TextView tvLeagueName;
+    @BindView(R.id.tv_detail_match_competitionname)
+    TextView tvCompetitionName;
     @BindView(R.id.tv_team_name_a)
     TextView tvTeamAName;
     @BindView(R.id.tv_team_name_b)
@@ -67,8 +63,8 @@ public class DetailActivity extends BaseMvpActivity<DetailHisttoryPresenter> imp
     TextView tvScoreB;
     @BindView(R.id.tv_corner)
     TextView tvCorner;
-    @BindView(R.id.ivdetail_match_leaguelogo)
-    ImageView ivLeagueLogo;
+    @BindView(R.id.ivdetail_match_competitionlogo)
+    ImageView ivCompetitionLogo;
     @BindView(R.id.iv_team_logo_a)
     ImageView ivTeamALogo;
     @BindView(R.id.iv_team_logo_b)
@@ -118,14 +114,14 @@ public class DetailActivity extends BaseMvpActivity<DetailHisttoryPresenter> imp
         if (data == null) {
             data = new IndexRes();
         }
-        tvLeagueName.setText(data.getMatchVediosInfo().getLeagueName());
+        tvCompetitionName.setText(data.getCompetitionName());
         tvTeamAName.setText(data.getMatchVediosInfo().getHome());
         tvTeamBName.setText(data.getMatchVediosInfo().getAway());
         tvRedA.setText(String.valueOf(data.getMatchVediosInfo().getARed()));
         tvRedB.setText(String.valueOf(data.getMatchVediosInfo().getBRed()));
         tvYellowA.setText(String.valueOf(data.getMatchVediosInfo().getAYellow()));
         tvYellowB.setText(String.valueOf(data.getMatchVediosInfo().getBYellow()));
-        Glide.with(this).load(data.getMatchVediosInfo().getLeagueLogo()).into(ivLeagueLogo);
+        Glide.with(this).load(data.getCompetitionLogo()).into(ivCompetitionLogo);
         Glide.with(this).load(data.getMatchVediosInfo().getALogo()).into(ivTeamALogo);
         Glide.with(this).load(data.getMatchVediosInfo().getBLogo()).into(ivTeamBLogo);
         //赛事状态 ， 0.为开赛，1.开赛中，3.完赛
@@ -196,10 +192,10 @@ public class DetailActivity extends BaseMvpActivity<DetailHisttoryPresenter> imp
             }
 
             CompetitionReq competitionReq = new CompetitionReq();
-            competitionReq.setMatchId(Arrays.asList(String.valueOf(data.getSportsId())));
-            competitionReq.setSportsId(data.getMatchId());
-            RequestBody body = FormBody.create(MediaType.parse("application/json; charset=utf-8"), new Gson().toJson(competitionReq));
-            mPresenter.getCompetition(body);
+            competitionReq.setMatchId(Arrays.asList(String.valueOf(data.getMatchId())));
+            competitionReq.setSportsId(data.getSportsId());
+//            RequestBody body = FormBody.create(MediaType.parse("application/json; charset=utf-8"), new Gson().toJson(competitionReq));
+            mPresenter.getCompetition(competitionReq);
 //            detailMultiAdapter.notifyDataSetChanged();
         } catch (Exception e) {
             e.printStackTrace();

@@ -2,7 +2,7 @@ package com.ui.ApkSteady.ui.data.res;
 
 import java.io.Serializable;
 import java.util.List;
-
+/*足球详情*/
 public class FootBallDetailRes implements Serializable {
 
     private String gameInfoId;

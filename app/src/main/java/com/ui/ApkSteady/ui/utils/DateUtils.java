@@ -1,5 +1,6 @@
 package com.ui.ApkSteady.ui.utils;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -50,6 +51,7 @@ public class DateUtils {
         String date = sdf.format(timeStamp * 1000);
         return date;
     }
+
     /**
      * 时间戳转化为时间格式
      *
@@ -128,5 +130,13 @@ public class DateUtils {
         long curTime = System.currentTimeMillis() / (long) 1000;
         long time = curTime - timeStamp;
         return time / 60 + "";
+    }
+
+    public static String getPercent2(int x, int y) {
+        double d1 = x * 1.0;
+        double d2 = y * 1.0;
+        // 设置保留几位小数， “.”后面几个零就保留几位小数，这里设置保留四位小数
+        DecimalFormat decimalFormat = new DecimalFormat("##%");
+        return decimalFormat.format(d1 / d2);
     }
 }

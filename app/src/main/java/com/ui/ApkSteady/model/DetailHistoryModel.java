@@ -3,6 +3,7 @@ package com.ui.ApkSteady.model;
 import com.hazz.baselibs.net.BaseHttpResult;
 import com.ui.ApkSteady.contract.DetailHistoryContract;
 import com.ui.ApkSteady.http.RetrofitUtils;
+import com.ui.ApkSteady.ui.data.req.CompetitionReq;
 import com.ui.ApkSteady.ui.data.res.BasketBallDetailRes;
 import com.ui.ApkSteady.ui.data.res.CompetionRes;
 import com.ui.ApkSteady.ui.data.res.FootBallDetailRes;
@@ -10,6 +11,7 @@ import com.ui.ApkSteady.ui.data.res.FootBallDetailRes;
 import java.util.List;
 
 import io.reactivex.rxjava3.core.Observable;
+import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
 
@@ -30,7 +32,13 @@ public class DetailHistoryModel implements DetailHistoryContract.DetailHistoryMo
     }
 
     @Override
-    public Observable<BaseHttpResult<List<CompetionRes>>> getCompetition(RequestBody body) {
-        return RetrofitUtils.getHttpService().getCompetition(body);
+    public Observable<BaseHttpResult<List<CompetionRes>>> getCompetition(CompetitionReq body) {
+        MediaType mediaType = MediaType.parse("application/json");
+//        RequestBody body = RequestBody.create(mediaType, "{\r\n  \"matchId\": [\r\n    \"3727557\"],\r\n  \"sportsId\": 1\r\n}");
+
+//        return RetrofitUtils.getHttpService().getCompetition(body);
+//        return RetrofitUtils.getHttpService().getCompetition(body.getMatchId(),body.getSportsId());
+//        return RetrofitUtils.getHttpService().getCompetition(body);
+        return null;
     }
 }

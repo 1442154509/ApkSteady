@@ -29,6 +29,8 @@ public interface ApiService {
     @GET("Detail/Basketball?")
     Observable<BaseHttpResult<BasketBallDetailRes>> getBasketBallHistoryDetail(@Query("matchId") String matchId, @Query("sportsId") String sportsId);
 
-    @POST("Competition")
-    Observable<BaseHttpResult<List<CompetionRes>>> getCompetition(@Body RequestBody body);
+//    @GET("Competition")
+//    Observable<BaseHttpResult<List<CompetionRes>>> getCompetition(@Query("matchId") List<String> body, @Query("sportsId") int sportsId);
+//    @GET("Competition")
+//    Observable<BaseHttpResult<List<CompetionRes>>> getCompetition(@Body RequestBody body);
 }

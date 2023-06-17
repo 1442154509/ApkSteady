@@ -14,6 +14,12 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
+        <ImageView
+            android:id="@+id/imageview_detail_recent_teamlogo"
+            android:layout_width="@dimen/dimen_20"
+            android:layout_height="@dimen/dimen_20"
+            android:layout_marginRight="@dimen/dimen_5" />
+
         <TextView
             android:id="@+id/textview_detail_item_title_team_a"
             android:layout_width="0dp"
@@ -39,7 +45,7 @@
                 android:text="近0场:" />
 
             <TextView
-                android:id="@+id/textview_detail_title_score_victort"
+                android:id="@+id/textview_detail_title_score_win"
                 style="@style/DetailTeamTitle"
                 android:text="0胜" />
 
@@ -49,7 +55,7 @@
                 android:text="/" />
 
             <TextView
-                android:id="@+id/textview_detail_title_score_pure"
+                android:id="@+id/textview_detail_title_score_draw"
                 style="@style/DetailTeamTitle"
                 android:text="0平" />
 
@@ -59,7 +65,7 @@
                 android:text="/" />
 
             <TextView
-                android:id="@+id/textview_detail_title_score_rank2"
+                android:id="@+id/textview_detail_title_score_lost"
                 style="@style/DetailTeamTitle"
                 android:text="0负" />
         </LinearLayout>

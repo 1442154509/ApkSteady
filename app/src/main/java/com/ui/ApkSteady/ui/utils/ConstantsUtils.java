@@ -15,11 +15,30 @@ public class ConstantsUtils {
     public static int his_battler_lost = 0;
     /*历史交锋列表长度*/
     public static int his_battler_size = 0;
+    /*近期战绩列表长度*/
+    public static int his_recent_home_size = 0;
+    public static int his_recent_home_won = 0;
+    public static int his_recent_home_drawn = 0;
+    public static int his_recent_home_lost = 0;
+    public static int his_recent_away_size = 0;
+    public static int his_recent_away_won = 0;
+    public static int his_recent_away_drawn = 0;
+    public static int his_recent_away_lost = 0;
 
     public static void cleanHisBattlerData() {
-        his_battler_won = 0;
-        his_battler_drawn = 0;
-        his_battler_lost = 0;
-        his_battler_size = 0;
+        his_recent_home_size = 0;
+        his_recent_home_won = 0;
+        his_recent_home_drawn = 0;
+        his_recent_home_lost = 0;
+        his_recent_away_size = 0;
+        his_recent_away_won = 0;
+        his_recent_away_drawn = 0;
+        his_recent_away_lost = 0;
+
+    }
+
+    public static void cleanRecentData() {
+        his_recent_home_size = 0;
+        his_recent_away_size = 0;
     }
 }
