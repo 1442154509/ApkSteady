@@ -3,7 +3,7 @@ package com.ui.ApkSteady.ui;
 import android.os.Bundle;
 
 import com.android.volley.Request;
-import com.hazz.baselibs.base.BaseActivity;
+import baselibs.base.BaseActivity;
 import com.ui.ApkSteady.ui.utils.LogUtils;
 import com.ui.ApkSteady.ui.utils.VolleyResQue;
 

@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
-import com.hazz.baselibs.base.BaseMvpActivity;
+import baselibs.base.BaseMvpActivity;
 import com.ui.ApkSteady.R;
 import com.ui.ApkSteady.contract.DetailHistoryContract;
 import com.ui.ApkSteady.presenter.DetailHisttoryPresenter;

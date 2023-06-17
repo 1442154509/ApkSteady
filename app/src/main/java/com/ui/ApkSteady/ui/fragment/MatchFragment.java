@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.google.android.material.tabs.TabLayout;
-import com.hazz.baselibs.base.BaseFragment;
+import baselibs.base.BaseFragment;
 import com.ui.ApkSteady.R;
 import com.ui.ApkSteady.contract.MatchContract;
 import com.ui.ApkSteady.presenter.MatchPresenter;

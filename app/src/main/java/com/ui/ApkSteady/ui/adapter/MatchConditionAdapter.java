@@ -34,10 +34,10 @@ public class MatchConditionAdapter extends BaseMultiItemQuickAdapter<MatchItemBe
         switch (matchItemBean.getItemType()) {
             case MatchItemBean.ItemType.TYPE_MATCH_FOOTBALL:
                 MatchConditionBean footMatch = ((MatchConditionBean) matchItemBean);
-                //开赛时间
-                baseViewHolder.setText(R.id.tv_match_start_time, footMatch.getMatchTime());
-                //赛事状态
-                TextView matchStatus = baseViewHolder.getView(R.id.tv_match_top_status);
+//                //开赛时间
+//                baseViewHolder.setText(R.id.tv_match_start_time, footMatch.getMatchTime());
+//                //赛事状态
+//                TextView matchStatus = baseViewHolder.getView(R.id.tv_match_top_status);
 //                matchStatus
                 break;
             case MatchItemBean.ItemType.TYPE_MATCH_BASKETBALL:
