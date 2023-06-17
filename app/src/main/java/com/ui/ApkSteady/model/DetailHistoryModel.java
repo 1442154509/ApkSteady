@@ -1,6 +1,6 @@
 package com.ui.ApkSteady.model;
 
-import com.hazz.baselibs.net.BaseHttpResult;
+import baselibs.net.BaseHttpResult;
 import com.ui.ApkSteady.contract.DetailHistoryContract;
 import com.ui.ApkSteady.http.RetrofitUtils;
 import com.ui.ApkSteady.ui.data.req.CompetitionReq;

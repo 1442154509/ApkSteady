@@ -3,7 +3,7 @@ package com.ui.ApkSteady.ui;
 import android.app.Application;
 import android.content.Context;
 
-import com.hazz.baselibs.app.BaseApplication;
+import baselibs.app.BaseApplication;
 
 
 public class MyApplication extends BaseApplication {

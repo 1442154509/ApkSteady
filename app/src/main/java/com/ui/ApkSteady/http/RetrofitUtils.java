@@ -1,6 +1,6 @@
 package com.ui.ApkSteady.http;
 
-import com.hazz.baselibs.net.BaseRetrofit;
+import baselibs.net.BaseRetrofit;
 
 /**
  * @author xuhao

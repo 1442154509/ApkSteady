@@ -1,6 +1,6 @@
 package com.ui.ApkSteady.http;
 
-import com.hazz.baselibs.net.BaseHttpResult;
+import baselibs.net.BaseHttpResult;
 import com.ui.ApkSteady.ui.data.MatchConditionBean;
 import com.ui.ApkSteady.ui.data.res.BasketBallDetailRes;
 import com.ui.ApkSteady.ui.data.res.CompetionRes;

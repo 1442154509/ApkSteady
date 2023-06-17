@@ -1,8 +1,8 @@
 package com.ui.ApkSteady.contract;
 
-import com.hazz.baselibs.mvp.IModel;
-import com.hazz.baselibs.mvp.IView;
-import com.hazz.baselibs.net.BaseHttpResult;
+import baselibs.mvp.IModel;
+import baselibs.mvp.IView;
+import baselibs.net.BaseHttpResult;
 import com.ui.ApkSteady.ui.data.DetailHistoryEntity;
 import com.ui.ApkSteady.ui.data.req.CompetitionReq;
 import com.ui.ApkSteady.ui.data.res.BasketBallDetailRes;

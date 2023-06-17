@@ -1,9 +1,9 @@
 package com.ui.ApkSteady.presenter;
 
-import com.hazz.baselibs.mvp.BasePresenter;
-import com.hazz.baselibs.net.BaseHttpResult;
-import com.hazz.baselibs.net.BaseObserver2;
-import com.hazz.baselibs.rx.RxSchedulers;
+import baselibs.mvp.BasePresenter;
+import baselibs.net.BaseHttpResult;
+import baselibs.net.BaseObserver2;
+import baselibs.rx.RxSchedulers;
 import com.ui.ApkSteady.contract.HomeContract;
 import com.ui.ApkSteady.model.HomeModel;
 import com.ui.ApkSteady.ui.data.res.IndexRes;
