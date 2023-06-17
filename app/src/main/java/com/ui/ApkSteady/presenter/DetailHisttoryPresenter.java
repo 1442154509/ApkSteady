@@ -4,6 +4,7 @@ import baselibs.mvp.BasePresenter;
 import baselibs.net.BaseHttpResult;
 import baselibs.net.BaseObserver2;
 import baselibs.rx.RxSchedulers;
+
 import com.ui.ApkSteady.contract.DetailHistoryContract;
 import com.ui.ApkSteady.model.DetailHistoryModel;
 import com.ui.ApkSteady.ui.data.DetailHistoryEntity;
@@ -150,25 +151,30 @@ public class DetailHisttoryPresenter extends BasePresenter<DetailHistoryModel, D
                                 DetailHistoryEntity.RecentBattles recentBattles = new DetailHistoryEntity.RecentBattles();
                                 for (BasketBallDetailRes.HistoryMatchesDTO.HomeRecentBattlesDTO homeRecentBattlesDTO :
                                         result.getData().getHistoryMatches().getHomeRecentBattles()) {
+                                    /*主队主场作战*/
+                                    if (result.getData().getHomeTeamName().equals(homeRecentBattlesDTO.getHomeTeamName())) {
+                                        if (homeRecentBattlesDTO.getHomeScore() > homeRecentBattlesDTO.getAwayScore()) {
+                                            ConstantsUtils.his_recent_home_won++;
+                                            winstate.add(1);
+                                        }
+                                        if (homeRecentBattlesDTO.getHomeScore() == homeRecentBattlesDTO.getAwayScore()) {
+                                            ConstantsUtils.his_recent_home_drawn++;
+                                            winstate.add(2);
+                                        }
+                                        if (homeRecentBattlesDTO.getHomeScore() < homeRecentBattlesDTO.getAwayScore()) {
+                                            ConstantsUtils.his_recent_home_lost++;
+                                            winstate.add(3);
+                                        }
+                                    }else if(result.getData().getHomeTeamName().equals(homeRecentBattlesDTO.getHomeTeamName())){
 
-                                    if (homeRecentBattlesDTO.getHomeScore() > homeRecentBattlesDTO.getAwayScore()) {
-                                        ConstantsUtils.his_recent_home_won++;
-                                        winstate.add(1);
                                     }
-                                    if (homeRecentBattlesDTO.getHomeScore() == homeRecentBattlesDTO.getAwayScore()) {
-                                        ConstantsUtils.his_recent_home_drawn++;
-                                        winstate.add(2);
-                                    }
-                                    if (homeRecentBattlesDTO.getHomeScore() < homeRecentBattlesDTO.getAwayScore()) {
-                                        ConstantsUtils.his_recent_home_lost++;
-                                        winstate.add(3);
-                                    }
-                                    recentBattles.setTeamname(homeRecentBattlesDTO.getHomeTeamName());
-                                    recentBattles.setTeamlogo(homeRecentBattlesDTO.getHomeTeamLogo());
+
                                     if (winstate.size() == 5) {
                                         break;
                                     }
                                 }
+                                recentBattles.setTeamname(result.getData().getHomeTeamName());
+                                recentBattles.setTeamlogo(result.getData().getHomeTeamLogo());
                                 ConstantsUtils.his_recent_home_size = result.getData().getHistoryMatches().getHomeRecentBattles().size();
                                 recentBattles.setWin(ConstantsUtils.his_recent_home_won);
                                 recentBattles.setDrawn(ConstantsUtils.his_recent_home_drawn);
@@ -197,12 +203,13 @@ public class DetailHisttoryPresenter extends BasePresenter<DetailHistoryModel, D
                                         ConstantsUtils.his_recent_away_lost++;
                                         winstate.add(3);
                                     }
-                                    recentBattles.setTeamname(awayRecentBattlesDTO.getHomeTeamName());
-                                    recentBattles.setTeamlogo(awayRecentBattlesDTO.getHomeTeamLogo());
+
                                     if (winstate.size() == 5) {
                                         break;
                                     }
                                 }
+                                recentBattles.setTeamname(result.getData().getAwayTeamName());
+                                recentBattles.setTeamlogo(result.getData().getAwayTeamLogo());
                                 ConstantsUtils.his_recent_away_size = result.getData().getHistoryMatches().getAwayRecentBattles().size();
                                 recentBattles.setWin(ConstantsUtils.his_recent_away_won);
                                 recentBattles.setDrawn(ConstantsUtils.his_recent_away_drawn);
