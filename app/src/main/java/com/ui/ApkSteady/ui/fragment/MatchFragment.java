@@ -57,7 +57,6 @@ public class MatchFragment extends BaseFragment<MatchPresenter> implements Match
     protected void initView() {
         //初始化tab
         for (int i = 0; i < tabTitleList.length; i++) {
-            Log.e("-----","新增");
             tabMatchTitle.addTab(tabMatchTitle.newTab().setText(tabTitleList[i]));
         }
         tabMatchTitle.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

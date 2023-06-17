@@ -8,6 +8,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="进行中"
-        android:textColor="@color/c_2a2a2a"
-        android:layout_centerInParent="true"/>
+        android:textColor="@color/c_ca4a4a"
+        android:layout_centerInParent="true"
+        android:drawableStart="@mipmap/item_match_in_progress_icon"
+        android:background="@drawable/item_match_in_progress_bg"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="3dp"
+        android:layout_marginBottom="5dp"/>
 </RelativeLayout>
