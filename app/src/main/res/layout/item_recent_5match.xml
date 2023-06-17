@@ -36,12 +36,12 @@
             <TextView
                 android:id="@+id/textview_detail_title_score_match"
                 style="@style/DetailTeamTitle"
-                android:text="近5场:" />
+                android:text="近0场:" />
 
             <TextView
                 android:id="@+id/textview_detail_title_score_victort"
                 style="@style/DetailTeamTitle"
-                android:text="2胜" />
+                android:text="0胜" />
 
             <TextView
                 android:id="@+id/textview_detail_title_score_score"
@@ -51,7 +51,7 @@
             <TextView
                 android:id="@+id/textview_detail_title_score_pure"
                 style="@style/DetailTeamTitle"
-                android:text="1平" />
+                android:text="0平" />
 
             <TextView
                 android:id="@+id/textview_detail_title_score_rank"
@@ -61,7 +61,7 @@
             <TextView
                 android:id="@+id/textview_detail_title_score_rank2"
                 style="@style/DetailTeamTitle"
-                android:text="1负" />
+                android:text="0负" />
         </LinearLayout>
 
     </LinearLayout>

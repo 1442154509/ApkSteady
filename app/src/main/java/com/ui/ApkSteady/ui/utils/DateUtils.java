@@ -45,8 +45,8 @@ public class DateUtils {
      * @param timeStamp
      * @return
      */
-    public static String timeStampToStr(long timeStamp) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    public static String timeStampToYMDHM(long timeStamp) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         String date = sdf.format(timeStamp * 1000);
         return date;
     }
@@ -56,7 +56,7 @@ public class DateUtils {
      * @param timeStamp
      * @return
      */
-    public static String timeStampToSmdhm(long timeStamp) {
+    public static String timeStampToMDHM(long timeStamp) {
         SimpleDateFormat sdf = new SimpleDateFormat("MM-dd HH:mm");
         String date = sdf.format(timeStamp * 1000);
         return date;

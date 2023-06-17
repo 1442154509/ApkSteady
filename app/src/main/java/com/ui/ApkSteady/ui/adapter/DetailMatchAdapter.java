@@ -317,9 +317,9 @@ public class DetailMatchAdapter extends RecyclerView.Adapter {
             ctytdata = (ConstraintLayout) itemView.findViewById(R.id.constraintnlayout_detail_history_data);
 
             tvmsg = (TextView) itemView.findViewById(R.id.textView_detail_history_msg);
-            tvmidscore = (TextView) itemView.findViewById(R.id.textView_detail_history_team_score);
-            tvteama = (TextView) itemView.findViewById(R.id.textView_detail_history_team_a);
-            tvteamb = (TextView) itemView.findViewById(R.id.textView_detail_history_team_b);
+            tvmidscore = (TextView) itemView.findViewById(R.id.textView_detail_historybat_team_score);
+            tvteama = (TextView) itemView.findViewById(R.id.textView_detail_historybat_team_a);
+            tvteamb = (TextView) itemView.findViewById(R.id.textView_detail_historybat_team_b);
             tvwin = (TextView) itemView.findViewById(R.id.textView_detail_win);
         }
     }
@@ -383,9 +383,9 @@ public class DetailMatchAdapter extends RecyclerView.Adapter {
             ctytdata = (ConstraintLayout) itemView.findViewById(R.id.constraintnlayout_detail_history_data);
 
             tvmsg = (TextView) itemView.findViewById(R.id.textView_detail_history_msg);
-            tvmidscore = (TextView) itemView.findViewById(R.id.textView_detail_history_team_score);
-            tvteama = (TextView) itemView.findViewById(R.id.textView_detail_history_team_a);
-            tvteamb = (TextView) itemView.findViewById(R.id.textView_detail_history_team_b);
+            tvmidscore = (TextView) itemView.findViewById(R.id.textView_detail_historybat_team_score);
+            tvteama = (TextView) itemView.findViewById(R.id.textView_detail_historybat_team_a);
+            tvteamb = (TextView) itemView.findViewById(R.id.textView_detail_historybat_team_b);
             tvwin = (TextView) itemView.findViewById(R.id.textView_detail_win);
         }
     }
