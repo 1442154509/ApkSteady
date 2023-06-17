@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.hazz.baselibs.base.BaseMvpActivity;
 import com.ui.ApkSteady.R;
 import com.ui.ApkSteady.contract.DetailHistoryContract;
 import com.ui.ApkSteady.presenter.DetailHisttoryPresenter;
@@ -30,6 +29,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import baselibs.base.BaseMvpActivity;
 import butterknife.BindView;
 import butterknife.OnClick;
 
