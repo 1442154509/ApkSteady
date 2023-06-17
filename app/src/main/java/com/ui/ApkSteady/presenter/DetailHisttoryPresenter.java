@@ -5,16 +5,19 @@ import com.hazz.baselibs.net.BaseHttpResult;
 import com.hazz.baselibs.net.BaseObserver2;
 import com.hazz.baselibs.rx.RxSchedulers;
 import com.ui.ApkSteady.contract.DetailHistoryContract;
-import com.ui.ApkSteady.contract.HomeContract;
 import com.ui.ApkSteady.model.DetailHistoryModel;
-import com.ui.ApkSteady.model.HomeModel;
 import com.ui.ApkSteady.ui.data.DetailHistoryEntity;
 import com.ui.ApkSteady.ui.data.res.BasketBallDetailRes;
+import com.ui.ApkSteady.ui.data.res.CompetionRes;
 import com.ui.ApkSteady.ui.data.res.FootBallDetailRes;
-import com.ui.ApkSteady.ui.data.res.IndexRes;
+import com.ui.ApkSteady.ui.utils.ConstantsUtils;
+import com.ui.ApkSteady.ui.utils.LogUtils;
+import com.ui.ApkSteady.ui.utils.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.RequestBody;
 
 public class DetailHisttoryPresenter extends BasePresenter<DetailHistoryModel, DetailHistoryContract.DetailHistoryView> {
 
@@ -93,6 +96,7 @@ public class DetailHisttoryPresenter extends BasePresenter<DetailHistoryModel, D
 
                     @Override
                     public void onSuccess(BaseHttpResult<BasketBallDetailRes> result) {
+                        ConstantsUtils.cleanHisBattlerData();
                         List<DetailHistoryEntity> detailHistoryEntities = new ArrayList<>();
 //                        for (BasketBallDetailRes basketBallDetailRes : result.getData()) {
                         for (BasketBallDetailRes.HistoryMatchesDTO.HistoryBattlesDTO historyMatchesDTO :
@@ -116,9 +120,22 @@ public class DetailHisttoryPresenter extends BasePresenter<DetailHistoryModel, D
 
                             detailHistoryHistoryBattle.setHistoryBattles(historyBattlesDTO);
                             detailHistoryEntities.add(detailHistoryHistoryBattle);
+                            if (historyMatchesDTO.getHomeScore() > historyMatchesDTO.getAwayScore()) {
+                                ConstantsUtils.his_battler_won++;
+                            }
+                            if (historyMatchesDTO.getHomeScore() == historyMatchesDTO.getAwayScore()) {
+                                ConstantsUtils.his_battler_drawn++;
+                            }
+                            if (historyMatchesDTO.getHomeScore() < historyMatchesDTO.getAwayScore()) {
+                                ConstantsUtils.his_battler_lost++;
+                            }
                         }
 //                        }
-                        detailHistoryEntities.add(0,new DetailHistoryEntity(DetailHistoryEntity.TYPE_HISTORYBATTLES));
+                        if (detailHistoryEntities != null && detailHistoryEntities.size() > 0) {
+                            ConstantsUtils.his_battler_size = detailHistoryEntities.size();
+                            detailHistoryEntities.add(0, new DetailHistoryEntity(DetailHistoryEntity.TYPE_HISTORYBATTLES));
+                        }
+
                         getView().updataBasketBallUI(detailHistoryEntities);
                     }
 
@@ -127,6 +144,24 @@ public class DetailHisttoryPresenter extends BasePresenter<DetailHistoryModel, D
 
                     }
 
+                });
+    }
+
+    public void getCompetition(RequestBody body) {
+        getModel().getCompetition(body)
+                .compose(RxSchedulers.applySchedulers(getLifecycleProvider()))
+                .subscribe(new BaseObserver2<List<CompetionRes>>(getView()) {
+                    @Override
+                    public void onSuccess(BaseHttpResult<List<CompetionRes>> result) {
+                        ToastUtils.show(result.getData().get(0).getLeagueName()+"比赛数据---");
+                        LogUtils.e(result.getData().get(0).getLeagueName()+"比赛数据---");
+                    }
+
+                    @Override
+                    public void onFailure(String errMsg, boolean isNetError) {
+                        ToastUtils.show(errMsg+"错误数据---");
+                        LogUtils.e(errMsg+"错误数据---");
+                    }
                 });
     }
 }

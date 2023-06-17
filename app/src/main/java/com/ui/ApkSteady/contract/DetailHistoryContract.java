@@ -4,12 +4,15 @@ import com.hazz.baselibs.mvp.IModel;
 import com.hazz.baselibs.mvp.IView;
 import com.hazz.baselibs.net.BaseHttpResult;
 import com.ui.ApkSteady.ui.data.DetailHistoryEntity;
+import com.ui.ApkSteady.ui.data.req.CompetitionReq;
 import com.ui.ApkSteady.ui.data.res.BasketBallDetailRes;
+import com.ui.ApkSteady.ui.data.res.CompetionRes;
 import com.ui.ApkSteady.ui.data.res.FootBallDetailRes;
 
 import java.util.List;
 
 import io.reactivex.rxjava3.core.Observable;
+import okhttp3.RequestBody;
 
 
 public interface DetailHistoryContract {
@@ -17,6 +20,7 @@ public interface DetailHistoryContract {
         Observable<BaseHttpResult<FootBallDetailRes>> getFootBallHistoryDetail(String matchId, String sportsId);
 
         Observable<BaseHttpResult<BasketBallDetailRes>> getBasketBallHistoryDetail(String matchId, String sportsId);
+        Observable<BaseHttpResult<List<CompetionRes>>> getCompetition(RequestBody body);
     }
 
     interface DetailHistoryView extends IView {

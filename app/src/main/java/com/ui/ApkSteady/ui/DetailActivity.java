@@ -13,31 +13,29 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
 import com.hazz.baselibs.base.BaseMvpActivity;
 import com.ui.ApkSteady.R;
 import com.ui.ApkSteady.contract.DetailHistoryContract;
 import com.ui.ApkSteady.presenter.DetailHisttoryPresenter;
-import com.ui.ApkSteady.presenter.HomePresenter;
 import com.ui.ApkSteady.ui.adapter.DetailMultiAdapter;
 import com.ui.ApkSteady.ui.customview.LinearSpacingItemDecoration;
 import com.ui.ApkSteady.ui.data.DetailHistoryEntity;
 import com.ui.ApkSteady.ui.data.MyData;
-import com.ui.ApkSteady.ui.data.res.BasketBallDetailRes;
-import com.ui.ApkSteady.ui.data.res.FootBallDetailRes;
+import com.ui.ApkSteady.ui.data.req.CompetitionReq;
 import com.ui.ApkSteady.ui.data.res.IndexRes;
-import com.ui.ApkSteady.ui.utils.ApiJsonRequest;
 import com.ui.ApkSteady.ui.utils.DateUtils;
-import com.ui.ApkSteady.ui.utils.LogUtils;
-import com.ui.ApkSteady.ui.utils.ToastUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import okhttp3.FormBody;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 
 public class DetailActivity extends BaseMvpActivity<DetailHisttoryPresenter> implements DetailHistoryContract.DetailHistoryView {
     @BindView(R.id.vs_nodiscuss)
@@ -135,7 +133,7 @@ public class DetailActivity extends BaseMvpActivity<DetailHisttoryPresenter> imp
             tvMatchState.setText("未开始");
             tvScoreA.setText("-");
             tvScoreB.setText("-");
-            tvMatchTime.setText("开赛时间 " + DateUtils.timeStampToSmdhm(data.getMatchVediosInfo().getMatchTime()));
+            tvMatchTime.setText("开赛时间 " + DateUtils.timeStampToMDHM(data.getMatchVediosInfo().getMatchTime()));
 
             tvRedA.setVisibility(View.INVISIBLE);
             tvRedB.setVisibility(View.INVISIBLE);
@@ -152,7 +150,7 @@ public class DetailActivity extends BaseMvpActivity<DetailHisttoryPresenter> imp
             tvMatchState.setText(":");
             tvScoreA.setText(String.valueOf(data.getMatchVediosInfo().getAScore()));
             tvScoreB.setText(String.valueOf(data.getMatchVediosInfo().getBScore()));
-            tvMatchTime.setText("开赛时间 " + DateUtils.timeStampToSmdhm(data.getMatchVediosInfo().getMatchTime()));
+            tvMatchTime.setText("开赛时间 " + DateUtils.timeStampToMDHM(data.getMatchVediosInfo().getMatchTime()));
             tvCorner.setText(data.getMatchVediosInfo().getACorner() + "-" + data.getMatchVediosInfo().getBCorner());
         }
 
@@ -197,6 +195,11 @@ public class DetailActivity extends BaseMvpActivity<DetailHisttoryPresenter> imp
                 mPresenter.getBasketBallHistoryDetail(String.valueOf(data.getMatchId()), String.valueOf(data.getSportsId()));
             }
 
+            CompetitionReq competitionReq = new CompetitionReq();
+            competitionReq.setMatchId(Arrays.asList(String.valueOf(data.getSportsId())));
+            competitionReq.setSportsId(data.getMatchId());
+            RequestBody body = FormBody.create(MediaType.parse("application/json; charset=utf-8"), new Gson().toJson(competitionReq));
+            mPresenter.getCompetition(body);
 //            detailMultiAdapter.notifyDataSetChanged();
         } catch (Exception e) {
             e.printStackTrace();

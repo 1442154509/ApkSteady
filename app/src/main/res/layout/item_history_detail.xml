@@ -58,7 +58,7 @@
                 android:layout_marginRight="@dimen/dimen_5" />
 
             <TextView
-                android:id="@+id/textView_detail_history_team_a"
+                android:id="@+id/textView_detail_historybat_team_a"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -67,7 +67,7 @@
                 android:textColor="@color/c_2a2a2a" />
 
             <TextView
-                android:id="@+id/textView_detail_history_team_score"
+                android:id="@+id/textView_detail_historybat_team_score"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -78,7 +78,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView_detail_history_team_b"
+                android:id="@+id/textView_detail_historybat_team_b"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
