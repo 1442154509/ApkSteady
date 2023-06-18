@@ -35,18 +35,19 @@ public class DetailMultiAdapter extends BaseMultiItemQuickAdapter<DetailHistoryE
                         .setText(R.id.textview_detail_title_score_match, rankDTO.getPlayed())
                         .setText(R.id.textview_detail_title_score_score, rankDTO.getWon() + "/" + rankDTO.getDrawn() + "/" + rankDTO.getLost())
                         .setText(R.id.textview_detail_title_score_draw, rankDTO.getGoals() + "/" + rankDTO.getAgainst())
-                        .setText(R.id.textview_detail_title_score_rank, rankDTO.getPosition())
-                ;
+                        .setText(R.id.textview_detail_title_score_rank, rankDTO.getPosition());
 
+                break;
             case DetailHistoryEntity.TYPE_GOALDISTRIBUTIONS:
-//                DetailHistoryEntity.GoalDistributionsDTO goalDistributions = HistoryEntity.getGoalDistributions();
+                DetailHistoryEntity.GoalDistributionsDTO goalDistributions = HistoryEntity.getGoalDistributions();
 //
 //                helper.setText(R.id.textview_detail_item_title_rank, entity.getHome().get(0).getDrawn())
 //                        .setText(R.id.tv_lowest_price, entity.getPrePrice());
+                break;
             case DetailHistoryEntity.TYPE_HISTORYBATTLES:
                 DetailHistoryEntity.HistoryBattlesDTO historyBattlesDTO = HistoryEntity.getHistoryBattles();
 
-                if (helper.getLayoutPosition() == 0) {
+                if (helper.getLayoutPosition() == ConstantsUtils.rank_size + ConstantsUtils.goald_size) {
                     helper.setText(R.id.textview_detail_item_title, "历史交锋");
                     helper.getView(R.id.ll_include2).setVisibility(View.GONE);
                     helper.getView(R.id.constraintnlayout_detail_history_data).setVisibility(View.GONE);
@@ -54,13 +55,17 @@ public class DetailMultiAdapter extends BaseMultiItemQuickAdapter<DetailHistoryE
 
                     helper.getView(R.id.ll_include).setVisibility(View.GONE);
                     helper.getView(R.id.ll_include2).setVisibility(View.GONE);
-                    if (helper.getLayoutPosition() == 1) {
+                    helper.getView(R.id.imageview_detail_recent_teamlogo).setVisibility(View.GONE);
+                    if (helper.getLayoutPosition() == ConstantsUtils.rank_size + ConstantsUtils.goald_size + 1) {
                         helper.getView(R.id.ll_include2).setVisibility(View.VISIBLE);
+                        helper.getView(R.id.imageview_detail_recent_teamlogo).setVisibility(View.VISIBLE);
                         helper.setText(R.id.textview_detail_title_score_match, "近" + ConstantsUtils.his_battler_size + "场");
                         helper.setText(R.id.textview_detail_title_score_win, ConstantsUtils.his_battler_won + "胜");
                         helper.setText(R.id.textview_detail_title_score_draw, ConstantsUtils.his_battler_drawn + "平");
                         helper.setText(R.id.textview_detail_title_score_lost, ConstantsUtils.his_battler_lost + "负");
                         helper.setText(R.id.textview_detail_item_title_team_a, HistoryEntity.getHistoryBattles().getHomeTeamName());
+                        Glide.with(getContext()).load(historyBattlesDTO.getHomeTeamLogo()).into((ImageView) helper.getView(R.id.imageview_detail_recent_teamlogo));
+
                     }
                     helper.setText(R.id.textView_detail_historybat_team_a, historyBattlesDTO.getHomeTeamName());
                     helper.setText(R.id.textView_detail_historybat_team_b, historyBattlesDTO.getAwayTeamName());
@@ -82,9 +87,10 @@ public class DetailMultiAdapter extends BaseMultiItemQuickAdapter<DetailHistoryE
                     Glide.with(getContext()).load(historyBattlesDTO.getHomeTeamLogo()).into((ImageView) helper.getView(R.id.imageview_detail_history_team_a_logo));
                     Glide.with(getContext()).load(historyBattlesDTO.getAwayTeamLogo()).into((ImageView) helper.getView(R.id.imageview_detail_history_team_b_logo));
                 }
+                break;
             case DetailHistoryEntity.TYPE_RECENT:
                 DetailHistoryEntity.RecentBattles recentBattles = HistoryEntity.getRecentBattles();
-                if (helper.getLayoutPosition() == 0) {
+                if (helper.getLayoutPosition() == ConstantsUtils.rank_size + ConstantsUtils.goald_size + ConstantsUtils.his_battler_size) {
                     helper.setText(R.id.textview_detail_item_title, "近期战绩");
                     helper.setVisible(R.id.textview_detail_title_5match, true);
                     helper.getView(R.id.ll_include2).setVisibility(View.GONE);
@@ -94,13 +100,13 @@ public class DetailMultiAdapter extends BaseMultiItemQuickAdapter<DetailHistoryE
                     helper.setText(R.id.textview_detail_item_title_team_a, recentBattles.getTeamname());
                     Glide.with(getContext()).load(recentBattles.getTeamlogo()).into((ImageView) helper.getView(R.id.imageview_detail_recent_teamlogo));
 
-                    helper.setText(R.id.textview_detail_title_score_match, "近" + ConstantsUtils.his_recent_home_size + "场");
+                    helper.setText(R.id.textview_detail_title_score_match, "近" + ConstantsUtils.recent_size + "场");
                     helper.setText(R.id.textview_detail_title_score_win, recentBattles.getWin() + "胜");
                     helper.setText(R.id.textview_detail_title_score_draw, recentBattles.getDrawn() + "平");
                     helper.setText(R.id.textview_detail_title_score_lost, recentBattles.getLost() + "负");
-                    helper.setText(R.id.textView_recent_win_ratenum1, DateUtils.getPercent2(recentBattles.getWin(), ConstantsUtils.his_recent_home_size));
-                    helper.setText(R.id.textView_recent_win_ratenum2, DateUtils.getPercent2(recentBattles.getLost(), ConstantsUtils.his_recent_home_size));
-                    helper.setText(R.id.textView_recent_win_ratenum3, DateUtils.getPercent2(recentBattles.getDrawn(), ConstantsUtils.his_recent_home_size));
+                    helper.setText(R.id.textView_recent_win_ratenum1, DateUtils.getPercent2(recentBattles.getWin(), ConstantsUtils.recent_size));
+                    helper.setText(R.id.textView_recent_win_ratenum2, DateUtils.getPercent2(recentBattles.getLost(), ConstantsUtils.recent_size));
+                    helper.setText(R.id.textView_recent_win_ratenum3, DateUtils.getPercent2(recentBattles.getDrawn(), ConstantsUtils.recent_size));
                     int[] stateid = {R.id.textView_recent_match_state1, R.id.textView_recent_match_state2, R.id.textView_recent_match_state3, R.id.textView_recent_match_state4, R.id.textView_recent_match_state5};
                     for (int i = 1; i < recentBattles.getMatchwinstate().size(); i++) {
                         if (recentBattles.getMatchwinstate().get(i) == 1) {
@@ -118,8 +124,7 @@ public class DetailMultiAdapter extends BaseMultiItemQuickAdapter<DetailHistoryE
                         }
                     }
                 }
-
-
+                break;
         }
     }
 }

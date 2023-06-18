@@ -195,7 +195,7 @@ public class DetailActivity extends BaseMvpActivity<DetailHisttoryPresenter> imp
             competitionReq.setMatchId(Arrays.asList(String.valueOf(data.getMatchId())));
             competitionReq.setSportsId(data.getSportsId());
 //            RequestBody body = FormBody.create(MediaType.parse("application/json; charset=utf-8"), new Gson().toJson(competitionReq));
-            mPresenter.getCompetition(competitionReq);
+//            mPresenter.getCompetition(competitionReq);
 //            detailMultiAdapter.notifyDataSetChanged();
         } catch (Exception e) {
             e.printStackTrace();
