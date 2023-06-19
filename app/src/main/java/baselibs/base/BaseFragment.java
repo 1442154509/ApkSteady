@@ -3,6 +3,7 @@ package baselibs.base;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -192,4 +193,21 @@ public abstract class BaseFragment<T extends BasePresenter> extends RxFragment i
         startActivityForResult(cls, null, requestCode);
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser && isVisible() ) {
+            onFragmentResume();
+        } else {
+            onFragmentPause();
+        }
+    }
+    //fragment显示
+    protected void onFragmentResume(){
+
+    }
+    //fragment隐藏
+    protected void onFragmentPause(){
+
+    }
 }

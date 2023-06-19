@@ -23,10 +23,10 @@ public class MatchPresenter extends BasePresenter<MatchModel, MatchContract.View
         return new MatchModel();
     }
 
-    public void getMatchList(int type){
+    public void getMatchList(int type,boolean isShowLoading){
         getModel().getMatchList(type)
                 .compose(RxSchedulers.applySchedulers(getLifecycleProvider()))
-                .subscribe(new BaseObserver2<List<MatchConditionBean>>(getView()) {
+                .subscribe(new BaseObserver2<List<MatchConditionBean>>(getView(),isShowLoading) {
                     @Override
                     public void onSuccess(BaseHttpResult<List<MatchConditionBean>> result) {
                         getView().onGetMatchLsitSuccess(result.getData());

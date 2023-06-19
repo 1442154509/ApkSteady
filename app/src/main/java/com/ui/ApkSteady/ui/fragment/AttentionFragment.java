@@ -2,6 +2,8 @@ package com.ui.ApkSteady.ui.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,7 +37,7 @@ import butterknife.ButterKnife;
 
 //关注页面
 public class AttentionFragment extends BaseFragment<MatchPresenter> implements MatchContract.View{
-    //赛事分类
+    //比赛分类tab
     @BindView(R.id.tab_match_title)
     TabLayout tabMatchTitle;
     //赛事列表
@@ -43,19 +45,24 @@ public class AttentionFragment extends BaseFragment<MatchPresenter> implements M
     RecyclerView rvMatchList;
     //列表适配器
     MatchConditionAdapter macthAdapter;
-
+    //列表数据
+    List<MatchItemBean> adapterList;
     //标题分类
     private String[] tabTitleList = {"全部", "足球", "篮球"};
-//
-//    public View onCreateView(@NonNull LayoutInflater inflater,
-//                             ViewGroup container, Bundle savedInstanceState) {
-//        View rootView = inflater.inflate(R.layout.attention_fragment, container, false);
-//        ButterKnife.bind(this, rootView);
-//        initView();
-//        return rootView;
-//    }
 
-    //初始化布局
+    private int currentType=0;
+
+    protected Handler handler = new Handler(Looper.getMainLooper());
+    @Override
+    protected int getLayoutId() {
+        return R.layout.match_fragment;
+    }
+
+    @Override
+    protected MatchPresenter createPresenter() {
+        return new MatchPresenter();
+    }
+
     @Override
     protected void initView() {
         //初始化tab
@@ -65,7 +72,11 @@ public class AttentionFragment extends BaseFragment<MatchPresenter> implements M
         tabMatchTitle.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                initData();
+                currentType=tab.getPosition();
+                mPresenter.getMatchList(currentType,true);
+                //重选tab后刷新定时刷新任务
+                handler.removeCallbacksAndMessages(null);
+                timingRefresh();
             }
 
             @Override
@@ -80,7 +91,8 @@ public class AttentionFragment extends BaseFragment<MatchPresenter> implements M
         });
         //初始化recycleView
         rvMatchList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        macthAdapter = new MatchConditionAdapter(new ArrayList());
+        adapterList = new ArrayList<>();
+        macthAdapter = new MatchConditionAdapter(adapterList);
         rvMatchList.setAdapter(macthAdapter);
         macthAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
@@ -90,7 +102,6 @@ public class AttentionFragment extends BaseFragment<MatchPresenter> implements M
                 startActivity(intent);
             }
         });
-
     }
 
     @Override
@@ -100,25 +111,7 @@ public class AttentionFragment extends BaseFragment<MatchPresenter> implements M
 
     @Override
     protected void initData() {
-        ToastUtils.show("获取数据");
-//        mPresenter.getMatchList();
-    }
-
-    @Override
-    protected boolean useEventBus() {
-        return false;
-    }
-
-    private void test() {
-        ArrayList<MatchConditionBean> list = new ArrayList<>();
-        //足球
-        for (int i = 1; i < 20; i++) {
-            MatchConditionBean matchConditionBean = new MatchConditionBean();
-            matchConditionBean.setItemType(new Random().nextBoolean() ? 11 : 12);
-            matchConditionBean.setMatchStatus(new Random().nextBoolean() ? 0 : 1);
-            list.add(matchConditionBean);
-        }
-        onDataChanged(list);
+        mPresenter.getMatchList(currentType,true);
     }
 
     //刷新列表数据
@@ -127,38 +120,30 @@ public class AttentionFragment extends BaseFragment<MatchPresenter> implements M
         List<MatchConditionBean> finishList = new ArrayList<>();
         for (MatchConditionBean bean : beans) {
             if (bean.getMatchStatus() == MatchConditionBean.MatchStatus.IN_PROGRESS) {
+                bean.setItemType(bean.getSportsId() == 1 ? MatchItemBean.ItemType.TYPE_MATCH_FOOTBALL : MatchItemBean.ItemType.TYPE_MATCH_BASKETBALL);
                 inProgressList.add(bean);
             }
         }
         if (inProgressList.size() > 0) {
-            macthAdapter.addData(new MatchItemBean().setItemType(MatchItemBean.ItemType.TYPE_HEADER_IN_PROGRESS));
-            macthAdapter.addData(inProgressList);
+            adapterList.add(new MatchItemBean().setItemType(MatchItemBean.ItemType.TYPE_HEADER_IN_PROGRESS));
+            adapterList.addAll(inProgressList);
         }
         for (MatchConditionBean bean : beans) {
             if (bean.getMatchStatus() == MatchConditionBean.MatchStatus.NOT_START) {
+                bean.setItemType(bean.getSportsId() == 1 ? MatchItemBean.ItemType.TYPE_MATCH_FOOTBALL : MatchItemBean.ItemType.TYPE_MATCH_BASKETBALL);
                 finishList.add(bean);
             }
         }
         if (finishList.size() > 0) {
-            macthAdapter.addData(new MatchItemBean().setItemType(MatchItemBean.ItemType.TYPE_HEADER_UNSTART));
-            macthAdapter.addData(finishList);
+            adapterList.add(new MatchItemBean().setItemType(MatchItemBean.ItemType.TYPE_HEADER_UNSTART));
+            adapterList.addAll(finishList);
         }
         macthAdapter.notifyDataSetChanged();
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-    }
-
-    @Override
-    protected int getLayoutId() {
-        return R.layout.attention_fragment;
-    }
-
-    @Override
-    protected MatchPresenter createPresenter() {
-        return new MatchPresenter();
+    protected boolean useEventBus() {
+        return false;
     }
 
     @Override
@@ -168,11 +153,38 @@ public class AttentionFragment extends BaseFragment<MatchPresenter> implements M
 
     @Override
     public void onGetMatchLsitSuccess(List<MatchConditionBean> matchList) {
-
+        adapterList.clear();
+        onDataChanged(matchList);
     }
 
     @Override
     public void onGetMatchLsitFail(String msg) {
-
+        ToastUtils.show(msg);
     }
+
+    @Override
+    protected void onFragmentResume() {
+        super.onResume();
+        //页面显示，开启定时刷新
+        timingRefresh();
+    }
+
+    //定时刷新页面
+    private void timingRefresh(){
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mPresenter.getMatchList(currentType,false);
+                timingRefresh();
+            }
+        }, 10000);
+    }
+
+    @Override
+    protected void onFragmentPause() {
+        super.onPause();
+        //页面到后台，关闭定时刷新
+        handler.removeCallbacksAndMessages(null);
+    }
+
 }

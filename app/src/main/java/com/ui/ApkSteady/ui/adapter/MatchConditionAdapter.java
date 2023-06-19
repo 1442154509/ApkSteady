@@ -58,7 +58,7 @@ public class MatchConditionAdapter extends BaseMultiItemQuickAdapter<MatchItemBe
                         matchStatus.setText("进行中");
                         matchStatus.setTextColor(ContextCompat.getColor(getContext(), R.color.c_2a2a2a));
                         matchStatus.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.item_match_status_ing,0,0,0);
-                        baseViewHolder.setText(R.id.tv_item_match_status,"中场");
+                        baseViewHolder.setText(R.id.tv_item_match_status,footMatchBean.getMatchType());
                         baseViewHolder.setTextColorRes(R.id.tv_item_match_status,R.color.c_ca4a4a);
                         break;
                     case 2:
@@ -118,6 +118,8 @@ public class MatchConditionAdapter extends BaseMultiItemQuickAdapter<MatchItemBe
                         basketballMatchStatus.setText("进行中");
                         basketballMatchStatus.setTextColor(ContextCompat.getColor(getContext(), R.color.c_2a2a2a));
                         basketballMatchStatus.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.item_match_status_ing,0,0,0);
+                        baseViewHolder.setText(R.id.tv_item_match_status,basketballMatchBean.getMatchType());
+                        baseViewHolder.setTextColorRes(R.id.tv_item_match_status,R.color.c_ca4a4a);
                         break;
                     case 2:
                         basketballMatchStatus.setText("结束");
