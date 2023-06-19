@@ -80,6 +80,8 @@ dependencies {
     implementation 'com.geyifeng.immersionbar:immersionbar-ktx:3.2.2'
     // fragment快速实现（可选）已废弃
     implementation 'com.geyifeng.immersionbar:immersionbar-components:3.2.2'
+    //key value数据储存
+    implementation "com.orhanobut:hawk:2.0.1"
 }
 
 android.applicationVariants.all { variant ->

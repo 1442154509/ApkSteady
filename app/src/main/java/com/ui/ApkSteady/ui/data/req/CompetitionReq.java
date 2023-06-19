@@ -1,8 +1,9 @@
 package com.ui.ApkSteady.ui.data.req;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class CompetitionReq {
+public class CompetitionReq implements Serializable {
 
     private int sportsId;
     private List<String> matchId;
