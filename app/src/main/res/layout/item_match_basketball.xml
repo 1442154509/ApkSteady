@@ -34,7 +34,7 @@
             android:id="@+id/tv_match_top_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableLeft="@mipmap/item_match_status"
+            android:drawableLeft="@mipmap/item_match_status_ing"
             android:drawablePadding="6dp"
             android:layout_alignParentRight="true"
             android:text="进行中"
@@ -77,7 +77,7 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="3dp"
         android:text="第三节"
-        android:textColor="#ca4a4a"/>
+        android:textColor="@color/c_ca4a4a"/>
 
     <TextView
         android:id="@+id/tv_item_match_score_a"
