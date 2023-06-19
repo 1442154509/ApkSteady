@@ -32,10 +32,12 @@ public class DetailHistoryEntity implements MultiItemEntity {
     private RankDTO rank;
     /*进球分布，来源足球*/
     private GoalDistributionsDTO goalDistributions;
-    /*历史数据，来源篮球*/
+    /*历史交锋，来源篮球*/
     private HistoryBattlesDTO historyBattles;
-    /*历史数据，来源篮球*/
+    /*近期战绩，来源篮球*/
     private RecentBattles recentBattles;
+    /*对战详情，来源篮球*/
+//    private BattleDetail battleDetail;
 
     public RecentBattles getRecentBattles() {
         return recentBattles;
