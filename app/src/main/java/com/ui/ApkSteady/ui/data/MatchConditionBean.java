@@ -13,7 +13,7 @@ public class MatchConditionBean extends MatchItemBean implements Serializable {
     //赛事id
     private int matchId;
     // 开赛时间
-    private int matchTime;
+    private long matchTime;
     // 联赛名称
     private String leagueName;
     // 联赛logo
@@ -95,11 +95,11 @@ public class MatchConditionBean extends MatchItemBean implements Serializable {
         return this.matchId;
     }
 
-    public void setMatchTime(int matchTime) {
+    public void setMatchTime(long matchTime) {
         this.matchTime = matchTime;
     }
 
-    public int getMatchTime() {
+    public long getMatchTime() {
         return this.matchTime;
     }
 

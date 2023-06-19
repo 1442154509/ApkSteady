@@ -1,6 +1,8 @@
 package com.ui.ApkSteady.ui.fragment;
 
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 
@@ -42,7 +44,9 @@ public class MatchFragment extends BaseFragment<MatchPresenter> implements Match
     //标题分类
     private String[] tabTitleList = {"全部", "足球", "篮球"};
 
+    private int currentType=0;
 
+    protected Handler handler = new Handler(Looper.getMainLooper());
     @Override
     protected int getLayoutId() {
         return R.layout.match_fragment;
@@ -62,7 +66,11 @@ public class MatchFragment extends BaseFragment<MatchPresenter> implements Match
         tabMatchTitle.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                mPresenter.getMatchList(tab.getPosition());
+                currentType=tab.getPosition();
+                mPresenter.getMatchList(currentType,true);
+                //重选tab后刷新定时刷新任务
+                handler.removeCallbacksAndMessages(null);
+                timingRefresh();
             }
 
             @Override
@@ -97,7 +105,7 @@ public class MatchFragment extends BaseFragment<MatchPresenter> implements Match
 
     @Override
     protected void initData() {
-        mPresenter.getMatchList(0);
+        mPresenter.getMatchList(currentType,true);
     }
 
     //刷新列表数据
@@ -124,7 +132,6 @@ public class MatchFragment extends BaseFragment<MatchPresenter> implements Match
             adapterList.add(new MatchItemBean().setItemType(MatchItemBean.ItemType.TYPE_HEADER_UNSTART));
             adapterList.addAll(finishList);
         }
-        ToastUtils.show(adapterList.size() + "---");
         macthAdapter.notifyDataSetChanged();
     }
 
@@ -148,4 +155,31 @@ public class MatchFragment extends BaseFragment<MatchPresenter> implements Match
     public void onGetMatchLsitFail(String msg) {
         ToastUtils.show(msg);
     }
+
+    @Override
+    protected void onFragmentResume() {
+        super.onResume();
+        //页面显示，开启定时刷新
+        timingRefresh();
+    }
+
+    //定时刷新
+    private void timingRefresh(){
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mPresenter.getMatchList(currentType,false);
+                timingRefresh();
+            }
+        }, 10000);
+    }
+
+    @Override
+    protected void onFragmentPause() {
+        super.onPause();
+        //页面到后台，关闭定时刷新
+        handler.removeCallbacksAndMessages(null);
+    }
+
+
 }

@@ -34,7 +34,7 @@
             android:id="@+id/tv_match_top_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableLeft="@mipmap/item_match_status"
+            android:drawableLeft="@mipmap/item_match_status_ing"
             android:drawablePadding="6dp"
             android:layout_alignParentRight="true"
             android:text="进行中"
@@ -75,7 +75,7 @@
         app:layout_constraintTop_toTopOf="@id/iv_item_match_logo_a"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="1dp"
         android:text="中场"/>
 
     <TextView
@@ -137,7 +137,7 @@
         app:layout_constraintTop_toBottomOf="@id/iv_item_match_logo_a"
         app:layout_constraintLeft_toLeftOf="@id/iv_item_match_logo_a"
         android:text="1"
-        android:textSize="11sp"
+        android:textSize="9sp"
         android:textColor="@color/c_2a2a2a"
         android:background="@color/c_ffc000"
         android:layout_marginLeft="28dp"
@@ -152,7 +152,7 @@
         app:layout_constraintLeft_toRightOf="@id/tv_item_match_yellow_a"
         android:text="2"
         android:textColor="@color/white"
-        android:textSize="11sp"
+        android:textSize="9sp"
         android:background="@color/c_e23737"
         android:layout_marginLeft="5dp"
         android:paddingHorizontal="4dp"
@@ -166,7 +166,7 @@
         app:layout_constraintRight_toRightOf="@id/tv_item_match_name_b"
         android:text="2"
         android:textColor="@color/white"
-        android:textSize="11sp"
+        android:textSize="9sp"
         android:background="@color/c_e23737"
         android:paddingHorizontal="4dp"
         android:layout_marginTop="12dp"/>
@@ -178,7 +178,7 @@
         app:layout_constraintTop_toBottomOf="@id/iv_item_match_logo_a"
         app:layout_constraintRight_toLeftOf="@id/tv_item_match_red_b"
         android:text="1"
-        android:textSize="11sp"
+        android:textSize="9sp"
         android:textColor="@color/c_2a2a2a"
         android:background="@color/c_ffc000"
         android:layout_marginLeft="28dp"
@@ -187,6 +187,7 @@
         android:layout_marginRight="5dp"/>
 
     <TextView
+        android:id="@+id/tv_item_match_corner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1-3"
