@@ -9,20 +9,25 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 import com.ui.ApkSteady.R;
 import com.ui.ApkSteady.contract.DetailHistoryContract;
 import com.ui.ApkSteady.presenter.DetailHisttoryPresenter;
 import com.ui.ApkSteady.ui.adapter.DetailMultiAdapter;
-import com.ui.ApkSteady.ui.customview.LinearSpacingItemDecoration;
 import com.ui.ApkSteady.ui.data.DetailHistoryEntity;
+import com.ui.ApkSteady.ui.data.FootBallDetailHistoryEntity;
 import com.ui.ApkSteady.ui.data.MyData;
 import com.ui.ApkSteady.ui.data.req.CompetitionReq;
 import com.ui.ApkSteady.ui.data.res.IndexRes;
+import com.ui.ApkSteady.ui.fragment.DiscussFragment;
+import com.ui.ApkSteady.ui.fragment.HistoryDataFragment;
 import com.ui.ApkSteady.ui.utils.DateUtils;
 
 import java.util.ArrayList;
@@ -73,7 +78,10 @@ public class DetailActivity extends BaseMvpActivity<DetailHisttoryPresenter> imp
     LinearLayout llVideoPlay;
     @BindView(R.id.ll_detail_flag)
     LinearLayout llFlag;
+    @BindView(R.id.viewpage_detail)
+    ViewPager viewpage_detail;
     private int CONTAINSTATE = 2;//0无评论，1有评论，2比赛数据
+    private List<Fragment> pagelist;
     private List<MyData> list;
     private Bundle mBundle;
     private IndexRes data;
@@ -107,13 +115,59 @@ public class DetailActivity extends BaseMvpActivity<DetailHisttoryPresenter> imp
 
     }
 
+    DiscussFragment discussFragment = new DiscussFragment();
+    HistoryDataFragment historyDataFragment = new HistoryDataFragment();
+
     @Override
     protected void initMvp() {
+        pagelist = new ArrayList<>();
+        //为viewpager设置适配器
+        pagelist = new ArrayList<>();
+        pagelist.add(historyDataFragment);
+        pagelist.add(discussFragment);
+        viewpage_detail.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
+            @NonNull
+            @Override
+            //得到显示页面的位置
+            public Fragment getItem(int position) {
+                return pagelist.get(position);
+            }
+
+            @Override
+            public int getCount() {
+                return pagelist.size();
+            }
+        });
+        viewpage_detail.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            //当页面左右滚动时会触发
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            //页面已经滑动成功了，手指抬起来时会触发，position表示当前滑动到的页面，页面从0-len-1
+            public void onPageSelected(int position) {
+            }
+
+            @Override
+            //state为0 1 2当用手指滑动翻页时，手指按下去的时候会触发这个方法，state值为1，手指抬起时，如果发生了滑动（即使很小），这个值会变为2，
+            // 然后最后变为0 。总共执行这个方法三次。一种特殊情况是手指按下去以后一点滑动也没有发生，这个时候只会调用这个方法两次，state值分别是1,0
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+        //
         mBundle = getIntent().getExtras();
         data = (IndexRes) mBundle.getSerializable("IndexRes.Data");
         if (data == null) {
             data = new IndexRes();
         }
+        if (mBundle == null) {
+            mBundle = new Bundle();
+            mBundle.putSerializable("IndexRes.Data", data);
+        }
+        pagelist.get(pagelist.indexOf(historyDataFragment)).setArguments(mBundle);
         tvCompetitionName.setText(data.getCompetitionName());
         tvTeamAName.setText(data.getMatchVediosInfo().getHome());
         tvTeamBName.setText(data.getMatchVediosInfo().getAway());
@@ -157,38 +211,38 @@ public class DetailActivity extends BaseMvpActivity<DetailHisttoryPresenter> imp
             llVideoPlay.setVisibility(View.INVISIBLE);
         }
 
-        switch (CONTAINSTATE) {
-            case 0:
-                vsNodiscuss = (ViewStub) findViewById(R.id.vs_nodiscuss);
-                vsNodiscuss.inflate();
-                break;
-            case 1:
-                break;
-            case 2:
-//                vsMatchdata = (ViewStub) findViewById(R.id.vs_matchdata);
-                vsMatchdata.inflate();
-
-                recyclerView = (RecyclerView) findViewById(R.id.detail_match_item);
-                recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//                createData();
-                recyclerView.addItemDecoration(new LinearSpacingItemDecoration(this, 10));
-//                DetailMatchAdapter adapter = new DetailMatchAdapter(this, list);
-//                recyclerView.setAdapter(adapter);
-
-                break;
-            default:
-                vsNodiscuss = (ViewStub) findViewById(R.id.vs_nodiscuss);
-                vsNodiscuss.inflate();
-        }
+//        switch (CONTAINSTATE) {
+//            case 0:
+//                vsNodiscuss = (ViewStub) findViewById(R.id.vs_nodiscuss);
+//                vsNodiscuss.inflate();
+//                break;
+//            case 1:
+//                break;
+//            case 2:
+////                vsMatchdata = (ViewStub) findViewById(R.id.vs_matchdata);
+//                vsMatchdata.inflate();
+//
+//                recyclerView = (RecyclerView) findViewById(R.id.detail_match_item);
+//                recyclerView.setLayoutManager(new LinearLayoutManager(this));
+////                createData();
+//                recyclerView.addItemDecoration(new LinearSpacingItemDecoration(this, 10));
+////                DetailMatchAdapter adapter = new DetailMatchAdapter(this, list);
+////                recyclerView.setAdapter(adapter);
+//
+//                break;
+//            default:
+//                vsNodiscuss = (ViewStub) findViewById(R.id.vs_nodiscuss);
+//                vsNodiscuss.inflate();
+//        }
 //        questdetail(data.getMatchId(), data.getSportsId());
         try {
             detailHistoryEntities = new ArrayList<>();
             detailMultiAdapter = new DetailMultiAdapter(detailHistoryEntities);
-            recyclerView.setAdapter(detailMultiAdapter);
+//            recyclerView.setAdapter(detailMultiAdapter);
             if (data.getSportsId() == 1) {
-                mPresenter.getFootBallHistoryDetail(String.valueOf(data.getMatchId()), String.valueOf(data.getSportsId()));
+//                mPresenter.getFootBallHistoryDetail(String.valueOf(data.getMatchId()), String.valueOf(data.getSportsId()));
             } else if (data.getSportsId() == 2) {
-                mPresenter.getBasketBallHistoryDetail(String.valueOf(data.getMatchId()), String.valueOf(data.getSportsId()));
+//                mPresenter.getBasketBallHistoryDetail(String.valueOf(data.getMatchId()), String.valueOf(data.getSportsId()));
             }
 
             CompetitionReq competitionReq = new CompetitionReq();
@@ -374,6 +428,11 @@ public class DetailActivity extends BaseMvpActivity<DetailHisttoryPresenter> imp
         detailHistoryEntities.addAll(data);
         detailMultiAdapter.setNewData(detailHistoryEntities);
         detailMultiAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void updateFootBallUI(List<FootBallDetailHistoryEntity> data) {
+
     }
 
     @Override
